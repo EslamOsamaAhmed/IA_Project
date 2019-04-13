@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2350818b2b1c41db857e2d027f0bc79b" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="IA_ProjectModel.PROJECT" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.S_ACTORS" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.S_PAGE" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.ACTOR_PROJECT" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.EVALUATE" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.NOTIF" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.STAT_REPROT" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <AssociationConnector Association="IA_ProjectModel.FK__ACTOR_PRO__PROJE__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__ACTOR_PRO__ACTOR__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__EVALUATE__ACTOR___21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__EVALUATE__ACTOR___22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__NOTIF__ACTOR_ID___24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__NOTIF__ACTOR_ID___25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__S_PAGE__ACTOR_ID__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__STAT_REPR__ACTOR__1FCDBCEB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
