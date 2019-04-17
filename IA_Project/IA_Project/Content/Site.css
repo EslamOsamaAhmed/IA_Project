@@ -34,34 +34,45 @@ footer {
     border-color: #fbfbfb;
 }
 
- .menu > li > a:hover{
+.right:hover{
     color:#e1575c;
     text-decoration:none;
  }
 
-.site-name:hover, .site-name, .menu > li > a{
+.site-name, .site-name:hover,.menu > li > a:hover, .social-icons > li > a:hover{
 color:white;
 text-decoration:none;
 }
 
-.navbar-nav > .links-page:hover{
-background-color:#e7e7e7;
+.right > a{
+color:rgba(0, 0, 0, 0.5);
+text-decoration:none;
+margin-right:10px;
+}
+
+.right > a:hover{
+color: rgba(0, 0, 0, 0.7);
 }
 
 i {
 font-family: fontawesome !important;
 }
 
-.footer-icons-pages *{
+.footer-icons-pages *, .site-name{
 color:white;
+display: inline;
 }
 
 .social-icons i{
 font-size:1.5rem;
 }
 
-.social-icons i:hover{
-color:white;
-font-size:1.75rem;
-transition:ease-in-out 0.1s;
+.menu > li{
+margin:10px
+}
+
+@media only screen and (max-width: 991px) {
+  #navbarTogglerDemo03{
+      text-align:center;
+  }
 }
