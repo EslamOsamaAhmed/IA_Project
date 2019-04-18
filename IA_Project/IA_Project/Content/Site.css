@@ -19,9 +19,6 @@ textarea {
 }
 
 footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100%;
     background-color: #363847;
     color: white;
