@@ -1,0 +1,51 @@
+﻿@using IA_Project.Models
+@using IA_Project.Controllers
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="home-section">
+    <div class="home-wrap">
+      <div class="project-forms"></div><!--project-forms-->
+    </div><!--home-wrap-->
+</section><!--homw-section-->
+<section class="home-project">
+    <div class="projects-wrap">
+    </div><!--projects-wrap-->
+</section><!--home-project-->
+<div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Open modal for login</button>
+
+    <div class="modal fade " id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-login-header">Sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="login-form">
+                        <div class="form-group">
+                          <!----<label for="login-name" class="col-form-label">Name:</label>-->
+                            <input type="text" class="form-control login-input input-cust" placeholder="Email" id="login-name">
+                        </div>
+                        <div class="form-group">
+                            <!----<label for="login-pass" class="col-form-label">Password:</label>-->
+                            <input type="text" class="form-control login-input input-cust" placeholder="Password" id="login-pass">
+                        </div>
+                    </form>
+                    <div class="forgot-pass">
+                        <a id="login-forgot-pass" href="#" class="login-forgot-pass">Forgot Password</a>
+                    </div><!--forgot-pass-->
+                </div><!--modal-body-->
+                <div class="modal-footer">
+                    <span id="login-footer-span" class="">
+                    Don't have an account?
+                    <a class="register-switch">Create Account</a></span>
+                </div><!--modal-footer-->
+            </div><!--modal-content-->
+        </div><!--modal-dialog-->
+    </div><!--modal-->
+    </div><!--container-->

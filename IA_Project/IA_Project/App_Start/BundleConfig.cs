@@ -24,8 +24,7 @@ namespace IA_Project
                       "~/Scripts/respond.js", "~/Scripts/custom.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css", "~/Content/fprofile.css", "~/Content/sprofile.css", "~/Content/Home.css"));
+                      "~/Content/bootstrap.css","~/Content/Site.css", "~/Content/fprofile.css", "~/Content/sprofile.css", "~/Content/Home.css"));
         }
     }
 }
