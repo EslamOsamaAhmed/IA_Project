@@ -8,17 +8,17 @@
     <div class="row">
         <div class="col-md-3 ">
             <div class="list-group dashboard-links">
-                <a href="#" class="list-group-item list-group-item-action dash-page">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page">Profile</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page active">Edit Profile</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page">Current Projects</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page">Completed Projects</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page">Assigned Projects</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page">Requests & Responses</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page">Previous Delivered Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page dashboard-tab">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page edit-rprofile-tab">Edit Profile</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page curr-rpoject-tab">Current Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page complete-project-tab">Completed Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page assign-project-tab">Assigned Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page request-res-tab">Requests & Responses</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page prev-del-project-tab">Previous Delivered Projects</a>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 edit-profile noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -91,6 +91,35 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-9 show-profile active-content tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 profile-section">
+                            <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12">
+                                <div class="profile-pic">
+                                    <img src="" class="p-img img-responsive"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xl-7 col-sm-12">
+                                <div class="profile-name">
+                                    <span>XXXX-XXXX</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 @Html.Partial("_Footer")

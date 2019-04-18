@@ -1,3 +1,27 @@
 ﻿.dashboard{
 padding-top:30px;   
+margin-bottom: 3%;
+}
+
+.noactive{
+display:none;
+}
+
+.active-content, .noactive{
+transition:ease-in-out 0.5s;
+}
+
+.profile-pic{
+width:200px;
+height:200px;
+border-radius:50%;
+background-color:black;
+}
+
+.profile-section{
+display:inline-flex;
+}
+
+.profile-name{
+padding-top: 5%;
 }
