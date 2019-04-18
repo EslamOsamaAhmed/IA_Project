@@ -1,2 +1,9 @@
 ﻿body {
 }
+.Custom_Size{
+    font-size:70%;
+    font-weight:bold;
+}
+.project_card {
+    max-width: 30rem;
+}
