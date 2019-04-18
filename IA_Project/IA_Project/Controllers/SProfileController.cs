@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace IA_Project.Controllers
 {
-    public class HomeController : Controller
+    public class SProfileController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        // GET: SProfile
+        public ActionResult SProfile_View()
         {
             return View();
         }
