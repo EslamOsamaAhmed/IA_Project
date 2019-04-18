@@ -138,6 +138,7 @@ E:\FCIH\GitHub\IA_Project\IA_Project\IA_Project\obj\Debug\IA_Project.dll
 E:\FCIH\GitHub\IA_Project\IA_Project\IA_Project\obj\Debug\IA_Project.pdb
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 E:\GitHub\IA_Project\IA_Project\IA_Project\bin\roslyn\csc.exe
 E:\GitHub\IA_Project\IA_Project\IA_Project\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 E:\GitHub\IA_Project\IA_Project\IA_Project\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -283,3 +284,5 @@ C:\Users\Ahmed Rezk\Desktop\IA_Project\IA_Project\IA_Project\obj\Debug\IA_Projec
 >>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
 =======
 >>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
+=======
+>>>>>>> parent of 6ea8208... edit

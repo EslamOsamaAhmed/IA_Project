@@ -8,6 +8,7 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
 =======
     <WebStackScaffolding_LayoutPageFile>
@@ -17,6 +18,9 @@
     <WebStackScaffolding_LayoutPageFile>
     </WebStackScaffolding_LayoutPageFile>
 >>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
+=======
+    <WebStackScaffolding_LayoutPageFile />
+>>>>>>> parent of 6ea8208... edit
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
   </PropertyGroup>

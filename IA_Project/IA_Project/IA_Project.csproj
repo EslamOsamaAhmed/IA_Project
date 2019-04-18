@@ -172,6 +172,7 @@
     <Compile Include="Controllers\fprofileController.cs" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="Controllers\HomeController.cs" />
 =======
     <Compile Include="Controllers\SProfileController.cs" />
@@ -179,6 +180,8 @@
 =======
     <Compile Include="Controllers\SProfileController.cs" />
 >>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
+=======
+>>>>>>> parent of 6ea8208... edit
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -301,6 +304,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="Views\Home\Index.cshtml" />
 =======
     <Content Include="Views\SProfile\SProfile_View.cshtml" />
@@ -312,6 +316,8 @@
     <Content Include="Views\Shared\_navbar_for_sprofile.cshtml" />
     <Content Include="Views\Shared\_Project_modle.cshtml" />
 >>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
+=======
+>>>>>>> parent of 6ea8208... edit
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
