@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="home-section">
+    <div class="home-wrap">
+        <div class="project-forms"></div><!--project-forms-->
+    </div><!--home-wrap-->
+</section><!--homw-section-->
+<section class="home-project">
+    <div class="projects-wrap">
+    </div><!--projects-wrap-->
+</section><!--home-project-->
+<div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Open modal for login</button>
+
+    <div class="modal fade " data-backdrop="static" data-keyboard="false" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-login-header">Sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="login-form">
+                        <div class="form-group">
+                            <!----<label for="login-name" class="col-form-label">Name:</label>-->
+                            <input type="text" class="form-control login-input input-cust" placeholder="Email" id="login-name">
+                        </div>
+                        <div class="form-group">
+                            <!----<label for="login-pass" class="col-form-label">Password:</label>-->
+                            <input type="password" class="form-control login-input input-cust" placeholder="Password" id="login-pass">
+                        </div>
+                    </form>
+                    <div class="forgot-pass">
+                        <a href=""> <button id="login-forgot-pass" class="login-forgot-pass">Forgot Password</button></a>
+                    </div><!--forgot-pass-->
+                    <div class="sign-btn form-group">
+                        <button class="sign-in btn">sgin in</button>
+                    </div><!--sign--->
+                </div><!--modal-body-->
+                <div class="modal-footer">
+                    <span id="login-footer-span" class="">
+                        Don't have an account?
+                        <a class="register-switch">Create Account</a>
+                    </span>
+                </div><!--modal-footer-->
+            </div><!--modal-content-->
+        </div><!--modal-dialog-->
+    </div><!--modal-->
+</div><!--container-->
+
