@@ -14,7 +14,7 @@
     </div><!--projects-wrap-->
 </section><!--home-project-->
 <div class="container">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Open modal for login</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Login</button>
 
     <div class="modal fade " data-backdrop="static" data-keyboard="false" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
@@ -54,3 +54,53 @@
     </div><!--modal-->
 </div><!--container-->
 
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Project Form</h1>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Project Name</label>
+                                <div class="col-8">
+                                    <input id="name" name="text" placeholder="Name" class="form-control here" required="required" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Description of your Project</label>
+                                <div class="col-8">
+                                    <textarea id="text" name="text" rows="10" cols="30" placeholder="Desc" class="form-control here" required="required" type="text"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Start Time</label>
+                                <div class="col-8">
+                                    <input id="name" name="text" placeholder="DD/MM/YY" class="form-control here" required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">End Time</label>
+                                <div class="col-8">
+                                    <input id="name" name="text" placeholder="DD/MM/YY" class="form-control here" required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                    <button name="submit" type="submit" class="btn btn-primary">Add</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footer")
