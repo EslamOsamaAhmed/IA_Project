@@ -170,15 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\fprofileController.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Compile Include="Controllers\HomeController.cs" />
-=======
     <Compile Include="Controllers\SProfileController.cs" />
->>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
-=======
-    <Compile Include="Controllers\SProfileController.cs" />
->>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -299,19 +291,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\fprofile\fprofile.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Content Include="Views\Home\Index.cshtml" />
-=======
     <Content Include="Views\SProfile\SProfile_View.cshtml" />
     <Content Include="Views\Shared\_navbar_for_sprofile.cshtml" />
     <Content Include="Views\Shared\_Project_modle.cshtml" />
->>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
-=======
-    <Content Include="Views\SProfile\SProfile_View.cshtml" />
-    <Content Include="Views\Shared\_navbar_for_sprofile.cshtml" />
-    <Content Include="Views\Shared\_Project_modle.cshtml" />
->>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

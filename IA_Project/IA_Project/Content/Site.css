@@ -26,17 +26,6 @@ footer {
     color:white;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.navbar-default {
-    background-color: orangered;
-    border-color: #fbfbfb;
-}
-
-=======
->>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
-=======
->>>>>>> 6ea8208b6f279fa8616bba1e92f29493894ac9e3
 .right:hover{
     color:#e1575c;
     text-decoration:none;
@@ -78,28 +67,4 @@ margin:10px
   #navbarTogglerDemo03{
       text-align:center;
   }
-}
-
-#login-maodal .modal-dialog{
-    max-width:420px;
-}
-#login-maodal .modal-header,#register-maodal .modal-header{
-    background-color: #f5f5f5;
-    color: #505050;
-    border-radius: 4px 4px 0 0;
-    border: 0;
-    text-align: center;
-}
-.login-maodal .modal-footer,,#register-maodal .modal-header{
-    background-color: #f5f5f5;
-    color: #767676;
-    border-radius:0 0 4px 4px;
-    text-align: center;
-    min-height: 40px;
-    border-top: none;
-}
-.input-cust{
-    width:80%;
-    max-width:80%;
-    margin:auto;
 }
