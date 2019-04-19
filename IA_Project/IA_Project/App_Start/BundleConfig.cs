@@ -21,7 +21,7 @@ namespace IA_Project
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js", "~/Scripts/custom.js"));
+                      "~/Scripts/respond.js", "~/Scripts/loader.js", "~/Scripts/custom.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css","~/Content/Site.css", "~/Content/fprofile.css", "~/Content/sprofile.css", "~/Content/Home.css"));

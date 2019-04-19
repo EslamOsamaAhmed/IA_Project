@@ -63,6 +63,11 @@ font-size:1.5rem;
 margin:10px
 }
 
+.btn-proj, .btn-proj:hover, .btn-proj:focus{
+color:#fff;
+margin-left:10px;
+}
+
 @media only screen and (max-width: 991px) {
   #navbarTogglerDemo03{
       text-align:center;

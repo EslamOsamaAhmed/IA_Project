@@ -31,12 +31,6 @@
                         <div class="col-md-12">
                             <form>
                                 <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">User Name*</label>
-                                    <div class="col-8">
-                                        <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label for="name" class="col-4 col-form-label">First Name</label>
                                     <div class="col-8">
                                         <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
@@ -48,10 +42,11 @@
                                         <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Job Description</label>
+                                    <label for="lastname" class="col-4 col-form-label">Photo</label>
                                     <div class="col-8">
-                                        <input id="text" name="text" placeholder="Job Description" class="form-control here" required="required" type="text">
+                                        <input id="photo" name="photo" class="form-control here" type="file">
                                     </div>
                                 </div>
                              
@@ -69,8 +64,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="publicinfo" class="col-4 col-form-label">Job Description</label>
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                    <div class="col-8"> 
+                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control" ></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -108,11 +103,198 @@
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-xl-7 col-sm-12">
+                                <div class="profile-username">
+                                    <strong>Username : </strong> <span>Lorem Ispum</span>
+                                </div>
+
                                 <div class="profile-name">
-                                    <span>XXXX-XXXX</span>
+                                    <strong>Name : </strong> <span>Lorem Ispum</span>
+                                </div>
+
+                                <br />
+
+                                <div class="email-show">
+                                   <strong>Email : </strong>  <span> Lorem_Ispum100@loremispum.com</span>
+                                </div>
+
+                                <br />
+
+                                <div class="mobile_number_show">
+                                    <span><strong>Number : </strong> (+20) 1098856314</span>
+                                </div>
+
+                                <br />
+
+                                <div class="job_desc_show">
+                                    <strong>Job Description : </strong><br/>
+                                    <span>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    </span>
+                                </div>
+
+                                <br />
+
+                                <div class="role_show">
+                                    <span><strong>Role : </strong>Marketing Director</span>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-12 charts">
+                            <div  class="col-sm-6 col-12" id="piechart"></div>
+
+                            <div class="col-md-6 col-sm-12"  id="piechart-2"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 dahsboard-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Dashboard</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 current-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Current Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 complete-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Completed Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 assign-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Assigned Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 request-response-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Requests & Responses</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class = "col-12  req-res-sub-tab">
+                            <div class="col-6 req">
+                                <span class="req-t"><strong>Requests</strong></span>
+                            </div>
+                            <div class="col-6 res">
+                                <span class="res-t active-t"><strong>Resposnes</strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12  req-res-sub-tab">
+                            <div class="col-12 ress">
+
+                            </div> <!-- end ress-->
+
+                            <div class="col-12 noactive reqs">
+                                <div class="col-12 reqs-content">
+                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-3 reqs-s">sent you a request</div>
+                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
+                                </div>
+
+                                <div class="col-12 reqs-content">
+                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-3 reqs-s">sent you a request</div>
+                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
+                                </div>
+
+                                <div class="col-12 reqs-content">
+                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-3 reqs-s">sent you a request</div>
+                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
+                                </div>
+
+                                <div class="col-12 reqs-content">
+                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-3 reqs-s">sent you a request</div>
+                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 prev-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Previous Delivered Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
                     </div>
 
                 </div>
@@ -120,6 +302,6 @@
         </div>
     </div>
 </div>
+</div>
 
-
-@Html.Partial("_Footer")
+@Html.Partial("_Footer")    
