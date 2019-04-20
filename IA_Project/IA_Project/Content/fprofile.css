@@ -48,16 +48,16 @@ border-radius: 5px;
 color:white;
 }
 
-.reqs-content{
+.reqs-content, .ress-content{
 display:inline-flex;
 margin-bottom:15px;
 }
 
-.reqs-content-name, .reqs-s{
+.reqs-content-name, .reqs-s, .ress-content-name, .ress-s{
 padding-top:10px;
 }
 
-.reqs-content-img{
+.reqs-content-img, .ress-content-img{
 text-align: center;
 padding:5px;
 }
