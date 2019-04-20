@@ -30,7 +30,7 @@ namespace IA_Project.Controllers
             var ActorID = val.ACTOR_ID;
             var ActorName = val.FNAME + val.LNAME;
 
-            ViewBag.ID = ActorID;
+            ViewBag.ID = ActorName;
 
             return View();
 
