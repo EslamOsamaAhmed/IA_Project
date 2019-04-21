@@ -306,6 +306,7 @@
     <Content Include="Views\PROJECTVIEW\Details.cshtml" />
     <Content Include="Views\PROJECTVIEW\Edit.cshtml" />
     <Content Include="Views\PROJECTVIEW\Index.cshtml" />
+    <Content Include="Views\Shared\_Profile_Modle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
