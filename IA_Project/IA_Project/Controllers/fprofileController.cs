@@ -13,6 +13,7 @@ namespace IA_Project.Controllers
 {
     public class fprofileController : Controller
     {
+        private IA_ProjectEntities db = new IA_ProjectEntities();
         // GET: fprofile
         public ActionResult fprofile()
         {
@@ -32,7 +33,7 @@ namespace IA_Project.Controllers
 
             ViewBag.ID = ActorName;
 
-            return View();
+            return View(db.PROJECTs.ToList());
 
                 
         }
