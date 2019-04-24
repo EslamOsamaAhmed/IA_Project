@@ -5,6 +5,16 @@
 }
 
 <div>@ViewBag.ID</div>
+
+@using (Html.BeginForm("prof", "fprofile"))
+{
+    <input type="text" name="pageid"/>
+    <input type="text" name="pageurl" />
+    <input type="text" name="actorid" />
+
+    <input type="submit"  value = "click me" />
+}
+
 <div class="container dashboard">
     <div class="row">
         <div class="col-md-3 ">
