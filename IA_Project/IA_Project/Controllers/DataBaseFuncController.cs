@@ -70,6 +70,7 @@ namespace IA_Project.Controllers
                     obj.LNAME = act.LNAME;
                     obj.MOBILE = act.MOBILE;
                     obj.FNAME = act.FNAME;
+                    obj.PHOTO = act.PHOTO;
                     obj.EMAIL = act.EMAIL;
                     obj.PASSWORD = act.PASSWORD;
 
