@@ -30,7 +30,6 @@ namespace IA_Project
         public string FNAME { get; set; }
         public string LNAME { get; set; }
         public string JOB_DESC { get; set; }
-        public byte[] PHOTO { get; set; }
         public Nullable<decimal> MOBILE { get; set; }
         public string EMAIL { get; set; }
         public string AROLE { get; set; }
@@ -51,5 +50,7 @@ namespace IA_Project
         public virtual ICollection<S_PAGE> S_PAGE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STAT_REPROT> STAT_REPROT { get; set; }
+
+       
     }
 }
