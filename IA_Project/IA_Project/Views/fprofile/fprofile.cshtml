@@ -1,0 +1,352 @@
+﻿@using IA_Project.Models
+@using IA_Project.Controllers
+@{
+    ViewBag.Title = "fprofile";
+}
+
+<div>@ViewBag.ID</div>
+<<<<<<< HEAD
+
+@using (Html.BeginForm("prof", "fprofile"))
+{
+    <input type="text" name="pageid"/>
+    <input type="text" name="pageurl" />
+    <input type="text" name="actorid" />
+
+    <input type="submit"  value = "click me" />
+}
+
+=======
+>>>>>>> parent of 059f266... Select Project From Database
+<div class="container dashboard">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="list-group dashboard-links">
+                <a href="#" class="list-group-item list-group-item-action dash-page dashboard-tab">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page edit-rprofile-tab">Edit Profile</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page curr-rpoject-tab">Current Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page complete-project-tab">Completed Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page assign-project-tab">Assigned Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page request-res-tab">Requests & Responses</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page prev-del-project-tab">Previous Delivered Projects</a>
+            </div>
+        </div>
+        <div class="col-md-9 edit-profile noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Your Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="name" class="col-4 col-form-label">First Name</label>
+                                    <div class="col-8">
+                                        <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                    <div class="col-8">
+                                        <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="lastname" class="col-4 col-form-label">Photo</label>
+                                    <div class="col-8">
+                                        <input id="photo" name="photo" class="form-control here" type="file">
+                                    </div>
+                                </div>
+                             
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email*</label>
+                                    <div class="col-8">
+                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="mobile" class="col-4 col-form-label">Mobile Number</label>
+                                    <div class="col-8">
+                                        <input id="mobile" name="mobile" placeholder="mobile" class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="publicinfo" class="col-4 col-form-label">Job Description</label>
+                                    <div class="col-8"> 
+                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="newpass" class="col-4 col-form-label">New Password</label>
+                                    <div class="col-8">
+                                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 show-profile active-content tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 profile-section">
+                            <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12">
+                                <div class="profile-pic">
+                                    <img src="" class="p-img img-responsive"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xl-7 col-sm-12">
+                                <div class="profile-username">
+                                    <strong>Username : </strong> <span>Lorem Ispum</span>
+                                </div>
+
+                                <div class="profile-name">
+                                    <strong>Name : </strong> <span>Lorem Ispum</span>
+                                </div>
+
+                                <br />
+
+                                <div class="email-show">
+                                   <strong>Email : </strong>  <span> Lorem_Ispum100@loremispum.com</span>
+                                </div>
+
+                                <br />
+
+                                <div class="mobile_number_show">
+                                    <span><strong>Number : </strong> (+20) 1098856314</span>
+                                </div>
+
+                                <br />
+
+                                <div class="job_desc_show">
+                                    <strong>Job Description : </strong><br/>
+                                    <span>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    </span>
+                                </div>
+
+                                <br />
+
+                                <div class="role_show">
+                                    <span><strong>Role : </strong>Marketing Director</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 charts">
+                            <div  class="col-sm-6 col-12" id="piechart"></div>
+
+                            <div class="col-md-6 col-sm-12"  id="piechart-2"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 dahsboard-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Dashboard</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 current-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Current Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+<<<<<<< HEAD
+                        @Html.Partial("_Project_modle")
+=======
+                        @foreach (var item in Model)
+                        {
+                            if (item.P_STATUS == false)
+                            {
+                                <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="card border-primary mb-3 project_card">
+                                        <div class="card-header bg-primary text-white ">
+                                            Owner Name
+                                        </div>
+                                        <div class="card-body ">
+                                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
+                                            <p class="card-text"><b>Project Description : </b><br/>&emsp;@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
+                                            <p class="card-text"><b>Cost : </b>  @Html.DisplayFor(modelItem => item.PRICE) $</p>
+                                            <p class="card-text"><b>Deadline : </b>@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
+                                            <a href="#" class="btn btn-primary float-right btn-proj">Invite MD</a>
+                                            <a href="#" class="btn btn-danger float-right btn-proj">Delete</a>
+                                            <a href="#" class="btn btn-warning float-right btn-proj">Edit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+>>>>>>> parent of 9523a1d... Display Profule Info.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 complete-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Completed Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+<<<<<<< HEAD
+                        @Html.Partial("_Project_modle")
+=======
+    @foreach (var item in Model)
+    {
+        if (item.P_STATUS == true)
+        {
+            <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card border-primary mb-3 project_card">
+                    <div class="card-header bg-primary text-white ">
+                        Owner Name
+                    </div>
+                    <div class="card-body ">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
+                        <p class="card-text"><b>Project Description : </b><br />&emsp;@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
+                        <p class="card-text"><b>Cost : </b>  @Html.DisplayFor(modelItem => item.PRICE) $</p>
+                        <p class="card-text"><b>Deadline : </b>@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
+                        <a href="#" class="btn btn-primary float-right btn-proj">Invite MD</a>
+                        <a href="#" class="btn btn-danger float-right btn-proj">Delete</a>
+                        <a href="#" class="btn btn-warning float-right btn-proj">Edit</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+                        
+>>>>>>> parent of 9523a1d... Display Profule Info.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 assign-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Assigned Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 request-response-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Requests & Responses</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class = "col-12  req-res-sub-tab">
+                            <div class="col-6 req">
+                                <span class="req-t"><strong>Requests</strong></span>
+                            </div>
+                            <div class="col-6 res">
+                                <span class="res-t active-t"><strong>Resposnes</strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12  req-res-sub-tab">
+                            <div class="col-12 ress">
+                                <div class="col-12 ress-content">
+                                    <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-5 ress-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-5 ress-s">accepted-refused your request</div>
+                                </div>
+                            </div> <!-- end ress-->
+
+                            <div class="col-12 noactive reqs">
+                                <div class="col-12 reqs-content">
+                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-3 reqs-s">sent you a request</div>
+                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 prev-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Previous Delivered Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+@Html.Partial("_Footer")    

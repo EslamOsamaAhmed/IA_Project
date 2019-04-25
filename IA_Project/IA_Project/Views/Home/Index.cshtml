@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="home-section">
+    <div class="home-wrap">
+        <div class="project-forms"></div><!--project-forms-->
+    </div><!--home-wrap-->
+</section><!--homw-section-->
+<section class="home-project">
+    <div class="projects-wrap">
+    </div><!--projects-wrap-->
+</section><!--home-project-->
+<div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Open modal for login</button>
+
+    <div class="modal fade " data-backdrop="static" data-keyboard="false" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-login-header">Sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="login-wrap tab-pane show active" role="tabpanel" id="login-controll">
+                            <form class="login-form">
+                                <div class="form-group">
+                                    <!----<label for="login-name" class="col-form-label">Name:</label>-->
+                                    <input type="text" class="form-control login-input input-cust" placeholder="Email" id="login-name">
+                                </div>
+                                <div class="form-group">
+                                    <!----<label for="login-pass" class="col-form-label">Password:</label>-->
+                                    <input type="password" class="form-control login-input input-cust" placeholder="Password" id="login-pass">
+                                </div>
+
+                                <div class="forgot-pass">
+                                    <button id="login-forgot-pass" class="login-forgot-pass" type="button" name="forgot-btn">Forgot Password</button>
+                                </div><!--forgot-pass-->
+                                <div class="sign-btn form-group">
+                                    <button class="sign-in btn" type="submit" name="sign-in">sgin in</button>
+                                </div><!--sign--->
+                            </form>
+                        </div><!--login-wrap-->
+                        <div class="register-wrap tab-pane" role="tabpanel" id="register-controll">
+                            <form class="register-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="fname" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="lname" placeholder="Last Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="phone" placeholder="Phone Number" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control input-cust" id="email" placeholder="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="fname" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control input-cust" id="jobdesc" rows="4" placeholder="Job Descrption" required></textarea>
+                                </div>
+                                <div class="register-btn form-group">
+                                    <button class="register btn" type="submit" name="register">register</button>
+                                </div><!--register--->
+                            </form><!--register-form-->
+                        </div><!--register-->
+                    </div><!--tab-content-->
+                </div><!--modal-body-->
+
+                <div class="modal-footer">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="login-switch" data-toggle="list" href="#register-controll" role="tab" aria-controls="register">
+                            <span id="login-footer-span" class="modal-Fspan">Don't have an account?</span>
+                            Create Account
+                        </a>
+
+
+                        <a class="register-switch active text-hide" data-toggle="list" href="#login-controll" role="tab" aria-controls="login">
+                            <span id="login-footer-span" class="modal-Fspan"> Already have an account?</span>
+                            Sign in
+                        </a>
+
+                    </div><!--list-group-->
+                </div><!--modal-footer-->
+            </div><!--modal-content-->
+        </div><!--modal-dialog-->
+    </div><!--modal-->
+</div><!--container-->
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Project Form</h1>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Project Name</label>
+                                <div class="col-8">
+                                    <input id="name" name="text" placeholder="Name" class="form-control here" required="required" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Description of your Project</label>
+                                <div class="col-8">
+                                    <textarea id="text" name="text" rows="10" cols="30" placeholder="Desc" class="form-control here" required="required" type="text"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Start Time</label>
+                                <div class="col-8">
+                                    <input id="name" name="text" placeholder="DD/MM/YY" class="form-control here" required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">End Time</label>
+                                <div class="col-8">
+                                    <input id="name" name="text" placeholder="DD/MM/YY" class="form-control here" required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                    <button name="submit" type="submit" class="btn btn-primary">Add</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footer")

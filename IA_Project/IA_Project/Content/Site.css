@@ -1,0 +1,75 @@
+﻿
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+body{
+font-family: 'Poppins', sans-serif;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+footer {
+    width: 100%;
+    background-color: #363847;
+    color: white;
+    padding: 1%;
+    color:white;
+}
+
+.right:hover{
+    color:#e1575c;
+    text-decoration:none;
+ }
+
+.site-name, .site-name:hover,.menu > li > a:hover, .social-icons > li > a:hover{
+color:white;
+text-decoration:none;
+}
+
+.right > a{
+color:rgba(0, 0, 0, 0.5);
+text-decoration:none;
+margin-right:10px;
+}
+
+.right > a:hover{
+color: rgba(0, 0, 0, 0.7);
+}
+
+i {
+font-family: fontawesome !important;
+}
+
+.footer-icons-pages *, .site-name{
+color:white;
+display: inline;
+}
+
+.social-icons i{
+font-size:1.5rem;
+}
+
+.menu > li{
+margin:10px
+}
+
+.btn-proj, .btn-proj:hover, .btn-proj:focus{
+color:#fff;
+margin-left:10px;
+}
+
+@media only screen and (max-width: 991px) {
+  #navbarTogglerDemo03{
+      text-align:center;
+  }
+}
