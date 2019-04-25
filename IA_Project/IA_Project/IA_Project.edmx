@@ -14,7 +14,7 @@ warning 6002: The table/view 'IA_Project.dbo.ACTOR_PROJECT' does not have a prim
           </Key>
           <Property Name="ACTOR_ID" Type="int" Nullable="false" />
           <Property Name="PROJECT_ID" Type="int" Nullable="false" />
-          <Property Name="AROLE" Type="varchar" MaxLength="100" />
+          <Property Name="AROLE" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IA_Project.dbo.EVALUATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -27,7 +27,7 @@ warning 6002: The table/view 'IA_Project.dbo.EVALUATE' does not have a primary k
           </Key>
           <Property Name="ACTOR_ID_FROM" Type="int" Nullable="false" />
           <Property Name="ACTOR_ID_TO" Type="int" Nullable="false" />
-          <Property Name="FEED_CONTENT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FEED_CONTENT" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RATE" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -41,42 +41,42 @@ warning 6002: The table/view 'IA_Project.dbo.NOTIF' does not have a primary key 
           </Key>
           <Property Name="ACTOR_ID_FROM" Type="int" Nullable="false" />
           <Property Name="ACTOR_ID_TO" Type="int" Nullable="false" />
-          <Property Name="CONTENT" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="TYPE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CONTENT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PROJECT">
           <Key>
             <PropertyRef Name="PROJECT_ID" />
           </Key>
-          <Property Name="PROJECT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME_PROJECT" Type="varchar" MaxLength="100" />
-          <Property Name="DESC_PROJECT" Type="varchar" MaxLength="100" />
+          <Property Name="PROJECT_ID" Type="int" Nullable="false" />
+          <Property Name="NAME_PROJECT" Type="varchar" MaxLength="50" />
+          <Property Name="DESC_PROJECT" Type="varchar" MaxLength="50" />
           <Property Name="P_STATUS" Type="bit" Nullable="false" />
-          <Property Name="START_TIME" Type="date" Nullable="false" />
-          <Property Name="END_TIME" Type="date" Nullable="false" />
+          <Property Name="START_TIME" Type="time" Precision="7" Nullable="false" />
+          <Property Name="END_TIME" Type="time" Precision="7" Nullable="false" />
           <Property Name="PRICE" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="S_ACTORS">
           <Key>
             <PropertyRef Name="ACTOR_ID" />
           </Key>
-          <Property Name="ACTOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FNAME" Type="varchar" MaxLength="100" />
-          <Property Name="LNAME" Type="varchar" MaxLength="100" />
-          <Property Name="JOB_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="ACTOR_ID" Type="int" Nullable="false" />
+          <Property Name="FNAME" Type="varchar" MaxLength="10" />
+          <Property Name="LNAME" Type="varchar" MaxLength="10" />
+          <Property Name="JOB_DESC" Type="varchar" MaxLength="50" />
           <Property Name="PHOTO" Type="image" />
-          <Property Name="MOBILE" Type="int" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
-          <Property Name="AROLE" Type="varchar" MaxLength="100" />
-          <Property Name="USERNAME" Type="varchar" MaxLength="100" />
-          <Property Name="PASSWORD" Type="varchar" MaxLength="100" />
+          <Property Name="MOBILE" Type="numeric" Precision="13" Scale="0" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="15" />
+          <Property Name="AROLE" Type="varchar" MaxLength="10" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="20" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="S_PAGE">
           <Key>
             <PropertyRef Name="PAGE_ID" />
           </Key>
-          <Property Name="PAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PAGE_URL" Type="varchar" MaxLength="100" />
+          <Property Name="PAGE_ID" Type="int" Nullable="false" />
+          <Property Name="PAGE_URL" Type="varchar" MaxLength="50" />
           <Property Name="ACTOR_ID_P" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -99,7 +99,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           <Property Name="NO_PASSED" Type="int" Nullable="false" />
           <Property Name="NO_FAILURE" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__ACTOR_PRO__ACTOR__145C0A3F">
+        <Association Name="FK__ACTOR_PRO__ACTOR__1A14E395">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +111,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ACTOR_PRO__PROJE__15502E78">
+        <Association Name="FK__ACTOR_PRO__PROJE__1B0907CE">
           <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
           <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +123,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EVALUATE__ACTOR___1BFD2C07">
+        <Association Name="FK__EVALUATE__ACTOR___21B6055D">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,7 +135,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EVALUATE__ACTOR___1CF15040">
+        <Association Name="FK__EVALUATE__ACTOR___22AA2996">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,7 +147,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTIF__ACTOR_ID___1ED998B2">
+        <Association Name="FK__NOTIF__ACTOR_ID___24927208">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -159,7 +159,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTIF__ACTOR_ID___1FCDBCEB">
+        <Association Name="FK__NOTIF__ACTOR_ID___25869641">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -171,7 +171,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__S_PAGE__ACTOR_ID__182C9B23">
+        <Association Name="FK__S_PAGE__ACTOR_ID__1DE57479">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="S_PAGE" Type="Self.S_PAGE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,7 +183,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAT_REPR__ACTOR__1A14E395">
+        <Association Name="FK__STAT_REPR__ACTOR__1FCDBCEB">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="STAT_REPROT" Type="Self.STAT_REPROT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -233,35 +233,35 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
     [STAT_REPROT].[NO_FAILURE] AS [NO_FAILURE]
     FROM [dbo].[STAT_REPROT] AS [STAT_REPROT]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__ACTOR_PRO__ACTOR__145C0A3F" Association="Self.FK__ACTOR_PRO__ACTOR__145C0A3F">
+          <AssociationSet Name="FK__ACTOR_PRO__ACTOR__1A14E395" Association="Self.FK__ACTOR_PRO__ACTOR__1A14E395">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__ACTOR_PRO__PROJE__15502E78" Association="Self.FK__ACTOR_PRO__PROJE__15502E78">
+          <AssociationSet Name="FK__ACTOR_PRO__PROJE__1B0907CE" Association="Self.FK__ACTOR_PRO__PROJE__1B0907CE">
             <End Role="PROJECT" EntitySet="PROJECT" />
             <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__EVALUATE__ACTOR___1BFD2C07" Association="Self.FK__EVALUATE__ACTOR___1BFD2C07">
+          <AssociationSet Name="FK__EVALUATE__ACTOR___21B6055D" Association="Self.FK__EVALUATE__ACTOR___21B6055D">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="EVALUATE" EntitySet="EVALUATE" />
           </AssociationSet>
-          <AssociationSet Name="FK__EVALUATE__ACTOR___1CF15040" Association="Self.FK__EVALUATE__ACTOR___1CF15040">
+          <AssociationSet Name="FK__EVALUATE__ACTOR___22AA2996" Association="Self.FK__EVALUATE__ACTOR___22AA2996">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="EVALUATE" EntitySet="EVALUATE" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTIF__ACTOR_ID___1ED998B2" Association="Self.FK__NOTIF__ACTOR_ID___1ED998B2">
+          <AssociationSet Name="FK__NOTIF__ACTOR_ID___24927208" Association="Self.FK__NOTIF__ACTOR_ID___24927208">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="NOTIF" EntitySet="NOTIF" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTIF__ACTOR_ID___1FCDBCEB" Association="Self.FK__NOTIF__ACTOR_ID___1FCDBCEB">
+          <AssociationSet Name="FK__NOTIF__ACTOR_ID___25869641" Association="Self.FK__NOTIF__ACTOR_ID___25869641">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="NOTIF" EntitySet="NOTIF" />
           </AssociationSet>
-          <AssociationSet Name="FK__S_PAGE__ACTOR_ID__182C9B23" Association="Self.FK__S_PAGE__ACTOR_ID__182C9B23">
+          <AssociationSet Name="FK__S_PAGE__ACTOR_ID__1DE57479" Association="Self.FK__S_PAGE__ACTOR_ID__1DE57479">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="S_PAGE" EntitySet="S_PAGE" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAT_REPR__ACTOR__1A14E395" Association="Self.FK__STAT_REPR__ACTOR__1A14E395">
+          <AssociationSet Name="FK__STAT_REPR__ACTOR__1FCDBCEB" Association="Self.FK__STAT_REPR__ACTOR__1FCDBCEB">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="STAT_REPROT" EntitySet="STAT_REPROT" />
           </AssociationSet>
@@ -275,45 +275,45 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           <Key>
             <PropertyRef Name="PROJECT_ID" />
           </Key>
-          <Property Name="PROJECT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_PROJECT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DESC_PROJECT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PROJECT_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME_PROJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESC_PROJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="P_STATUS" Type="Boolean" Nullable="false" />
-          <Property Name="START_TIME" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="END_TIME" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="START_TIME" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="END_TIME" Type="Time" Nullable="false" Precision="7" />
           <Property Name="PRICE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__15502E78" FromRole="PROJECT" ToRole="ACTOR_PROJECT" />
+          <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__1B0907CE" FromRole="PROJECT" ToRole="ACTOR_PROJECT" />
         </EntityType>
         <EntityType Name="S_ACTORS">
           <Key>
             <PropertyRef Name="ACTOR_ID" />
           </Key>
-          <Property Name="ACTOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="JOB_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACTOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="FNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JOB_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="MOBILE" Type="Int32" />
-          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="AROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__ACTOR__145C0A3F" FromRole="S_ACTORS" ToRole="ACTOR_PROJECT" />
-          <NavigationProperty Name="EVALUATEs" Relationship="Self.FK__EVALUATE__ACTOR___1BFD2C07" FromRole="S_ACTORS" ToRole="EVALUATE" />
-          <NavigationProperty Name="EVALUATEs1" Relationship="Self.FK__EVALUATE__ACTOR___1CF15040" FromRole="S_ACTORS" ToRole="EVALUATE" />
-          <NavigationProperty Name="NOTIFs" Relationship="Self.FK__NOTIF__ACTOR_ID___1ED998B2" FromRole="S_ACTORS" ToRole="NOTIF" />
-          <NavigationProperty Name="NOTIFs1" Relationship="Self.FK__NOTIF__ACTOR_ID___1FCDBCEB" FromRole="S_ACTORS" ToRole="NOTIF" />
-          <NavigationProperty Name="S_PAGE" Relationship="Self.FK__S_PAGE__ACTOR_ID__182C9B23" FromRole="S_ACTORS" ToRole="S_PAGE" />
-          <NavigationProperty Name="STAT_REPROT" Relationship="Self.FK__STAT_REPR__ACTOR__1A14E395" FromRole="S_ACTORS" ToRole="STAT_REPROT" />
+          <Property Name="MOBILE" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="EMAIL" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AROLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__ACTOR__1A14E395" FromRole="S_ACTORS" ToRole="ACTOR_PROJECT" />
+          <NavigationProperty Name="EVALUATEs" Relationship="Self.FK__EVALUATE__ACTOR___21B6055D" FromRole="S_ACTORS" ToRole="EVALUATE" />
+          <NavigationProperty Name="EVALUATEs1" Relationship="Self.FK__EVALUATE__ACTOR___22AA2996" FromRole="S_ACTORS" ToRole="EVALUATE" />
+          <NavigationProperty Name="NOTIFs" Relationship="Self.FK__NOTIF__ACTOR_ID___24927208" FromRole="S_ACTORS" ToRole="NOTIF" />
+          <NavigationProperty Name="NOTIFs1" Relationship="Self.FK__NOTIF__ACTOR_ID___25869641" FromRole="S_ACTORS" ToRole="NOTIF" />
+          <NavigationProperty Name="S_PAGE" Relationship="Self.FK__S_PAGE__ACTOR_ID__1DE57479" FromRole="S_ACTORS" ToRole="S_PAGE" />
+          <NavigationProperty Name="STAT_REPROT" Relationship="Self.FK__STAT_REPR__ACTOR__1FCDBCEB" FromRole="S_ACTORS" ToRole="STAT_REPROT" />
         </EntityType>
         <EntityType Name="S_PAGE">
           <Key>
             <PropertyRef Name="PAGE_ID" />
           </Key>
-          <Property Name="PAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PAGE_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="PAGE_URL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ACTOR_ID_P" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__S_PAGE__ACTOR_ID__182C9B23" FromRole="S_PAGE" ToRole="S_ACTORS" />
+          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__S_PAGE__ACTOR_ID__1DE57479" FromRole="S_PAGE" ToRole="S_ACTORS" />
         </EntityType>
         <EntityType Name="ACTOR_PROJECT">
           <Key>
@@ -322,9 +322,9 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           </Key>
           <Property Name="ACTOR_ID" Type="Int32" Nullable="false" />
           <Property Name="PROJECT_ID" Type="Int32" Nullable="false" />
-          <Property Name="AROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__15502E78" FromRole="ACTOR_PROJECT" ToRole="PROJECT" />
-          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__ACTOR_PRO__ACTOR__145C0A3F" FromRole="ACTOR_PROJECT" ToRole="S_ACTORS" />
+          <Property Name="AROLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__1B0907CE" FromRole="ACTOR_PROJECT" ToRole="PROJECT" />
+          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__ACTOR_PRO__ACTOR__1A14E395" FromRole="ACTOR_PROJECT" ToRole="S_ACTORS" />
         </EntityType>
         <EntityType Name="EVALUATE">
           <Key>
@@ -335,10 +335,10 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           </Key>
           <Property Name="ACTOR_ID_FROM" Type="Int32" Nullable="false" />
           <Property Name="ACTOR_ID_TO" Type="Int32" Nullable="false" />
-          <Property Name="FEED_CONTENT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FEED_CONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RATE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__EVALUATE__ACTOR___1BFD2C07" FromRole="EVALUATE" ToRole="S_ACTORS" />
-          <NavigationProperty Name="S_ACTORS1" Relationship="Self.FK__EVALUATE__ACTOR___1CF15040" FromRole="EVALUATE" ToRole="S_ACTORS" />
+          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__EVALUATE__ACTOR___21B6055D" FromRole="EVALUATE" ToRole="S_ACTORS" />
+          <NavigationProperty Name="S_ACTORS1" Relationship="Self.FK__EVALUATE__ACTOR___22AA2996" FromRole="EVALUATE" ToRole="S_ACTORS" />
         </EntityType>
         <EntityType Name="NOTIF">
           <Key>
@@ -349,10 +349,10 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           </Key>
           <Property Name="ACTOR_ID_FROM" Type="Int32" Nullable="false" />
           <Property Name="ACTOR_ID_TO" Type="Int32" Nullable="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__NOTIF__ACTOR_ID___1ED998B2" FromRole="NOTIF" ToRole="S_ACTORS" />
-          <NavigationProperty Name="S_ACTORS1" Relationship="Self.FK__NOTIF__ACTOR_ID___1FCDBCEB" FromRole="NOTIF" ToRole="S_ACTORS" />
+          <Property Name="CONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__NOTIF__ACTOR_ID___24927208" FromRole="NOTIF" ToRole="S_ACTORS" />
+          <NavigationProperty Name="S_ACTORS1" Relationship="Self.FK__NOTIF__ACTOR_ID___25869641" FromRole="NOTIF" ToRole="S_ACTORS" />
         </EntityType>
         <EntityType Name="STAT_REPROT">
           <Key>
@@ -371,9 +371,9 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           <Property Name="NO_CURRENT" Type="Int32" Nullable="false" />
           <Property Name="NO_PASSED" Type="Int32" Nullable="false" />
           <Property Name="NO_FAILURE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__STAT_REPR__ACTOR__1A14E395" FromRole="STAT_REPROT" ToRole="S_ACTORS" />
+          <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__STAT_REPR__ACTOR__1FCDBCEB" FromRole="STAT_REPROT" ToRole="S_ACTORS" />
         </EntityType>
-        <Association Name="FK__ACTOR_PRO__PROJE__15502E78">
+        <Association Name="FK__ACTOR_PRO__PROJE__1B0907CE">
           <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
           <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -385,7 +385,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ACTOR_PRO__ACTOR__145C0A3F">
+        <Association Name="FK__ACTOR_PRO__ACTOR__1A14E395">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -397,7 +397,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EVALUATE__ACTOR___1BFD2C07">
+        <Association Name="FK__EVALUATE__ACTOR___21B6055D">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -409,7 +409,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EVALUATE__ACTOR___1CF15040">
+        <Association Name="FK__EVALUATE__ACTOR___22AA2996">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -421,7 +421,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTIF__ACTOR_ID___1ED998B2">
+        <Association Name="FK__NOTIF__ACTOR_ID___24927208">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -433,7 +433,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTIF__ACTOR_ID___1FCDBCEB">
+        <Association Name="FK__NOTIF__ACTOR_ID___25869641">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,7 +445,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__S_PAGE__ACTOR_ID__182C9B23">
+        <Association Name="FK__S_PAGE__ACTOR_ID__1DE57479">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="S_PAGE" Type="Self.S_PAGE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -457,7 +457,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAT_REPR__ACTOR__1A14E395">
+        <Association Name="FK__STAT_REPR__ACTOR__1FCDBCEB">
           <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
           <End Role="STAT_REPROT" Type="Self.STAT_REPROT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -477,35 +477,35 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
           <EntitySet Name="EVALUATEs" EntityType="Self.EVALUATE" />
           <EntitySet Name="NOTIFs" EntityType="Self.NOTIF" />
           <EntitySet Name="STAT_REPROT" EntityType="Self.STAT_REPROT" />
-          <AssociationSet Name="FK__ACTOR_PRO__PROJE__15502E78" Association="Self.FK__ACTOR_PRO__PROJE__15502E78">
+          <AssociationSet Name="FK__ACTOR_PRO__PROJE__1B0907CE" Association="Self.FK__ACTOR_PRO__PROJE__1B0907CE">
             <End Role="PROJECT" EntitySet="PROJECTs" />
             <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__ACTOR_PRO__ACTOR__145C0A3F" Association="Self.FK__ACTOR_PRO__ACTOR__145C0A3F">
+          <AssociationSet Name="FK__ACTOR_PRO__ACTOR__1A14E395" Association="Self.FK__ACTOR_PRO__ACTOR__1A14E395">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__EVALUATE__ACTOR___1BFD2C07" Association="Self.FK__EVALUATE__ACTOR___1BFD2C07">
+          <AssociationSet Name="FK__EVALUATE__ACTOR___21B6055D" Association="Self.FK__EVALUATE__ACTOR___21B6055D">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="EVALUATE" EntitySet="EVALUATEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__EVALUATE__ACTOR___1CF15040" Association="Self.FK__EVALUATE__ACTOR___1CF15040">
+          <AssociationSet Name="FK__EVALUATE__ACTOR___22AA2996" Association="Self.FK__EVALUATE__ACTOR___22AA2996">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="EVALUATE" EntitySet="EVALUATEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTIF__ACTOR_ID___1ED998B2" Association="Self.FK__NOTIF__ACTOR_ID___1ED998B2">
+          <AssociationSet Name="FK__NOTIF__ACTOR_ID___24927208" Association="Self.FK__NOTIF__ACTOR_ID___24927208">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="NOTIF" EntitySet="NOTIFs" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTIF__ACTOR_ID___1FCDBCEB" Association="Self.FK__NOTIF__ACTOR_ID___1FCDBCEB">
+          <AssociationSet Name="FK__NOTIF__ACTOR_ID___25869641" Association="Self.FK__NOTIF__ACTOR_ID___25869641">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="NOTIF" EntitySet="NOTIFs" />
           </AssociationSet>
-          <AssociationSet Name="FK__S_PAGE__ACTOR_ID__182C9B23" Association="Self.FK__S_PAGE__ACTOR_ID__182C9B23">
+          <AssociationSet Name="FK__S_PAGE__ACTOR_ID__1DE57479" Association="Self.FK__S_PAGE__ACTOR_ID__1DE57479">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="S_PAGE" EntitySet="S_PAGE" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAT_REPR__ACTOR__1A14E395" Association="Self.FK__STAT_REPR__ACTOR__1A14E395">
+          <AssociationSet Name="FK__STAT_REPR__ACTOR__1FCDBCEB" Association="Self.FK__STAT_REPR__ACTOR__1FCDBCEB">
             <End Role="S_ACTORS" EntitySet="S_ACTORS" />
             <End Role="STAT_REPROT" EntitySet="STAT_REPROT" />
           </AssociationSet>

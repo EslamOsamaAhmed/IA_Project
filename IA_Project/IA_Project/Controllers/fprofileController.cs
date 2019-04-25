@@ -45,14 +45,14 @@ namespace IA_Project.Controllers
         }
 
         [HttpPost]
-        public string prof(string pageurl, string actorid)
+        public string prof(string pageid, string pageurl, string actorid)
         {
             try
             {
                 /*DataBaseFuncController x = new DataBaseFuncController();
             x.page(obj);
             return View();*/
-                S_PAGE s = new S_PAGE() { PAGE_URL = pageurl, ACTOR_ID_P = Int32.Parse(actorid)};
+                S_PAGE s = new S_PAGE() { PAGE_URL = pageurl, ACTOR_ID_P = Int32.Parse(actorid), PAGE_ID = Int32.Parse(pageid) };
                 DataBaseFuncController x = new DataBaseFuncController();
 
                 x.page(s);
