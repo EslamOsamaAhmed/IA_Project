@@ -300,6 +300,14 @@
     <Content Include="Views\Shared\_navbar_for_sprofile.cshtml" />
     <Content Include="Views\Shared\_Project_modle.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\PROJECTVIEW\Create.cshtml" />
+    <Content Include="Views\PROJECTVIEW\Delete.cshtml" />
+    <Content Include="Views\PROJECTVIEW\Details.cshtml" />
+    <Content Include="Views\PROJECTVIEW\Edit.cshtml" />
+    <Content Include="Views\PROJECTVIEW\Index.cshtml" />
+>>>>>>> parent of 9523a1d... Display Profule Info.
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
