@@ -1,0 +1,67 @@
+﻿.dashboard{
+padding-top:30px;   
+margin-bottom: 3%;
+}
+
+.noactive{
+display:none;
+}
+
+.active-content, .noactive{
+transition:ease-in-out 0.5s;
+}
+
+.profile-pic{
+width:200px;
+height:200px;
+border-radius:50%;
+background-color:black;
+}
+
+.profile-section{
+display:inline-flex;
+}
+
+.profile-name{
+padding-top: 5%;
+}
+
+#photo{
+padding: 3px;
+}
+
+.req-res-sub-tab{
+display: inline-flex;
+text-align: center;
+margin-bottom:5%;
+margin-top:2%;
+}
+
+.req, .res{
+cursor:pointer;
+}
+
+.req-t:hover, .res-t:hover, .active-t{
+background-color:#e1575c;
+padding: 10px;
+border-radius: 5px;
+color:white;
+}
+
+.reqs-content, .ress-content{
+display:inline-flex;
+margin-bottom:15px;
+}
+
+.reqs-content-name, .reqs-s, .ress-content-name, .ress-s{
+padding-top:10px;
+}
+
+.reqs-content-img, .ress-content-img{
+text-align: center;
+padding:5px;
+}
+
+.fa-user{
+color: #333;
+}
