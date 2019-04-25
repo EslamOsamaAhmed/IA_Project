@@ -133,6 +133,24 @@ namespace IA_Project.Controllers
             }
         }
 
+        public String page(S_PAGE proj)
+        {
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
+            {
+                try
+                {
+                    _entities.S_PAGE.Add(proj);
+                    _entities.SaveChanges();
+
+                    return "Done, Updated";
+                }
+                catch (Exception ex)
+                {
+                    return ex.ToString();
+                }
+            }
+        }
+
         public String AddActor(S_ACTORS act)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
@@ -195,7 +213,7 @@ namespace IA_Project.Controllers
             }
         }
 
-        public IEnumerable<PROJECT> GetAllProjects()
+        public IEnumerable<PROJECT> GetAllProjects(int ID)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {

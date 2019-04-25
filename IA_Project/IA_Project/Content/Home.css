@@ -49,12 +49,12 @@
     color: #e59194;
     font-weight: 500;
 }
-.sign-btn{
+.sign-btn,.register-btn{
     width:80%;
     margin:auto;
     text-align:center;
 }
-.sign-btn .sign-in{
+.sign-btn .sign-in,.register{
    background-color: #e59194;
     text-align:center;
     color:#ffffff;
@@ -77,3 +77,12 @@ button.sign-in.btn:hover,button.sign-in.btn:active,button.sign-in.btn:visited,bu
     border-color: #e59194;
     color: #e59194;
 }
+.register:hover,.register:active,.register:visited,.register:focus {
+    background: #ffffff;
+    border-color: #e59194;
+    color: #e59194;
+}
+.modal-Fspan{
+    color: #767676;
+}
+

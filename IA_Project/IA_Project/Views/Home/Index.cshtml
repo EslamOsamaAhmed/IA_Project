@@ -14,7 +14,7 @@
     </div><!--projects-wrap-->
 </section><!--home-project-->
 <div class="container">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Login</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Open modal for login</button>
 
     <div class="modal fade " data-backdrop="static" data-keyboard="false" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
@@ -26,28 +26,82 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="login-form">
-                        <div class="form-group">
-                            <!----<label for="login-name" class="col-form-label">Name:</label>-->
-                            <input type="text" class="form-control login-input input-cust" placeholder="Email" id="login-name">
-                        </div>
-                        <div class="form-group">
-                            <!----<label for="login-pass" class="col-form-label">Password:</label>-->
-                            <input type="password" class="form-control login-input input-cust" placeholder="Password" id="login-pass">
-                        </div>
-                    </form>
-                    <div class="forgot-pass">
-                        <a href=""> <button id="login-forgot-pass" class="login-forgot-pass">Forgot Password</button></a>
-                    </div><!--forgot-pass-->
-                    <div class="sign-btn form-group">
-                        <button class="sign-in btn">sgin in</button>
-                    </div><!--sign--->
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="login-wrap tab-pane show active" role="tabpanel" id="login-controll">
+                            <form class="login-form">
+                                <div class="form-group">
+                                    <!----<label for="login-name" class="col-form-label">Name:</label>-->
+                                    <input type="text" class="form-control login-input input-cust" placeholder="Email" id="login-name">
+                                </div>
+                                <div class="form-group">
+                                    <!----<label for="login-pass" class="col-form-label">Password:</label>-->
+                                    <input type="password" class="form-control login-input input-cust" placeholder="Password" id="login-pass">
+                                </div>
+
+                                <div class="forgot-pass">
+                                    <button id="login-forgot-pass" class="login-forgot-pass" type="button" name="forgot-btn">Forgot Password</button>
+                                </div><!--forgot-pass-->
+                                <div class="sign-btn form-group">
+                                    <button class="sign-in btn" type="submit" name="sign-in">sgin in</button>
+                                </div><!--sign--->
+                            </form>
+                        </div><!--login-wrap-->
+
+                        <div class="register-wrap tab-pane" role="tabpanel" id="register-controll">
+                              @using (Html.BeginForm("Register", "Home",FormMethod.Post, new { enctype = "multipart/form-data" }))
+                              {
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="fname" name = "fname" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="lname" name = "lname" placeholder="Last Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control input-cust" id="email" name="email" placeholder="Email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="role" name = "role" placeholder="Role" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="username" name = "username" placeholder="User Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control input-cust" id="password" name = "password" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="mobile" name="mobile" placeholder="Mobile" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control input-cust" id="photo" name="photo" placeholder="Photo" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control input-cust" id="jobdesc" name="jobdesc" placeholder="Job Description" required></textarea>
+                                </div>
+                                <div class="register-btn form-group">
+                                    <button class="register btn" type="submit" name="register">register</button>
+                                </div>
+                              }
+                        </div><!--register-->
+
+                    </div><!--tab-content-->
                 </div><!--modal-body-->
+
                 <div class="modal-footer">
-                    <span id="login-footer-span" class="">
-                        Don't have an account?
-                        <a class="register-switch">Create Account</a>
-                    </span>
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="login-switch" data-toggle="list" href="#register-controll" role="tab" aria-controls="register">
+                            <span id="login-footer-span" class="modal-Fspan">Don't have an account?</span>
+                            Create Account
+                        </a>
+
+
+                        <a class="register-switch active text-hide" data-toggle="list" href="#login-controll" role="tab" aria-controls="login">
+                            <span id="login-footer-span" class="modal-Fspan"> Already have an account?</span>
+                            Sign in
+                        </a>
+
+                    </div><!--list-group-->
                 </div><!--modal-footer-->
             </div><!--modal-content-->
         </div><!--modal-dialog-->

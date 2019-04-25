@@ -57,6 +57,17 @@
         $(".ress").removeClass("noactive");
         $(".reqs").addClass("noactive")
     });
+    // login and register
+    $(".register-switch").click(function () {
+        $(this).addClass("text-hide");
+        $(".login-switch").removeClass("text-hide");
+
+    });
+    $(".login-switch").click(function () {
+        $(this).addClass("text-hide");
+        $(".register-switch").removeClass("text-hide");
+
+    });
 
 });
 

@@ -7,38 +7,36 @@ using System.Web.Mvc;
 using IA_Project.Models;
 using System.Net.Http;
 using System.Net;
-using System.Data;
 
 namespace IA_Project.Controllers
 {
     public class fprofileController : Controller
     {
-        private IA_ProjectEntities db = new IA_ProjectEntities();
-        // GET: fprofile
+        
+
         public ActionResult fprofile()
         {
-            /*test actor = new test { id = 12 };
-
-            ViewData["test"] = actor;
-
-            ViewBag.myactor = actor;*/
-
-            DataBaseFuncController x = new DataBaseFuncController();
-            S_ACTORS y = new S_ACTORS { ACTOR_ID = 1000, AROLE = "Director" };
-
-            var val = x.GetActorDataByID(1000);
-
-            var ActorID = val.ACTOR_ID;
-            var ActorName = val.FNAME + val.LNAME;
-
-            ViewBag.ID = ActorName;
-
-            return View(db.PROJECTs.ToList());
-
-                
+            return View();
         }
 
+        [HttpPost]
+        public string prof(string pageurl, string actorid)
+        {
+            try
+            {
+                /*DataBaseFuncController x = new DataBaseFuncController();
+            x.page(obj);
+            return View();*/
+                S_PAGE s = new S_PAGE() { PAGE_URL = pageurl, ACTOR_ID_P = Int32.Parse(actorid)};
+                DataBaseFuncController x = new DataBaseFuncController();
 
-
-    }
+                x.page(s);
+                return "done";
+            }catch(Exception ex)
+            {
+                return "failed";
+            }
+            
+        }
+    } 
 }

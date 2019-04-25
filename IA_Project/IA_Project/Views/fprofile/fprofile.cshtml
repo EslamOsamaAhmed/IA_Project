@@ -1,14 +1,22 @@
 ﻿@using IA_Project.Models
 @using IA_Project.Controllers
-@model IEnumerable<IA_Project.PROJECT>
 @{
     ViewBag.Title = "fprofile";
 }
 
+<div>@ViewBag.ID</div>
+
+@using (Html.BeginForm("prof", "fprofile"))
+{
+    <input type="text" name="pageurl" />
+    <input type="text" name="actorid" />
+
+    <input type="submit"  value = "click me" />
+}
 
 <div class="container dashboard">
     <div class="row">
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-md-3 ">
             <div class="list-group dashboard-links">
                 <a href="#" class="list-group-item list-group-item-action dash-page dashboard-tab">Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
@@ -20,7 +28,7 @@
                 <a href="#" class="list-group-item list-group-item-action dash-page prev-del-project-tab">Previous Delivered Projects</a>
             </div>
         </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 edit-profile noactive tab-content">
+        <div class="col-md-9 edit-profile noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -51,7 +59,7 @@
                                         <input id="photo" name="photo" class="form-control here" type="file">
                                     </div>
                                 </div>
-
+                             
                                 <div class="form-group row">
                                     <label for="email" class="col-4 col-form-label">Email*</label>
                                     <div class="col-8">
@@ -66,8 +74,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="publicinfo" class="col-4 col-form-label">Job Description</label>
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                    <div class="col-8"> 
+                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control" ></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -88,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 show-profile active-content tab-content">
+        <div class="col-md-9 show-profile active-content tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -101,7 +109,7 @@
                         <div class="col-md-12 profile-section">
                             <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12">
                                 <div class="profile-pic">
-                                    <img src="" class="p-img img-responsive" />
+                                    <img src="" class="p-img img-responsive"/>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-xl-7 col-sm-12">
@@ -116,7 +124,7 @@
                                 <br />
 
                                 <div class="email-show">
-                                    <strong>Email : </strong>  <span> Lorem_Ispum100@loremispum.com</span>
+                                   <strong>Email : </strong>  <span> Lorem_Ispum100@loremispum.com</span>
                                 </div>
 
                                 <br />
@@ -128,7 +136,7 @@
                                 <br />
 
                                 <div class="job_desc_show">
-                                    <strong>Job Description : </strong><br />
+                                    <strong>Job Description : </strong><br/>
                                     <span>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -145,16 +153,16 @@
                         </div>
 
                         <div class="col-sm-12 charts">
-                            <div class="col-sm-6 col-12" id="piechart"></div>
+                            <div  class="col-sm-6 col-12" id="piechart"></div>
 
-                            <div class="col-md-6 col-sm-12" id="piechart-2"></div>
+                            <div class="col-md-6 col-sm-12"  id="piechart-2"></div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 dahsboard-content noactive tab-content">
+        <div class="col-md-9 dahsboard-content noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -164,14 +172,14 @@
                         </div>
                     </div>
                     <div class="row">
-
+                       
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 current-proj-content noactive tab-content">
+        <div class="col-md-9 current-proj-content noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -181,35 +189,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach (var item in Model)
-                        {
-                            if (item.P_STATUS == false)
-                            {
-                                <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="card border-primary mb-3 project_card">
-                                        <div class="card-header bg-primary text-white ">
-                                            Owner Name
-                                        </div>
-                                        <div class="card-body ">
-                                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
-                                            <p class="card-text"><strong>Project Description : </strong><br/>&emsp;@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
-                                            <p class="card-text"><strong>Cost : </strong>  @Html.DisplayFor(modelItem => item.PRICE) $</p>
-                                            <p class="card-text"><strong>Deadline : </strong>@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
-                                            <a href="#" class="btn btn-primary float-right btn-proj">Invite MD</a>
-                                            <a href="#" class="btn btn-danger float-right btn-proj">Delete</a>
-                                            <a href="#" class="btn btn-warning float-right btn-proj">Edit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
+                        @Html.Partial("_Project_modle")
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 complete-proj-content noactive tab-content">
+        <div class="col-md-9 complete-proj-content noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -219,29 +206,7 @@
                         </div>
                     </div>
                     <div class="row">
-    @foreach (var item in Model)
-    {
-        if (item.P_STATUS == true)
-        {
-            <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                <div class="card border-primary mb-3 project_card">
-                    <div class="card-header bg-primary text-white ">
-                        Owner Name
-                    </div>
-                    <div class="card-body ">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
-                        <p class="card-text"><strong>Project Description : </strong><br />&emsp;@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
-                        <p class="card-text"><strong>Cost : </strong>  @Html.DisplayFor(modelItem => item.PRICE) $</p>
-                        <p class="card-text"><strong>Deadline : </strong>@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
-                        <a href="#" class="btn btn-primary float-right btn-proj">Invite MD</a>
-                        <a href="#" class="btn btn-danger float-right btn-proj">Delete</a>
-                        <a href="#" class="btn btn-warning float-right btn-proj">Edit</a>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-                        
+                        @Html.Partial("_Project_modle")
                     </div>
 
                 </div>
@@ -249,7 +214,7 @@
         </div>
 
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 assign-proj-content noactive tab-content">
+        <div class="col-md-9 assign-proj-content noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -261,11 +226,12 @@
                     <div class="row">
                         @Html.Partial("_Project_modle")
                     </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 request-response-content noactive tab-content">
+        <div class="col-md-9 request-response-content noactive tab-content">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -275,7 +241,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12  req-res-sub-tab">
+                       <div class = "col-12  req-res-sub-tab">
                             <div class="col-6 req">
                                 <span class="req-t"><strong>Requests</strong></span>
                             </div>
@@ -304,28 +270,28 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 prev-proj-content noactive tab-content">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4>Previous Delivered Projects</h4>
-                                <hr>
-                            </div>
+        <div class="col-md-9 prev-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Previous Delivered Projects</h4>
+                            <hr>
                         </div>
-                        <div class="row">
-                            @Html.Partial("_Project_modle")
-                        </div>
-
                     </div>
+                    <div class="row">
+                        @Html.Partial("_Project_modle")
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @Html.Partial("_Footer")    
