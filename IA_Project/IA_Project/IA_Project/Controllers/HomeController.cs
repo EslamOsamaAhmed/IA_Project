@@ -11,10 +11,22 @@ namespace IA_Project.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [HttpGet]
         public ActionResult Index()
         {
+            PROJECT project = new PROJECT();
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(PROJECT project)
+        {
+            DataBaseFuncController db = new DataBaseFuncController();
+            db.AddProject(project);
+
+            return Json(new {result = 1 });
+        }
+        
+        
 
         [HttpPost]
         public string Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
@@ -62,14 +74,15 @@ namespace IA_Project.Controllers
             }
 
         }
-        [HttpPost]
-        public ActionResult Add_Project(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
+        /*[HttpPost]
+        public ActionResult Index(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
         {
 
             PROJECT project = new PROJECT { NAME_PROJECT = project_name , DESC_PROJECT = des_project , P_STATUS = false , START_TIME = start_time , END_TIME = end_time , PRICE = price};
             DataBaseFuncController db = new DataBaseFuncController();
             db.AddProject(project);
             return RedirectToAction("Index");
-        }
+        }*/
+
     }
 }

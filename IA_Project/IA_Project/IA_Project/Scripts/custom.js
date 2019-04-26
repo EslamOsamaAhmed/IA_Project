@@ -112,4 +112,3 @@ google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
 // Ajax for add project 
-

@@ -1,4 +1,4 @@
-﻿
+﻿@model IA_Project.PROJECT
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -117,69 +117,110 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    @using (Html.BeginForm("Add_Project", "Home", FormMethod.Post, new { enctype = "multipart/form-data" , id ="Add_Project_form"}))
-                    {
+                    <form id="Add_Project_form">
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">Project Name</label>
+                            @Html.LabelFor(x => x.NAME_PROJECT, new { @class = "col-4 col-form-label" })
+
                             <div class="col-8">
-                                <input id="project_name" name="project_name" placeholder="Name" class="form-control here" required="required" type="text">
+                                @Html.TextBoxFor(m => m.NAME_PROJECT, new { @class = "form-control here", id = "project_name", name = "project_name", placeholder = "Name", required = "required", type = "text" })
+
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="text" class="col-4 col-form-label">Description of your Project</label>
+                            @Html.LabelFor(x => x.DESC_PROJECT, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                <textarea id="des_project" name="des_project" rows="10" cols="30" placeholder="Desc" class="form-control here" required="required" type="text"></textarea>
+                                @Html.TextAreaFor(m => m.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", required = "required", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.P_STATUS, new { @class = "col-4 col-form-label" })
+
+                            <div class="col-8">
+                                @Html.CheckBoxFor(m => m.P_STATUS, new { @class = "form-control here" , id= "p_status" })
+
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">Start Time</label>
+                            @Html.LabelFor(x => x.START_TIME, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                <input id="start_time" name="start_time" placeholder="MM/DD/YY" class="form-control here" required="required" type="text">
+                                @Html.TextBoxFor(m => m.START_TIME, new { id = "start_time", name = "start_time", placeholder = "MM/DD/YY", @class = "form-control here", required = "required", type = "text" })
+
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">End Time</label>
+                            @Html.LabelFor(x => x.END_TIME, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                <input id="end_time" name="end_time" placeholder="MM/DD/YY" class="form-control here" required="required" type="text">
+                                @Html.TextBoxFor(m => m.END_TIME, new { id = "end_time", name = "end_time", placeholder = "MM/DD/YY", @class = "form-control here", required = "required", type = "text" })
+
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">Project Cost</label>
+                            @Html.LabelFor(x => x.PRICE, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                <input id="price" name="price" placeholder="Project Cost" class="form-control here" required="required" type="text">
+                                @Html.TextBoxFor(m => m.PRICE, new { id = "price", name = "price", placeholder = "Project Cost", @class = "form-control here", required = "required", type = "text" })
+
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="offset-4 col-8">
-                                <button name="Add_project" type="submit" id="Add_project" class="btn btn-primary">Add</button>
+                                <button name="Add_project" type="button" id="Add_project_button" class="btn btn-primary">Add</button>
                             </div>
                         </div>
-                    }
+                    </form>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+
+<!-- Modal for Confirmation Message -->
+<div class="modal fade" id="confirm_message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modle_title">Confirmation Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-success" >
+                Your Project Added Successful
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 @Html.Partial("_footer")
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<!--<script>
+<script>
     $(document).ready(function () {
 
-        $("#Add_project").click(function () {
+        $("#Add_project_button").click(function () {
 
-            my_data = $("Add_Project_form").serialize();
+            var my_data = $("#Add_Project_form").serialize();
             $.ajax({
                 type: "POST",
-                url: "/Home/Add_Project",
+                url: "/Home/Index",
                 data: my_data,
                 success: function (response) {
-                    alert("success");
+                    $("#confirm_message").modal('show');
+                    $("#project_name").val("");
+                    $("#des_project").val("");
+                    $("#p_status").removeAttr('checked');
+                    $("#start_time").val("");
+                    $("#end_time").val("");
+                    $("#price").val("");
                 }
             })
         })
 
 
-    });
-</script>-->
+    })
+</script>

@@ -21,6 +21,7 @@ namespace IA_Project
         }
     
         public int PROJECT_ID { get; set; }
+        
         public string NAME_PROJECT { get; set; }
         public string DESC_PROJECT { get; set; }
         public bool P_STATUS { get; set; }
