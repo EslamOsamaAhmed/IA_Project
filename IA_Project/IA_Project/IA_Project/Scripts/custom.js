@@ -107,5 +107,9 @@ function drawChart() {
     chart_2.draw(data_2,options);
 }
 
+
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
+
+// Ajax for add project 
+

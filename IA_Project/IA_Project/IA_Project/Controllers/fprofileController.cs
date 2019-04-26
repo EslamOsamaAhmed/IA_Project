@@ -12,11 +12,11 @@ namespace IA_Project.Controllers
 {
     public class fprofileController : Controller
     {
-        
 
+        private IA_ProjectEntities db = new IA_ProjectEntities();
         public ActionResult fprofile()
         {
-            return View();
+            return View(db.PROJECTs.ToList());
         }
 
         [HttpPost]
