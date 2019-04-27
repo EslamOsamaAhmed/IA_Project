@@ -29,7 +29,7 @@ namespace IA_Project.Controllers
         
 
         [HttpPost]
-        public string Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
+        public JsonResult Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
             byte[] photos = null;
 
@@ -61,16 +61,17 @@ namespace IA_Project.Controllers
                 if (db.AddActor(act) == "Done, Updated")
                 {
 
-                    return "Done";
+                    return Json(new { result = 1});
                 }
                 else
                 {
-                    return "Error: " + db.AddActor(act);
+                    return Json(new { result = 0 });
+
                 }
             }
             catch (Exception ex)
             {
-                return ex.ToString();
+                return Json(new { result = 2 });
             }
 
         }

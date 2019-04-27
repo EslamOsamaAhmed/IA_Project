@@ -48,8 +48,7 @@
                         </div><!--login-wrap-->
 
                         <div class="register-wrap tab-pane" role="tabpanel" id="register-controll">
-                   @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                   {
+                   <form id = "register-form"> 
                             <div class="form-group">
                                 <input type="text" class="form-control input-cust" id="fname" name = "fname" placeholder="First Name" required>
                             </div>
@@ -78,11 +77,10 @@
                                 <textarea class="form-control input-cust" id="jobdesc" rows="4" name = "jobdesc" placeholder="Job Descrption" required></textarea>
                             </div>
                             <div class="register-btn form-group">
-                                <button class="register btn" type="submit" name="register">register</button>
+                                <button class="register btn" type="button" name="register" id = "submit">register</button>
                             </div><!--register--->
-                        
+                        </form>
                         </div><!--register-->
-                   }
                     </div><!--tab-content-->
                 </div><!--modal-body-->
 

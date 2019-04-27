@@ -69,6 +69,20 @@
 
     });
 
+    $("#submit").click(function () {
+
+        myData = $("#register-form").serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/Register",
+            data: myData,
+            success: function (response) {
+                alert("Inserted Successfully . . ");
+            }
+        })
+    })
+
 });
 
 // Draw the chart and set the chart values
