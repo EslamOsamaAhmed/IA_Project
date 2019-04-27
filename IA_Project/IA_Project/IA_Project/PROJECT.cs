@@ -22,8 +22,11 @@ namespace IA_Project
         }
     
         public int PROJECT_ID { get; set; }
+<<<<<<< HEAD
         [Required(ErrorMessage ="You Have TO Enter Project Name .")]
         [Display(Name ="Project Name")]
+=======
+>>>>>>> eb41724621b4894508c79fbb18f571247eb6f93c
         public string NAME_PROJECT { get; set; }
         [Required(ErrorMessage = "You Have TO Enter Project Description .")]
         [Display(Name = "Project Description")]
