@@ -225,12 +225,22 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+=======
+@Html.Partial("_footer")
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+>>>>>>> f8e5abb5b391b09a3119e7d44d3c8d028508f1d4
 <script>
     $(document).ready(function () {
 
         $("#Add_project_button").click(function () {
+<<<<<<< HEAD
 
             var my_data = $("#Add_Project_form").serialize();
             $.ajax({
@@ -246,11 +256,31 @@
                     $("#price").val("");
                 }
             })
+=======
+            if ($("#Add_Project_form").valid()) {
+                var my_data = $("#Add_Project_form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Index",
+                    data: my_data,
+                    success: function (response) {
+                        $("#confirm_message").modal('show');
+                        $("#project_name").val("");
+                        $("#des_project").val("");
+                        $("#p_status").removeAttr('checked');
+                        $("#start_time").val("");
+                        $("#end_time").val("");
+                        $("#price").val("");
+                    }
+                })
+            }
+>>>>>>> f8e5abb5b391b09a3119e7d44d3c8d028508f1d4
         })
 
 
     })
 </script>
+<<<<<<< HEAD
 
 <script>
     //Login System
@@ -283,3 +313,6 @@
     }
 </script>
 
+=======
+    }
+>>>>>>> f8e5abb5b391b09a3119e7d44d3c8d028508f1d4

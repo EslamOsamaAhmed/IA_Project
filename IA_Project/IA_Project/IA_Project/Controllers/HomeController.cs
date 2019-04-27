@@ -20,6 +20,11 @@ namespace IA_Project.Controllers
         [HttpPost]
         public ActionResult Index(PROJECT project)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", project);
+
+            }
             DataBaseFuncController db = new DataBaseFuncController();
             db.AddProject(project);
 
