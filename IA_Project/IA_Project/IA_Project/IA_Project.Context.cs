@@ -13,10 +13,10 @@ namespace IA_Project
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class IA_ProjectEntities : DbContext
+    public partial class IA_ProjectEntities2 : DbContext
     {
-        public IA_ProjectEntities()
-            : base("name=IA_ProjectEntities")
+        public IA_ProjectEntities2()
+            : base("name=IA_ProjectEntities2")
         {
         }
     

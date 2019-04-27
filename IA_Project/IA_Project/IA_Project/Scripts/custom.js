@@ -68,20 +68,21 @@
         $(".register-switch").removeClass("text-hide");
 
     });
-
+    /*
     $("#submit").click(function () {
+        if ($("#register-form").valid()) {
+            myData = $("#register-form").serialize();
 
-        myData = $("#register-form").serialize();
-
-        $.ajax({
-            type: "POST",
-            url: "/Home/Register",
-            data: myData,
-            success: function (response) {
-                alert("Inserted Successfully . . ");
-            }
-        })
-    })
+            $.ajax({
+                type: "POST",
+                url: "/Home/Register",
+                data: myData,
+                success: function (response) {
+                    alert("Inserted Successfully . . ");
+                }
+            })
+        }
+    });*/
 
 });
 

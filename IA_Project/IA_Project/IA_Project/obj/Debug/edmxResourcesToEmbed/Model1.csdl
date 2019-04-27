@@ -198,7 +198,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="IA_ProjectEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="IA_ProjectEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="PROJECTs" EntityType="Self.PROJECT" />
     <EntitySet Name="S_ACTORS" EntityType="Self.S_ACTORS" />
     <EntitySet Name="S_PAGE" EntityType="Self.S_PAGE" />

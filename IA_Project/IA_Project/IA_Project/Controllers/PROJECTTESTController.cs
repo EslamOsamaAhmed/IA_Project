@@ -12,7 +12,7 @@ namespace IA_Project.Controllers
 {
     public class PROJECTTESTController : Controller
     {
-        private IA_ProjectEntities db = new IA_ProjectEntities();
+        private IA_ProjectEntities2 db = new IA_ProjectEntities2();
 
         // GET: PROJECTTEST
         public ActionResult Index()

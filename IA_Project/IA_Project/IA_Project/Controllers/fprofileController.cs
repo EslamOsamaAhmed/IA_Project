@@ -13,7 +13,7 @@ namespace IA_Project.Controllers
     public class fprofileController : Controller
     {
 
-        private IA_ProjectEntities db = new IA_ProjectEntities();
+        private IA_ProjectEntities2 db = new IA_ProjectEntities2();
         public ActionResult fprofile()
         {
             return View(db.PROJECTs.ToList());

@@ -29,51 +29,98 @@ namespace IA_Project.Controllers
         
 
         [HttpPost]
-        public JsonResult Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
+        public ActionResult Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
             byte[] photos = null;
 
-            if (photo != null && photo.ContentLength > 0) { 
+            if (photo != null) { 
                 try
                 {
                     string path = Path.Combine(Server.MapPath("~/Images"),Path.GetFileName(photo.FileName));
-                    photo.SaveAs(path);
+                   photo.SaveAs(path);
 
                      using (MemoryStream ms = new MemoryStream()) 
                        {
                           photo.InputStream.CopyTo(ms);
                           photos = ms.GetBuffer();
-                        }
+                       }
 
                     ViewBag.Message = "File uploaded successfully";
-                }
-                catch (Exception ex)
-                {   
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                }
-            }
+               }
+               catch (Exception ex)
+               {   
+                  ViewBag.Message = "ERROR:" + ex.Message.ToString();
+               }
+           }
 
             try
             {
-                S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, PHOTO = photos, MOBILE = Int32.Parse(mobile) , AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email};
+                S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile) , AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email};
                 DataBaseFuncController db = new DataBaseFuncController();
-
-                if (db.AddActor(act) == "Done, Updated")
+               
+                    if (db.AddActor(act) == "Done, Updated")
                 {
 
-                    return Json(new { result = 1});
+                    return Redirect("Index");
                 }
                 else
                 {
-                    return Json(new { result = 0 });
+                    return HttpNotFound();
 
                 }
             }
             catch (Exception ex)
             {
-                return Json(new { result = 2 });
+                return HttpNotFound();
+                Console.WriteLine(ex);
             }
 
+        }
+        public ActionResult login()
+        {
+            return View();
+        }
+        // Loogin Function ...
+        [HttpPost]
+        public JsonResult Login(string loginEmail,string loginPass)
+        {
+           var result = "fail";
+            Console.WriteLine(loginEmail + loginPass);
+            using(IA_ProjectEntities2 db =new IA_ProjectEntities2())
+            {
+                S_ACTORS act = new S_ACTORS();
+                var userDetail = db.S_ACTORS.FirstOrDefault(x=>x.EMAIL== loginEmail);
+               
+                if (userDetail!=null)
+                {
+                    if (userDetail.PASSWORD== loginPass.ToString())
+                    {
+                        Session["ActorId"] = userDetail.ACTOR_ID.ToString();
+                        Session["UserName"] = userDetail.USERNAME.ToString();
+                        result = "suc";
+                        return Json(result, JsonRequestBehavior.AllowGet);
+                    }
+                    
+                  else{
+                        act.loginErrormessage = "Wrong Password";
+                        result ="wrongpass";
+                        return Json(result, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    result = "notexist";
+                    act.loginErrormessage = "Email Does not Exist";
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+            }
+          
+        }
+        public ActionResult LoggedIN()
+        {
+            if(Session["ActorID"]!=null)
+            return View();
+            else { return RedirectToAction("Login"); }
         }
         /*[HttpPost]
         public ActionResult Index(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
