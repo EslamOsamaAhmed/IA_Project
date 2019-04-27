@@ -11,7 +11,8 @@ namespace IA_Project
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PROJECT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +22,22 @@ namespace IA_Project
         }
     
         public int PROJECT_ID { get; set; }
-        
+        [Required(ErrorMessage ="You Have TO Enter Project Name .")]
+        [Display(Name ="Project Name")]
         public string NAME_PROJECT { get; set; }
+        [Required(ErrorMessage = "You Have TO Enter Project Description .")]
+        [Display(Name = "Project Description")]
         public string DESC_PROJECT { get; set; }
+        [Display(Name = "Project State")]
         public bool P_STATUS { get; set; }
+        [Required(ErrorMessage = "You Have TO Enter Project Start Date .")]
+        [Display(Name = "Start Date")]
         public System.DateTime START_TIME { get; set; }
+        [Required(ErrorMessage = "You Have TO Enter Project End Date .")]
+        [Display(Name = "End Date")]
         public System.DateTime END_TIME { get; set; }
+        [Required(ErrorMessage = "You Have TO Enter Project Price .")]
+        [Display(Name = "Price")]
         public int PRICE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

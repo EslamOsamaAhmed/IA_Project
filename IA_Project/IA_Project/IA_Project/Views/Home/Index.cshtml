@@ -120,17 +120,18 @@
                     <form id="Add_Project_form">
                         <div class="form-group row">
                             @Html.LabelFor(x => x.NAME_PROJECT, new { @class = "col-4 col-form-label" })
-
+                            
                             <div class="col-8">
-                                @Html.TextBoxFor(m => m.NAME_PROJECT, new { @class = "form-control here", id = "project_name", name = "project_name", placeholder = "Name", required = "required", type = "text" })
-
+                                @Html.TextBoxFor(m => m.NAME_PROJECT, new { @class = "form-control here", id = "project_name", name = "project_name", placeholder = "Name",  type = "text" })
+                                @Html.ValidationMessageFor(x => x.NAME_PROJECT )
                             </div>
                         </div>
 
                         <div class="form-group row">
                             @Html.LabelFor(x => x.DESC_PROJECT, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                @Html.TextAreaFor(m => m.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", required = "required", type = "text" })
+                                @Html.TextAreaFor(m => m.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", type = "text" })
+                                @Html.ValidationMessageFor(x => x.DESC_PROJECT)
                             </div>
                         </div>
 
@@ -138,29 +139,29 @@
                             @Html.LabelFor(x => x.P_STATUS, new { @class = "col-4 col-form-label" })
 
                             <div class="col-8">
-                                @Html.CheckBoxFor(m => m.P_STATUS, new { @class = "form-control here" , id= "p_status" })
-
+                            @Html.CheckBoxFor(m => m.P_STATUS, new { @class = "form-control here" , id= "p_status" })
+                                
                             </div>
                         </div>
                         <div class="form-group row">
                             @Html.LabelFor(x => x.START_TIME, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                @Html.TextBoxFor(m => m.START_TIME, new { id = "start_time", name = "start_time", placeholder = "MM/DD/YY", @class = "form-control here", required = "required", type = "text" })
-
+                            @Html.TextBoxFor(m => m.START_TIME, new { id = "start_time", name = "start_time", placeholder = "MM/DD/YY", @class = "form-control here", type = "text" })
+                            @Html.ValidationMessageFor(x => x.START_TIME)
                             </div>
                         </div>
                         <div class="form-group row">
                             @Html.LabelFor(x => x.END_TIME, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                @Html.TextBoxFor(m => m.END_TIME, new { id = "end_time", name = "end_time", placeholder = "MM/DD/YY", @class = "form-control here", required = "required", type = "text" })
-
+                                @Html.TextBoxFor(m => m.END_TIME, new { id = "end_time", name = "end_time", placeholder = "MM/DD/YY", @class = "form-control here",  type = "text" })
+                                @Html.ValidationMessageFor(x => x.END_TIME)
                             </div>
                         </div>
                         <div class="form-group row">
                             @Html.LabelFor(x => x.PRICE, new { @class = "col-4 col-form-label" })
                             <div class="col-8">
-                                @Html.TextBoxFor(m => m.PRICE, new { id = "price", name = "price", placeholder = "Project Cost", @class = "form-control here", required = "required", type = "text" })
-
+                                @Html.TextBoxFor(m => m.PRICE, new { id = "price", name = "price", placeholder = "Project Cost", @class = "form-control here", type = "text" })
+                                @Html.ValidationMessageFor(x => x.PRICE)
                             </div>
                         </div>
                         <div class="form-group row">
@@ -198,29 +199,35 @@
 </div>
 
 @Html.Partial("_footer")
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
 <script>
     $(document).ready(function () {
 
         $("#Add_project_button").click(function () {
-
-            var my_data = $("#Add_Project_form").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/Home/Index",
-                data: my_data,
-                success: function (response) {
-                    $("#confirm_message").modal('show');
-                    $("#project_name").val("");
-                    $("#des_project").val("");
-                    $("#p_status").removeAttr('checked');
-                    $("#start_time").val("");
-                    $("#end_time").val("");
-                    $("#price").val("");
-                }
-            })
+            if ($("#Add_Project_form").valid()) {
+                var my_data = $("#Add_Project_form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Index",
+                    data: my_data,
+                    success: function (response) {
+                        $("#confirm_message").modal('show');
+                        $("#project_name").val("");
+                        $("#des_project").val("");
+                        $("#p_status").removeAttr('checked');
+                        $("#start_time").val("");
+                        $("#end_time").val("");
+                        $("#price").val("");
+                    }
+                })
+            }
         })
 
 
     })
 </script>
+    }

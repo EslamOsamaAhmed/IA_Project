@@ -73,3 +73,10 @@ margin-left:10px;
       text-align:center;
   }
 }
+.input-validation-error{
+    border : 1px solid #b94a48 ;
+}
+
+.field-validation-error{     
+      color: #b94a48; 
+} 
