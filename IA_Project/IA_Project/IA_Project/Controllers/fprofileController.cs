@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using IA_Project.Models;
 using System.Net.Http;
 using System.Net;
+using IA_Project.ViewModels;
 
 namespace IA_Project.Controllers
 {
@@ -16,7 +17,13 @@ namespace IA_Project.Controllers
         private IA_ProjectEntities db = new IA_ProjectEntities();
         public ActionResult fprofile()
         {
-            return View(db.PROJECTs.ToList());
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = db.S_ACTORS.ToList() ,
+                Projects = db.PROJECTs.ToList()
+            };
+
+            return View(pum);
         }
 
         [HttpPost]

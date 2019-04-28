@@ -1,6 +1,6 @@
 ﻿@using IA_Project.Models
 @using IA_Project.Controllers
-@model IEnumerable<IA_Project.PROJECT>
+@model IA_Project.ViewModels.ProjectsUsersModel
 @{
     ViewBag.Title = "fprofile";
 }
@@ -19,6 +19,7 @@
                 <a href="#" class="list-group-item list-group-item-action dash-page assign-project-tab">Assigned Projects</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page request-res-tab">Requests & Responses</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page prev-del-project-tab">Previous Delivered Projects</a>
+                
             </div>
         </div>
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 edit-profile noactive tab-content">
@@ -165,7 +166,99 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-12  users-project-control-tab">
+                            <div class="col-6 users-tab">
+                                <span class="users-t"><strong>Users</strong></span>
+                            </div>
+                            <div class="col-6 project-tab">
+                                <span class="project-t active-t"><strong>Projects</strong></span>
+                            </div>
+                        </div>
 
+
+                        <div class="col-12">
+                            <div class="noactive display_users">
+                                <div class="col-12 users-content">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4>Control Users</h4>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12  add-del-user-tab">
+                                                    <div class="col-6 req">
+                                                        <span class="add-t"><strong>Add</strong></span>
+                                                    </div>
+                                                    <div class="col-6 res">
+                                                        <span class="delete-t active-t"><strong>Delete</strong></span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12  add-del-user-tab">
+                                                    <div class="col-12 delet-user">
+                                                            @foreach (var item in Model.Users)
+                                                            {
+                                                        <div class="col-12 delete-content">
+                                                            <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                                            <div class="col-5 ress-content-name"><strong>@Html.DisplayFor(modelItem => item.USERNAME )</strong></div>
+                                                            <div class="col-3 ress-s">@Html.DisplayFor(modelItem => item.AROLE )</div>
+                                                            <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                                        </div>
+                                                            }
+                                                    </div> 
+
+                                                    <div class="col-12 noactive add-user">
+                                                        <div class="add-user-content">
+                                                            <form id="register-form">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="fname" name="fname" placeholder="First Name" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="lname" name="lname" placeholder="Last Name" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="mobile" name="mobile" placeholder="Phone Number" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="email" class="form-control input-cust" id="email" name="email" placeholder="email" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="role" name="role" placeholder="Role" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="username" name="username" placeholder="username" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control input-cust" id="password" name="password" placeholder="Password" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="file" class="form-control input-cust" id="photo" name="photo" placeholder="Photo" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control input-cust" id="jobdesc" rows="4" name="jobdesc" placeholder="Job Descrption" required></textarea>
+                                                                </div>
+                                                                <div class="register-btn form-group">
+                                                                    <button class="register btn" type="button" name="register" id="submit">Add User</button>
+                                                                </div><!--register--->
+                                                            </form> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 display_projects">
+                                <div class="col-12 project-content row">
+                                    @Html.Partial("_Project_modle")
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -182,7 +275,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Projects)
                         {
                             if (item.P_STATUS == false)
                             {
@@ -220,7 +313,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Projects)
                         {
                             if (item.P_STATUS == true)
                             {
@@ -308,6 +401,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 prev-proj-content noactive tab-content">
                 <div class="card">
@@ -324,8 +418,7 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>        
 </div>
 </div>
 

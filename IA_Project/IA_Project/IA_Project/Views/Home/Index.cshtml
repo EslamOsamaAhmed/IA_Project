@@ -213,13 +213,14 @@
                     url: "/Home/Index",
                     data: my_data,
                     success: function (response) {
-                        $("#confirm_message").modal('show');
+                        
                         $("#project_name").val("");
                         $("#des_project").val("");
                         $("#p_status").removeAttr('checked');
                         $("#start_time").val("");
                         $("#end_time").val("");
                         $("#price").val("");
+                        //$("#confirm_message").modal('show');
                     }
                 })
             }
