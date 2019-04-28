@@ -34,15 +34,23 @@
         </li>
     </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li class="right"><a href="#">Login / UserName</a></li>
-          <li class="right"><a href="#">Sign Out</a></li>
+          <li class="right login-username"><a href="#">@Session["UserName"] </a></li>
+          @if(Session["UserName"] == null)
+          {
+          <li class="right" data-toggle="modal" data-target="#login-modal" id="login-btn"><a href="#">Login</a></li>
+          }
+          else
+          {
+            <li class="right d-none" data-toggle="modal" data-target="#login-modal" id="login-btn"><a href="#">Login</a></li>
+          }
+          <li class="right" id = "signout"><a href="#">Sign Out</a></li>
       </ul>
   </div>
 </nav>
     <div class="body-content">
         @RenderBody()
     </div>
-
+    @Html.Partial("_footer")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

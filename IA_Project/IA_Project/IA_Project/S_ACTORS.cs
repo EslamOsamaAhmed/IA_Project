@@ -31,7 +31,7 @@ namespace IA_Project
         public string LNAME { get; set; }
         public string JOB_DESC { get; set; }
         public byte[] PHOTO { get; set; }
-        public Nullable<int> MOBILE { get; set; }
+        public Nullable<decimal> MOBILE { get; set; }
         public string EMAIL { get; set; }
         public string AROLE { get; set; }
         public string USERNAME { get; set; }
