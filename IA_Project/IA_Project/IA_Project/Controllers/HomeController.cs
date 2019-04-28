@@ -91,7 +91,7 @@ namespace IA_Project.Controllers
         {
            var result = "fail";
             Console.WriteLine(loginEmail + loginPass);
-            using(IA_ProjectEntities2 db =new IA_ProjectEntities2())
+            using(IA_ProjectEntities db =new IA_ProjectEntities())
             {
                 S_ACTORS act = new S_ACTORS();
                 var userDetail = db.S_ACTORS.FirstOrDefault(x=>x.EMAIL== loginEmail);
@@ -102,12 +102,12 @@ namespace IA_Project.Controllers
                     {
                         Session["ActorId"] = userDetail.ACTOR_ID.ToString();
                         Session["UserName"] = userDetail.USERNAME.ToString();
+                        Session["status"] = "done";
                         result = "suc";
                         return Json(result, JsonRequestBehavior.AllowGet);
                     }
                     
                   else{
-                        act.loginErrormessage = "Wrong Password";
                         result ="wrongpass";
                         return Json(result, JsonRequestBehavior.AllowGet);
                     }
@@ -115,12 +115,12 @@ namespace IA_Project.Controllers
                 else
                 {
                     result = "notexist";
-                    act.loginErrormessage = "Email Does not Exist";
                     return Json(result, JsonRequestBehavior.AllowGet);
                 }
             }
           
         }
+
         public ActionResult LoggedIN()
         {
             if(Session["ActorID"]!=null)

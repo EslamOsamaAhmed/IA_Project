@@ -11,8 +11,7 @@ namespace IA_Project
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class S_ACTORS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +25,7 @@ namespace IA_Project
             this.S_PAGE = new HashSet<S_PAGE>();
             this.STAT_REPROT = new HashSet<STAT_REPROT>();
         }
-        [Key]    
+    
         public int ACTOR_ID { get; set; }
         public string FNAME { get; set; }
         public string LNAME { get; set; }
@@ -35,10 +34,9 @@ namespace IA_Project
         public Nullable<decimal> MOBILE { get; set; }
         public string EMAIL { get; set; }
         public string AROLE { get; set; }
-        public string USERNAME { get; set; } 
+        public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
-        public string loginErrormessage { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACTOR_PROJECT> ACTOR_PROJECT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -8,7 +8,7 @@ namespace IA_Project.Controllers
 {
     public class SProfileController : Controller
     {
-        private IA_ProjectEntities2 db = new IA_ProjectEntities2();
+        private IA_ProjectEntities db = new IA_ProjectEntities();
         // GET: SProfile
         public ActionResult SProfile_View()
         {

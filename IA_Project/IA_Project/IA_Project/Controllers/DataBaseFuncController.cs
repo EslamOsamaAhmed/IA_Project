@@ -16,7 +16,7 @@ namespace IA_Project.Controllers
 
         public int RemoveActor(int id)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -36,7 +36,7 @@ namespace IA_Project.Controllers
 
         public int RemoveProject(int id)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -56,7 +56,7 @@ namespace IA_Project.Controllers
 
         public String UpdateActor(int id, S_ACTORS act)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -86,7 +86,7 @@ namespace IA_Project.Controllers
 
         public String UpdateProject(int id, PROJECT proj)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -116,7 +116,7 @@ namespace IA_Project.Controllers
 
         public String AddProject(PROJECT proj)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -134,7 +134,7 @@ namespace IA_Project.Controllers
 
         public String page(S_PAGE proj)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -152,7 +152,7 @@ namespace IA_Project.Controllers
 
         public String AddActor(S_ACTORS act)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 try
                 {
@@ -170,7 +170,7 @@ namespace IA_Project.Controllers
 
         public S_ACTORS GetActorDataByID(int ID)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                var returnedVal = _entities.S_ACTORS.FirstOrDefault(aa => aa.ACTOR_ID == ID);
                 return returnedVal;
@@ -179,7 +179,7 @@ namespace IA_Project.Controllers
 
         public PROJECT GetProjectID(int ID)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 var returnedVal = _entities.PROJECTs.FirstOrDefault(aa => aa.PROJECT_ID == ID);
                 return returnedVal;
@@ -188,7 +188,7 @@ namespace IA_Project.Controllers
 
         public S_ACTORS GetActorDataByRole(String Role)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 var returnedVal = _entities.S_ACTORS.FirstOrDefault(aa => aa.AROLE == Role);
                 return returnedVal;
@@ -197,7 +197,7 @@ namespace IA_Project.Controllers
 
         public S_ACTORS GetActorData(String email)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 var returnedVal = _entities.S_ACTORS.FirstOrDefault(aa => aa.EMAIL == email);
                 return returnedVal;
@@ -206,7 +206,7 @@ namespace IA_Project.Controllers
 
         public IEnumerable<S_ACTORS> GetAllActors()
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 return _entities.S_ACTORS.ToList();
             }
@@ -214,7 +214,7 @@ namespace IA_Project.Controllers
 
         public IEnumerable<PROJECT> GetAllProjects(int ID)
         {
-            using (IA_ProjectEntities2 _entities = new IA_ProjectEntities2())
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 return _entities.PROJECTs.ToList();
             }

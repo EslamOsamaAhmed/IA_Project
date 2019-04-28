@@ -86,3 +86,9 @@ button.sign-in.btn:hover,button.sign-in.btn:active,button.sign-in.btn:visited,bu
     color: #767676;
 }
 
+#eminvalid, #passinvalid{
+margin-left: 11%;
+margin-top: 5%;
+color: #e59194;
+}
+

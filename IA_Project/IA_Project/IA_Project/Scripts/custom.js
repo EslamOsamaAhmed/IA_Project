@@ -1,4 +1,8 @@
 ﻿$(document).ready(function () {
+    $("#eminvalid").fadeOut();
+    $("#passinvalid").fadeOut();
+    var check = 0;
+
     $(".dash-page").click(function () {
         $(".dash-page").removeClass("active");
         $(this).addClass("active");
@@ -68,6 +72,7 @@
         $(".register-switch").removeClass("text-hide");
 
     });
+
     /*
     $("#submit").click(function () {
         if ($("#register-form").valid()) {
@@ -84,6 +89,82 @@
         }
     });*/
 
+    $("#Add_project_button").click(function () {
+
+        var my_data = $("#Add_Project_form").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/Index",
+            data: my_data,
+            success: function (response) {
+                $("#project_name").val("");
+                $("#des_project").val("");
+                $("#p_status").removeAttr('checked');
+                $("#start_time").val("");
+                $("#end_time").val("");
+                $("#price").val("");
+            }
+        })
+        if ($("#Add_Project_form").valid()) {
+            var my_data = $("#Add_Project_form").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/Home/Index",
+                data: my_data,
+                success: function (response) {
+                    $("#confirm_message").modal('show');
+                    $("#project_name").val("");
+                    $("#des_project").val("");
+                    $("#p_status").removeAttr('checked');
+                    $("#start_time").val("");
+                    $("#end_time").val("");
+                    $("#price").val("");
+                }
+            })
+        }
+    })
+
+    $("#emailValid").hide();
+    $("#passValid").hide();
+
+    $("#login").click(function () {
+        var data = $("#loginForm").serialize();
+        $.ajax({
+            type: "post",
+            url: "/Home/Login",
+            data: data,
+            success: function (result) {
+                if (result == "notexist") {
+                    $("#login-name").css({
+                        borderColor: "rgb(229, 145, 148)",
+                        boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                    })
+                    $("#eminvalid").fadeIn();
+                }
+                else if (result == "wrongpass") {
+                    $("#login-pass").css({
+                        borderColor: "rgb(229, 145, 148)",
+                        boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                    })
+                    $("#eminvalid").fadeIn();
+                }
+                else {
+                    window.location.href = "/Home/index";
+                    $("#login-name").css({
+                        borderColor: "#80bdff",
+                        boxShadow: "0 0 0 0.2rem #80bdff",
+                    })
+
+                    $("#login-pass").css({
+                        borderColor: "#80bdff",
+                        boxShadow: "0 0 0 0.2rem #80bdff",
+                    })
+                    $("#eminvalid").fadeOut();
+                    $("#passinvalid").fadeOut();
+                }
+            }
+        })
+    });
 });
 
 // Draw the chart and set the chart values
