@@ -190,28 +190,19 @@
                                             <div class="row">
                                                 <div class="col-12  add-del-user-tab">
                                                     <div class="col-6 req">
-                                                        <span class="add-t"><strong>Add</strong></span>
+                                                        <span class="add-t  active-t"><strong>Add</strong></span>
                                                     </div>
                                                     <div class="col-6 res">
-                                                        <span class="delete-t active-t"><strong>Delete</strong></span>
+                                                        <span class="delete-t" id="delete-section"><strong>Delete</strong></span>
                                                     </div>
                                                 </div>
 
 
                                                 <div class="col-12  add-del-user-tab">
-                                                    <div class="col-12 delet-user">
-                                                            @foreach (var item in Model.Users)
-                                                            {
-                                                        <div class="col-12 delete-content" id="Record_@item.ACTOR_ID">
-                                                            <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
-                                                            <div class="col-5 ress-content-name"><strong>@Html.DisplayFor(modelItem => item.USERNAME )</strong></div>
-                                                            <div class="col-3 ress-s">@Html.DisplayFor(modelItem => item.AROLE )</div>
-                                                            <div class="col-2"><button type="submit" class="btn btn-danger" onclick="DeleteUser(@item.ACTOR_ID)" >Delete</button></div>
-                                                        </div>
-                                                            }
-                                                    </div> 
-
-                                                    <div class="col-12 noactive add-user">
+                                                    <div id="curser">
+                                                    <!--Display All Users For Delete-->
+                                                         </div>
+                                                    <div class="col-12 add-user">
                                                         <div class="add-user-content">
                                                             <form id="add-user-form">
                                                                 <div class="form-group">
@@ -454,21 +445,38 @@
             $("#add-user-btn").click(function () {
                 
                 var my_data = $("#add-user-form").serialize();
-                    $.ajax({
-                        type: "POST",
-                        url: "/Home/Add_User",
-                        data: my_data,
-                        success: function (response) {
-                            if (response.result == 1) {
-                                $("#add-user-form")[0].reset();
-                            }
-                            else 
-                                alert("Error")
-                            
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Add_User",
+                    data: my_data,
+                    success: function (response) {
+                        if (response.result == 1) {
+                            $("#add-user-form")[0].reset();
                         }
-                    })
+                        else 
+                            alert("Error")
+                            
+                    }
+                })
                 
-            })
+            });
+
+
+            $("#delete-section").click(function () {
+                
+                
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_All_Users",
+                    success: function (response) {
+                        $("#curser").html(response)
+                            
+                    }
+                })
+                
+            });
         });
+
+
     </script>>
 }   

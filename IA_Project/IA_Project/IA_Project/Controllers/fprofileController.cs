@@ -53,5 +53,18 @@ namespace IA_Project.Controllers
             db.RemoveActor(id);
             return Json(new { result = 1 } , JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult Display_All_Users()
+        {
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = db.S_ACTORS.ToList(),
+                Projects = db.PROJECTs.ToList()
+            };
+            return PartialView("../Shared/_Display_All_Users", pum);
+
+        }
+
     } 
 }
