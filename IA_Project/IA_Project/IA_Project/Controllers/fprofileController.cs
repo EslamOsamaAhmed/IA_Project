@@ -15,6 +15,7 @@ namespace IA_Project.Controllers
     {
 
         private IA_ProjectEntities db = new IA_ProjectEntities();
+        
         public ActionResult fprofile()
         {
             ProjectsUsersModel pum = new ProjectsUsersModel
@@ -44,6 +45,13 @@ namespace IA_Project.Controllers
                 return "failed";
             }
             
+        }
+        [HttpGet]
+        public ActionResult Delete_User(int id)
+        {
+            DataBaseFuncController db = new DataBaseFuncController();
+            db.RemoveActor(id);
+            return Json(new { result = 1 } , JsonRequestBehavior.AllowGet);
         }
     } 
 }

@@ -202,18 +202,18 @@
                                                     <div class="col-12 delet-user">
                                                             @foreach (var item in Model.Users)
                                                             {
-                                                        <div class="col-12 delete-content">
+                                                        <div class="col-12 delete-content" id="Record_@item.ACTOR_ID">
                                                             <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
                                                             <div class="col-5 ress-content-name"><strong>@Html.DisplayFor(modelItem => item.USERNAME )</strong></div>
                                                             <div class="col-3 ress-s">@Html.DisplayFor(modelItem => item.AROLE )</div>
-                                                            <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                                            <div class="col-2"><button type="submit" class="btn btn-danger" onclick="DeleteUser(@item.ACTOR_ID)" >Delete</button></div>
                                                         </div>
                                                             }
                                                     </div> 
 
                                                     <div class="col-12 noactive add-user">
                                                         <div class="add-user-content">
-                                                            <form id="register-form">
+                                                            <form id="add-user-form">
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control input-cust" id="fname" name="fname" placeholder="First Name" required>
                                                                 </div>
@@ -242,7 +242,7 @@
                                                                     <textarea class="form-control input-cust" id="jobdesc" rows="4" name="jobdesc" placeholder="Job Descrption" required></textarea>
                                                                 </div>
                                                                 <div class="register-btn form-group">
-                                                                    <button class="register btn" type="button" name="register" id="submit">Add User</button>
+                                                                    <button class="register btn" type="button" name="register" id="add-user-btn">Add User</button>
                                                                 </div><!--register--->
                                                             </form> 
                                                         </div>
@@ -422,4 +422,53 @@
 </div>
 </div>
 
-@Html.Partial("_Footer")    
+@Html.Partial("_Footer") 
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+    
+        function DeleteUser(id) {
+            if (confirm("Are You Sure You want Deleted This User ?")) {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Delete_User/" + id,
+                    success: function (response) {
+
+                        if (response.result == 1) {
+                            $("#Record_" + id).remove();
+                        }
+                        else
+                            alert("Not Deleted")
+                    }
+                })
+            }
+        }
+
+        $(document).ready(function () {
+
+            $("#add-user-btn").click(function () {
+                
+                var my_data = $("#add-user-form").serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/Add_User",
+                        data: my_data,
+                        success: function (response) {
+                            if (response.result == 1) {
+                                $("#add-user-form")[0].reset();
+                            }
+                            else 
+                                alert("Error")
+                            
+                        }
+                    })
+                
+            })
+        });
+    </script>>
+}   

@@ -1,10 +1,4 @@
-﻿
-@section Scripts{
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-}
-@model IA_Project.PROJECT
+﻿@model IA_Project.PROJECT
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -192,6 +186,7 @@
         </div>
     </div>
 </div>
+@Html.Partial("_footer")
 <!-- Modal for Confirmation Message -->
 <div class="modal fade" id="confirm_message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -213,7 +208,8 @@
     </div>
 </div>
 
-@Html.Partial("_footer")
+
+
 @section Scripts{
 
     @Scripts.Render("~/bundles/jquery")
@@ -230,7 +226,7 @@
                     url: "/Home/Index",
                     data: my_data,
                     success: function (response) {
-                        
+
                         $("#project_name").val("");
                         $("#des_project").val("");
                         $("#p_status").removeAttr('checked');
@@ -242,5 +238,6 @@
                 })
             }
         })
-
-@Html.Partial("_footer")
+    });
+</script>>
+}
