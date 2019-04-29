@@ -1,7 +1,17 @@
 ﻿$(document).ready(function () {
     $("#eminvalid").fadeOut();
     $("#passinvalid").fadeOut();
+    $("#unameinvalid").fadeOut();
+    $("#emailinvalid").fadeOut();
+    $("#ResetPass").hide();
+    $("#codereset").hide();
+
     var check = 0;
+
+    $("#login-forgot-pass").click(function () {
+        $("#loginForm").hide();
+        $("#ResetPass").show();
+    })
 
     $(".dash-page").click(function () {
         $(".dash-page").removeClass("active");
@@ -73,8 +83,8 @@
 
     });
 
-    /*
-    $("#submit").click(function () {
+    
+    $("#register").click(function () {
         if ($("#register-form").valid()) {
             myData = $("#register-form").serialize();
 
@@ -83,11 +93,43 @@
                 url: "/Home/Register",
                 data: myData,
                 success: function (response) {
-                    alert("Inserted Successfully . . ");
+                    if (response == 11) {
+                        $("#username").css({
+                            borderColor: "rgb(229, 145, 148)",
+                            boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                        })
+                    } else if (response == 12) {
+                        $("#email").css({
+                            borderColor: "rgb(229, 145, 148)",
+                            boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                        })
+                        $("#emailinvalid").fadeIn();
+                    }
+                    else if (response == 0) {
+                        window.location.href = "/Home/index";
+
+                        $("#username").css({
+                            borderColor: "#80bdff",
+                            boxShadow: "0 0 0 0.2rem #80bdff",
+                        })
+
+                        $("#email").css({
+                            borderColor: "#80bdff",
+                            boxShadow: "0 0 0 0.2rem #80bdff",
+                        })
+
+                        $("#unameinvalid").fadeOut();
+                        $("#emailinvalid").fadeOut();
+
+
+                        alert("Registered");
+                    } else {
+                        alert("Error");
+                    }
                 }
             })
         }
-    });*/
+    });
 
     $("#Add_project_button").click(function () {
 
@@ -126,6 +168,35 @@
 
     $("#emailValid").hide();
     $("#passValid").hide();
+
+    $("#signinfooter").click(function () {
+        $("#loginForm").show();
+        $("#ResetPass").hide();
+    })
+
+    $("#sendmail").click(function(){
+        var data = $("#ResetPass").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/Sendcode",
+            data: data,
+            success: function (response) {
+                if (response == 50) {
+                    $("#emailreset").css({
+                        borderColor: "rgb(229, 145, 148)",
+                        boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                    })
+
+                    $("#emailinvalid").fadeIn();
+
+
+                } else if (response == 11){
+                    $("#codereset").show();
+                    $("#ResetPass").hide();
+                }
+             }
+        })
+    })
 
     $("#login").click(function () {
         var data = $("#loginForm").serialize();

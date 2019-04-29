@@ -56,48 +56,72 @@
                                 <div class="sign-btn form-group">
                                     <button class="sign-in btn" type="button" name="sign-in" id="login">SIGN IN</button>
                                 </div>
-                                </form>
+                               </form>
+
+                            <form id="ResetPass">
+                                <div class="form-group">
+                                    <!----<label for="login-name" class="col-form-label">Name:</label>-->
+                                    <input type="text" class="form-control login-input input-cust" placeholder="Email to Send The Code" id="emailreset"
+                                           name="emailreset" required />
+                                    <label id="emailinvalid">Email is Incorret </label>
+
+                                    <div class="sign-btn form-group">
+                                        <button class="sendmail sign-in btn" type="button" name="sendmail" id="sendmail">Send Mail</button>
+                                    </div>
+                                </div>
+                             </form>
+
+                        <form id="codereset">
+                                <div class="form-group">
+                                    <input type="text" class="form-control login-input input-cust" placeholder="Code to Reset" id="emailreset"
+                                           name="emailreset" required>
+                                    <div class="sign-btn form-group">
+                                        <button class="resetpass sign-in btn" type="button" name="resetpass" id="resetpass">Reset Password</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div><!--login-wrap-->
 
                         <div class="register-wrap tab-pane" role="tabpanel" id="register-controll">
                   <!-- <form id = "register-form"> -->
-                        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data",@class= "needs-validation" }))
-                        {
-                            <div class="form-group">
-                                <input type="text" class="form-control input-cust" id="fname" name = "fname" placeholder="First Name" required>
-                                <div class="invalid-feedback">
-                                    Looks good!
+                            <form id="register-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="fname" name="fname" placeholder="First Name" required>
+                                    <div class="invalid-feedback">
+                                        Looks good!
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-cust" id="lname" name = "lname" placeholder="Last Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-cust" id="mobile" name = "mobile" placeholder="Phone Number" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control input-cust" id="email" name = "email" placeholder="email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-cust" id="role" name = "role" placeholder="Role" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-cust" id="username" name = "username" placeholder="username" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control input-cust" id="password" name = "password" placeholder="Password" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="file" class="form-control input-cust" id="photo" name = "photo" placeholder="Photo" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control input-cust" id="jobdesc" rows="4" name = "jobdesc" placeholder="Job Descrption" required></textarea>
-                            </div>
-                            <div class="register-btn form-group">
-                                <button class="register btn" type="submit" name="register" id = "submit">register</button>
-                            </div><!--register--->
-                        <!--</form>-->
-                        }
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="lname" name="lname" placeholder="Last Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="mobile" name="mobile" placeholder="Phone Number" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control input-cust" id="email" name="email" placeholder="email" required>
+                                    <label id="emailinvalid">Email is Already Taken</label>
+                                 </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="role" name="role" placeholder="Role" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-cust" id="username" name="username" placeholder="username" required>
+                                    <label id="unameinvalid">Username is Already Taken</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control input-cust" id="password" name="password" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control input-cust" id="photo" name="photo" placeholder="Photo" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control input-cust" id="jobdesc" rows="4" name="jobdesc" placeholder="Job Descrption" required></textarea>
+                                </div>
+                                <div class="register-btn form-group">
+                                    <button class="register btn" type="button" name="register" id="register">Register</button>
+                                </div><!--register--->
+                                <!--</form>-->
+                            </form>
                         </div><!--register-->
                     </div><!--tab-content-->
                 </div><!--modal-body-->
@@ -110,7 +134,7 @@
                         </a>
 
 
-                        <a class="register-switch active text-hide" data-toggle="list" href="#login-controll" role="tab" aria-controls="login">
+                        <a class="register-switch active text-hide" data-toggle="list" id ="signinfooter" href="#login-controll" role="tab" aria-controls="login">
                             <span id="login-footer-span" class="modal-Fspan"> Already have an account?</span>
                             Sign in
                         </a>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Net.Mail;
 
 
 namespace IA_Project.Controllers
@@ -15,6 +16,7 @@ namespace IA_Project.Controllers
         public ActionResult Index()
         {
             PROJECT project = new PROJECT();
+
             return View();
         }
         [HttpPost]
@@ -34,7 +36,7 @@ namespace IA_Project.Controllers
         
 
         [HttpPost]
-        public ActionResult Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
+        public JsonResult Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
             byte[] photos = null;
 
@@ -62,22 +64,44 @@ namespace IA_Project.Controllers
             {
                 S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile) , AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email};
                 DataBaseFuncController db = new DataBaseFuncController();
-               
-                    if (db.AddActor(act) == "Done, Updated")
+
+                var allactors = db.GetAllActors();
+
+
+                foreach (var element in allactors)
+                {
+                    if (username == element.USERNAME)
+                    {
+                        return Json(11, JsonRequestBehavior.AllowGet);
+                    }
+                }
+
+                var emails = db.GetAllActors();
+
+                foreach (var element in emails)
+                {
+                    if (email == element.EMAIL)
+                    {
+                        return Json(12, JsonRequestBehavior.AllowGet);
+                    }
+                }
+
+                if (db.AddActor(act) == "Done, Updated")
                 {
 
-                    return Redirect("Index");
+                    var result = 0;
+                    return Json(result, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return HttpNotFound();
+                    var result = 1;
+                    return Json(result, JsonRequestBehavior.AllowGet);
 
                 }
             }
             catch (Exception ex)
             {
-                return HttpNotFound();
-                Console.WriteLine(ex);
+                return Json(ex.ToString(), JsonRequestBehavior.AllowGet);
             }
 
         }
@@ -120,6 +144,55 @@ namespace IA_Project.Controllers
             }
           
         }
+
+       /* public JsonResult ResetPassword(string code)
+        {
+
+        }*/
+
+        public JsonResult Sendcode(string emailreset)
+        {
+            int res = 50;
+
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            var emails = db.GetAllActors();
+
+            foreach (var element in emails)
+            {
+                if (emailreset == element.EMAIL)
+                {
+                    res = 11;
+                    break;
+                }
+            }
+
+            if (res == 11)
+            {
+                Random code = new Random();
+                // Specify the from and to email address
+                MailMessage mailMessage = new MailMessage
+                    ("smsmronaldo@gmail.com", emailreset);
+                // Specify the email body
+                mailMessage.Body = "Your Code to Reset Password is: " + Convert.ToString(code.Next(10, 5000));
+                // Specify the email Subject
+                mailMessage.Subject = "Reset Password";
+
+                // No need to specify the SMTP settings as these 
+                // are already specified in web.config
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+                // Finall send the email message using Send() method
+                smtpClient.EnableSsl = true;
+                smtpClient.Send(mailMessage);
+                return Json(res, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(res, JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
         public ActionResult LoggedIN()
         {

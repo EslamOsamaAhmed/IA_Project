@@ -86,9 +86,13 @@ button.sign-in.btn:hover,button.sign-in.btn:active,button.sign-in.btn:visited,bu
     color: #767676;
 }
 
-#eminvalid, #passinvalid{
+#eminvalid, #passinvalid, #unameinvalid, #emailinvalid{
 margin-left: 11%;
 margin-top: 5%;
 color: #e59194;
+}
+
+.sendmail, .resetpass{
+margin-top: 10px;
 }
 
