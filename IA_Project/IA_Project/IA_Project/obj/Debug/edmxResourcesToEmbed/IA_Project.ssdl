@@ -64,6 +64,8 @@ warning 6002: The table/view 'IA_Project.dbo.NOTIF' does not have a primary key 
     <Property Name="AROLE" Type="varchar" MaxLength="100" />
     <Property Name="USERNAME" Type="varchar" MaxLength="200" />
     <Property Name="PASSWORD" Type="varchar" MaxLength="200" />
+    <Property Name="RESETTIME" Type="date" />
+    <Property Name="CODE" Type="int" />
   </EntityType>
   <EntityType Name="S_PAGE">
     <Key>

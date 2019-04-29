@@ -86,13 +86,34 @@ button.sign-in.btn:hover,button.sign-in.btn:active,button.sign-in.btn:visited,bu
     color: #767676;
 }
 
-#eminvalid, #passinvalid, #unameinvalid, #emailinvalid{
+#eminvalid, #passinvalid, #unameinvalid, #emailinvalid, #codeinvalid, #timelate{
 margin-left: 11%;
 margin-top: 5%;
 color: #e59194;
+font-weight:bold;
 }
 
-.sendmail, .resetpass{
+#resendcode{
+margin-left: 11%;
+margin-top: 5%;
+color: #363847;
+font-weight:bold;
+}
+
+.sendmail, .resetpass, .upassword{
 margin-top: 10px;
+}
+
+.resetpass{
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.reset-cont{
+display:inline-flex;
+}
+
+#coderes{
+max-width:90% !important;
 }
 

@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using System.Net.Mail;
-
+using IA_Project.Models;
 
 namespace IA_Project.Controllers
 {
     public class HomeController : Controller
     {
+        int randno;
         // GET: Home
         [HttpGet]
         public ActionResult Index()
@@ -69,24 +70,16 @@ namespace IA_Project.Controllers
                 S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile), AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email };
                 DataBaseFuncController db = new DataBaseFuncController();
 
-<<<<<<< HEAD
                 var allactors = db.GetAllActors();
 
 
                 foreach (var element in allactors)
-=======
-                if (db.AddActor(act) == "Done, Updated")
->>>>>>> 6487dc10afe8cff3c435d316813f08fa0765637a
-                {
                     if (username == element.USERNAME)
                     {
                         return Json(11, JsonRequestBehavior.AllowGet);
                     }
-                }
 
-                var emails = db.GetAllActors();
-
-                foreach (var element in emails)
+                foreach (var element in allactors)
                 {
                     if (email == element.EMAIL)
                     {
@@ -155,13 +148,93 @@ namespace IA_Project.Controllers
 
         }
 
-       /* public JsonResult ResetPassword(string code)
+        public JsonResult ResetPassword(string coderes, string emailf)
         {
 
-        }*/
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            var actinfo = db.GetActorData(emailf);
+
+            DateTime localDate = DateTime.Now;
+            int seconds = (int)(actinfo.RESETTIME - localDate).Value.TotalSeconds;
+
+
+            if (coderes == actinfo.CODE.ToString())
+            {
+                if(seconds >= 40)
+                {
+                    return Json(35, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(22, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(25, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        public JsonResult ResetNewPass(string newpass, string emailff)
+        {
+
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            var actinfo = db.GetActorData(emailff);
+
+            S_ACTORS actcode = new S_ACTORS() { PASSWORD = newpass };
+            if (db.UpdatePassReset(actinfo.ACTOR_ID, actcode) == "Done, Updated")
+            {
+                return Json(60, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(66, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        public JsonResult Resend(string coderes, string emailf)
+        {
+
+            Random code = new Random();
+            randno = code.Next(10, 5000);
+
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            var actinfo = db.GetActorData(emailf);
+
+            // Specify the from and to email address
+            MailMessage mailMessage = new MailMessage
+                ("smsmronaldo@gmail.com", emailf);
+            // Specify the email body
+            mailMessage.Body = "Your Code to Reset Password is: " + randno.ToString();
+            // Specify the email Subject
+            mailMessage.Subject = "Reset Password";
+
+            // No need to specify the SMTP settings as these 
+            // are already specified in web.config
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+            // Finall send the email message using Send() method
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+
+            DateTime localDate = DateTime.Now;
+
+            S_ACTORS actcode = new S_ACTORS() { CODE = randno, RESETTIME = localDate };
+            db.UpdateActorReset(actinfo.ACTOR_ID, actcode);
+
+            return Json(90, JsonRequestBehavior.AllowGet);
+
+        }
 
         public JsonResult Sendcode(string emailreset)
         {
+            Random code = new Random();
+            randno = code.Next(10, 5000);
             int res = 50;
 
             DataBaseFuncController db = new DataBaseFuncController();
@@ -179,12 +252,18 @@ namespace IA_Project.Controllers
 
             if (res == 11)
             {
-                Random code = new Random();
+                DateTime localDate = DateTime.Now;
+
+                var actinfo = db.GetActorData(emailreset);
+
+                S_ACTORS actcode = new S_ACTORS() { CODE = randno , RESETTIME = localDate};
+                db.UpdateActorReset(actinfo.ACTOR_ID, actcode);
+
                 // Specify the from and to email address
                 MailMessage mailMessage = new MailMessage
                     ("smsmronaldo@gmail.com", emailreset);
                 // Specify the email body
-                mailMessage.Body = "Your Code to Reset Password is: " + Convert.ToString(code.Next(10, 5000));
+                mailMessage.Body = "Your Code to Reset Password is: " + randno.ToString();
                 // Specify the email Subject
                 mailMessage.Subject = "Reset Password";
 
@@ -210,15 +289,7 @@ namespace IA_Project.Controllers
                 return View();
             else { return RedirectToAction("Login"); }
         }
-        /*[HttpPost]
-        public ActionResult Index(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
-        {
-
-            PROJECT project = new PROJECT { NAME_PROJECT = project_name , DESC_PROJECT = des_project , P_STATUS = false , START_TIME = start_time , END_TIME = end_time , PRICE = price};
-            DataBaseFuncController db = new DataBaseFuncController();
-            db.AddProject(project);
-            return RedirectToAction("Index");
-        }*/
+       
         [HttpPost]
         public ActionResult Add_User(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
@@ -263,8 +334,7 @@ namespace IA_Project.Controllers
             }
             catch (Exception ex)
             {
-                return HttpNotFound();
-                Console.WriteLine(ex);
+                return Json(ex.ToString(), JsonRequestBehavior.AllowGet);
             }
 
         }

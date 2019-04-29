@@ -3,8 +3,14 @@
     $("#passinvalid").fadeOut();
     $("#unameinvalid").fadeOut();
     $("#emailinvalid").fadeOut();
+    $("#emailinvalidr").fadeOut();
+    $("#codeinvalid").fadeOut();
+    $("#timelate").fadeOut();
+    $("#resendcode").fadeOut();
     $("#ResetPass").hide();
     $("#codereset").hide();
+    $("#passreset").hide();
+
 
     var check = 0;
 
@@ -128,16 +134,16 @@
                             borderColor: "rgb(229, 145, 148)",
                             boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
                         })
+                        $("#unameinvalid").fadeIn();
+
                     } else if (response == 12) {
                         $("#email").css({
                             borderColor: "rgb(229, 145, 148)",
                             boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
                         })
-                        $("#emailinvalid").fadeIn();
+                        $("#emailinvalidr").fadeIn();
                     }
                     else if (response == 0) {
-                        window.location.href = "/Home/index";
-
                         $("#username").css({
                             borderColor: "#80bdff",
                             boxShadow: "0 0 0 0.2rem #80bdff",
@@ -148,8 +154,10 @@
                             boxShadow: "0 0 0 0.2rem #80bdff",
                         })
 
+                        window.location.href = "/Home/index";
+
+                        $("#emailinvalidr").fadeOut();
                         $("#unameinvalid").fadeOut();
-                        $("#emailinvalid").fadeOut();
 
 
                         alert("Registered");
@@ -161,14 +169,86 @@
         }
     });
 
-    
-
     $("#emailValid").hide();
     $("#passValid").hide();
 
     $("#signinfooter").click(function () {
         $("#loginForm").show();
         $("#ResetPass").hide();
+    })
+
+    $("#upassword").click(function () {
+        var data = $("#passreset").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/ResetNewPass",
+            data: data,
+            success: function (response) {
+                if(response == 60){
+                    window.location.href = "/Home/index";
+                }
+            }
+        })
+    })
+    
+    $("#resend").click(function () {
+        var data = $("#codereset").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/Resend",
+            data: data,
+            success: function (response) {
+                $("#codeinvalid").fadeOut();
+                $("#codeinvalid").fadeOut();
+                $("#resendcode").fadeIn();
+            }
+        })
+    })
+
+    $("#resetpass").click(function () {
+        var data = $("#codereset").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/ResetPassword",
+            data: data,
+            success: function (response) {
+               if (response == 25) {
+                    $("#coderes").css({
+                        borderColor: "rgb(229, 145, 148)",
+                        boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                    })
+
+                    $("#codeinvalid").fadeIn();
+                    $("#timelate").fadeOut();
+                    $("#resendcode").fadeOut();
+
+               } else if (response == 35) {
+                   $("#coderes").css({
+                       borderColor: "rgb(229, 145, 148)",
+                       boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                   })
+
+                   $("#codeinvalid").fadeOut();
+                   $("#timelate").fadeIn();
+                   $("#resendcode").fadeOut();
+
+               }
+               else if (response == 22) {
+                    $("#coderes").css({
+                        borderColor: "#80bdff",
+                        boxShadow: "0 0 0 0.2rem #80bdff",
+                    })
+
+                    $("#emailff").val($("#emailf").val());
+
+                    $("#passreset").show();
+                    $("#codeinvalid").fadeOut();
+                    $("#timelate").fadeOut();
+                    $("#resendcode").fadeOut();
+                    $("#codereset").hide();
+                }
+            }
+        })
     })
 
     $("#sendmail").click(function(){
@@ -186,10 +266,15 @@
 
                     $("#emailinvalid").fadeIn();
 
+                } else if (response == 11) {
+                    $("#emailreset").css({
+                        borderColor: "#80bdff",
+                        boxShadow: "0 0 0 0.2rem #80bdff",
+                    })
 
-                } else if (response == 11){
                     $("#codereset").show();
                     $("#ResetPass").hide();
+                    $("#emailf").val($("#emailreset").val());
                 }
              }
         })

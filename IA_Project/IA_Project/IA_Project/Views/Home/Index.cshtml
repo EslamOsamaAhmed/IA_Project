@@ -57,7 +57,7 @@
                                     <!----<label for="login-name" class="col-form-label">Name:</label>-->
                                     <input type="text" class="form-control login-input input-cust" placeholder="Email to Send The Code" id="emailreset"
                                            name="emailreset" required />
-                                    <label id="emailinvalid">Email is Incorret </label>
+                                    <label id="emailinvalid">Email is Incorret</label>
 
                                     <div class="sign-btn form-group">
                                         <button class="sendmail sign-in btn" type="button" name="sendmail" id="sendmail">Send Mail</button>
@@ -67,10 +67,33 @@
 
                         <form id="codereset">
                                 <div class="form-group">
-                                    <input type="text" class="form-control login-input input-cust" placeholder="Code to Reset" id="emailreset"
-                                           name="emailreset" required>
+                                    <input type="text" class="form-control login-input input-cust" placeholder="Code to Reset" id="coderes"
+                                           name="coderes" required>
+                                    <input type="text" class="form-control login-input input-cust d-none" placeholder="Email to Send The Code" id="emailf"
+                                           name="emailf" required />
+
+                                    <label id="codeinvalid">Code is Incorrect</label>
+                                    <label id="timelate">Time to Enter Code is Out</label>
+
+                                    <label id="resendcode">Code is Sent</label>
+
+                                    <div class="sign-btn form-group reset-cont col-12">
+                                        <button class="resetpass sign-in btn col-6" type="button" name="resetpass" id="resetpass">Reset Password</button>
+
+                                        <button class="resetpass sign-in btn col-6" type="button" name="resend" id="resend">Resend Code</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                          <form id="passreset">
+                                <div class="form-group">
+                                    <input type="password" class="form-control login-input input-cust" placeholder="Enter New Password" id="newpass"
+                                           name="newpass" required>
+                                    <input type="text" class="form-control login-input input-cust d-none" id="emailff"
+                                           name="emailff" required />
+
                                     <div class="sign-btn form-group">
-                                        <button class="resetpass sign-in btn" type="button" name="resetpass" id="resetpass">Reset Password</button>
+                                        <button class="upassword sign-in btn" type="button" name="upassword" id="upassword">Update Password</button>
                                     </div>
                                 </div>
                             </form>
@@ -81,22 +104,24 @@
                             <form id="register-form">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-cust" id="fname" name="fname" placeholder="First Name" required>
-                                    <div class="invalid-feedback">
-                                        Looks good!
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control input-cust" id="lname" name="lname" placeholder="Last Name" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control input-cust" id="mobile" name="mobile" placeholder="Phone Number" required>
+                                
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control input-cust" id="email" name="email" placeholder="email" required>
-                                    <label id="emailinvalid">Email is Already Taken</label>
+                                    <label id="emailinvalidr">Email is Already Taken</label>
                                  </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-cust" id="role" name="role" placeholder="Role" required>
+                                    <select name = "role"  class="form-control input-cust">
+                                        <option value="Marketing Director" selected>Marketing Director</option>
+                                        <option value="Team Leader">Team Leader</option>
+                                        <option value="Team Trainee">Team Trainee</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control input-cust" id="username" name="username" placeholder="username" required>
