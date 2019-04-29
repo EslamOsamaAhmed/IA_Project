@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="IA_ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'IA_Project.dbo.ACTOR_PROJECT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ACTOR_PROJECT">
     <Key>
-      <PropertyRef Name="ACTOR_ID" />
-      <PropertyRef Name="PROJECT_ID" />
+      <PropertyRef Name="ID" />
     </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ACTOR_ID" Type="int" Nullable="false" />
     <Property Name="PROJECT_ID" Type="int" Nullable="false" />
     <Property Name="AROLE" Type="varchar" MaxLength="100" />
@@ -50,6 +48,7 @@ warning 6002: The table/view 'IA_Project.dbo.NOTIF' does not have a primary key 
     <Property Name="START_TIME" Type="time" Precision="7" Nullable="false" />
     <Property Name="END_TIME" Type="time" Precision="7" Nullable="false" />
     <Property Name="PRICE" Type="int" Nullable="false" />
+    <Property Name="PROJECT_OWNER" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="S_ACTORS">
     <Key>
@@ -94,7 +93,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
     <Property Name="NO_PASSED" Type="int" Nullable="false" />
     <Property Name="NO_FAILURE" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__ACTOR_PRO__ACTOR__15502E78">
+  <Association Name="FK__ACTOR_PRO__ACTOR__173876EA">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -106,7 +105,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ACTOR_PRO__PROJE__164452B1">
+  <Association Name="FK__ACTOR_PRO__PROJE__182C9B23">
     <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
     <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -118,7 +117,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__EVALUATE__ACTOR___1CF15040">
+  <Association Name="FK__EVALUATE__ACTOR___1ED998B2">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,7 +129,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__EVALUATE__ACTOR___1DE57479">
+  <Association Name="FK__EVALUATE__ACTOR___1FCDBCEB">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +141,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NOTIF__ACTOR_ID___1FCDBCEB">
+  <Association Name="FK__NOTIF__ACTOR_ID___21B6055D">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +153,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NOTIF__ACTOR_ID___20C1E124">
+  <Association Name="FK__NOTIF__ACTOR_ID___22AA2996">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +165,10 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__S_PAGE__ACTOR_ID__1920BF5C">
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__PROJECT__PROJECT__145C0A3F' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__PROJECT__PROJECT__145C0A3F" />-->
+  <Association Name="FK__S_PAGE__ACTOR_ID__1B0907CE">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="S_PAGE" Type="Self.S_PAGE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,7 +180,7 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__STAT_REPR__ACTOR__1B0907CE">
+  <Association Name="FK__STAT_REPR__ACTOR__1CF15040">
     <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
     <End Role="STAT_REPROT" Type="Self.STAT_REPROT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -191,16 +193,10 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="IA_ProjectModelStoreContainer">
+    <EntitySet Name="ACTOR_PROJECT" EntityType="Self.ACTOR_PROJECT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="S_ACTORS" EntityType="Self.S_ACTORS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="S_PAGE" EntityType="Self.S_PAGE" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ACTOR_PROJECT" EntityType="Self.ACTOR_PROJECT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [ACTOR_PROJECT].[ACTOR_ID] AS [ACTOR_ID], 
-    [ACTOR_PROJECT].[PROJECT_ID] AS [PROJECT_ID], 
-    [ACTOR_PROJECT].[AROLE] AS [AROLE]
-    FROM [dbo].[ACTOR_PROJECT] AS [ACTOR_PROJECT]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="EVALUATE" EntityType="Self.EVALUATE" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [EVALUATE].[ACTOR_ID_FROM] AS [ACTOR_ID_FROM], 
@@ -228,35 +224,35 @@ warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primar
     [STAT_REPROT].[NO_FAILURE] AS [NO_FAILURE]
     FROM [dbo].[STAT_REPROT] AS [STAT_REPROT]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__ACTOR_PRO__ACTOR__15502E78" Association="Self.FK__ACTOR_PRO__ACTOR__15502E78">
+    <AssociationSet Name="FK__ACTOR_PRO__ACTOR__173876EA" Association="Self.FK__ACTOR_PRO__ACTOR__173876EA">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
     </AssociationSet>
-    <AssociationSet Name="FK__ACTOR_PRO__PROJE__164452B1" Association="Self.FK__ACTOR_PRO__PROJE__164452B1">
+    <AssociationSet Name="FK__ACTOR_PRO__PROJE__182C9B23" Association="Self.FK__ACTOR_PRO__PROJE__182C9B23">
       <End Role="PROJECT" EntitySet="PROJECT" />
       <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
     </AssociationSet>
-    <AssociationSet Name="FK__EVALUATE__ACTOR___1CF15040" Association="Self.FK__EVALUATE__ACTOR___1CF15040">
+    <AssociationSet Name="FK__EVALUATE__ACTOR___1ED998B2" Association="Self.FK__EVALUATE__ACTOR___1ED998B2">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="EVALUATE" EntitySet="EVALUATE" />
     </AssociationSet>
-    <AssociationSet Name="FK__EVALUATE__ACTOR___1DE57479" Association="Self.FK__EVALUATE__ACTOR___1DE57479">
+    <AssociationSet Name="FK__EVALUATE__ACTOR___1FCDBCEB" Association="Self.FK__EVALUATE__ACTOR___1FCDBCEB">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="EVALUATE" EntitySet="EVALUATE" />
     </AssociationSet>
-    <AssociationSet Name="FK__NOTIF__ACTOR_ID___1FCDBCEB" Association="Self.FK__NOTIF__ACTOR_ID___1FCDBCEB">
+    <AssociationSet Name="FK__NOTIF__ACTOR_ID___21B6055D" Association="Self.FK__NOTIF__ACTOR_ID___21B6055D">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="NOTIF" EntitySet="NOTIF" />
     </AssociationSet>
-    <AssociationSet Name="FK__NOTIF__ACTOR_ID___20C1E124" Association="Self.FK__NOTIF__ACTOR_ID___20C1E124">
+    <AssociationSet Name="FK__NOTIF__ACTOR_ID___22AA2996" Association="Self.FK__NOTIF__ACTOR_ID___22AA2996">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="NOTIF" EntitySet="NOTIF" />
     </AssociationSet>
-    <AssociationSet Name="FK__S_PAGE__ACTOR_ID__1920BF5C" Association="Self.FK__S_PAGE__ACTOR_ID__1920BF5C">
+    <AssociationSet Name="FK__S_PAGE__ACTOR_ID__1B0907CE" Association="Self.FK__S_PAGE__ACTOR_ID__1B0907CE">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="S_PAGE" EntitySet="S_PAGE" />
     </AssociationSet>
-    <AssociationSet Name="FK__STAT_REPR__ACTOR__1B0907CE" Association="Self.FK__STAT_REPR__ACTOR__1B0907CE">
+    <AssociationSet Name="FK__STAT_REPR__ACTOR__1CF15040" Association="Self.FK__STAT_REPR__ACTOR__1CF15040">
       <End Role="S_ACTORS" EntitySet="S_ACTORS" />
       <End Role="STAT_REPROT" EntitySet="STAT_REPROT" />
     </AssociationSet>

@@ -1,12 +1,12 @@
-﻿@model IEnumerable<IA_Project.PROJECT>
+﻿@model IA_Project.ViewModels.ProjectsUsersModel
 <div class="container row">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Projects)
     {
 
         <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="card border-primary mb-3 project_card">
                 <div class="card-header bg-primary text-white ">
-                    Owner Name
+                    @Html.DisplayFor(modelItem => item.PROJECT_OWNER)
                 </div>
                 <div class="card-body ">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />

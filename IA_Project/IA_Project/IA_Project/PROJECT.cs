@@ -27,6 +27,7 @@ namespace IA_Project
         public System.TimeSpan START_TIME { get; set; }
         public System.TimeSpan END_TIME { get; set; }
         public int PRICE { get; set; }
+        public string PROJECT_OWNER { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACTOR_PROJECT> ACTOR_PROJECT { get; set; }

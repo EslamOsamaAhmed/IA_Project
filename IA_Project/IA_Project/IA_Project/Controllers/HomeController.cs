@@ -28,47 +28,52 @@ namespace IA_Project.Controllers
 
             }
             DataBaseFuncController db = new DataBaseFuncController();
+            project.PROJECT_OWNER = Session["UserName"].ToString();
+            IA_ProjectEntities x = new IA_ProjectEntities();
             db.AddProject(project);
-
-            return Json(new {result = 1 });
+            
+            
+            return Json(new { result = 1 });
         }
-        
-        
+
+
 
         [HttpPost]
         public JsonResult Register(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
             byte[] photos = null;
 
-            if (photo != null) { 
+            if (photo != null)
+            {
                 try
                 {
-                    string path = Path.Combine(Server.MapPath("~/Images"),Path.GetFileName(photo.FileName));
-                   photo.SaveAs(path);
+                    string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(photo.FileName));
+                    photo.SaveAs(path);
 
-                     using (MemoryStream ms = new MemoryStream()) 
-                       {
-                          photo.InputStream.CopyTo(ms);
-                          photos = ms.GetBuffer();
-                       }
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        photo.InputStream.CopyTo(ms);
+                        photos = ms.GetBuffer();
+                    }
 
                     ViewBag.Message = "File uploaded successfully";
-               }
-               catch (Exception ex)
-               {   
-                  ViewBag.Message = "ERROR:" + ex.Message.ToString();
-               }
-           }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                }
+            }
 
             try
             {
-                S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile) , AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email};
+                S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile), AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email };
                 DataBaseFuncController db = new DataBaseFuncController();
 
                 var allactors = db.GetAllActors();
 
 
                 foreach (var element in allactors)
+                if (db.AddActor(act) == "Done, Updated")
                 {
                     if (username == element.USERNAME)
                     {
@@ -111,28 +116,30 @@ namespace IA_Project.Controllers
         }
         // Loogin Function ...
         [HttpPost]
-        public JsonResult Login(string loginEmail,string loginPass)
+        public JsonResult Login(string loginEmail, string loginPass)
         {
-           var result = "fail";
+            var result = "fail";
             Console.WriteLine(loginEmail + loginPass);
-            using(IA_ProjectEntities db =new IA_ProjectEntities())
+            using (IA_ProjectEntities db = new IA_ProjectEntities())
             {
                 S_ACTORS act = new S_ACTORS();
-                var userDetail = db.S_ACTORS.FirstOrDefault(x=>x.EMAIL== loginEmail);
-               
-                if (userDetail!=null)
+                var userDetail = db.S_ACTORS.FirstOrDefault(x => x.EMAIL == loginEmail);
+
+                if (userDetail != null)
                 {
-                    if (userDetail.PASSWORD== loginPass.ToString())
+                    if (userDetail.PASSWORD == loginPass.ToString())
                     {
                         Session["ActorId"] = userDetail.ACTOR_ID.ToString();
                         Session["UserName"] = userDetail.USERNAME.ToString();
+                        Session["Role"] = userDetail.AROLE.ToString();
                         Session["status"] = "done";
                         result = "suc";
                         return Json(result, JsonRequestBehavior.AllowGet);
                     }
-                    
-                  else{
-                        result ="wrongpass";
+
+                    else
+                    {
+                        result = "wrongpass";
                         return Json(result, JsonRequestBehavior.AllowGet);
                     }
                 }
@@ -142,7 +149,7 @@ namespace IA_Project.Controllers
                     return Json(result, JsonRequestBehavior.AllowGet);
                 }
             }
-          
+
         }
 
        /* public JsonResult ResetPassword(string code)
@@ -196,8 +203,8 @@ namespace IA_Project.Controllers
 
         public ActionResult LoggedIN()
         {
-            if(Session["ActorID"]!=null)
-            return View();
+            if (Session["ActorID"] != null)
+                return View();
             else { return RedirectToAction("Login"); }
         }
         /*[HttpPost]
@@ -209,6 +216,54 @@ namespace IA_Project.Controllers
             db.AddProject(project);
             return RedirectToAction("Index");
         }*/
+        [HttpPost]
+        public ActionResult Add_User(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
+        {
+            byte[] photos = null;
 
+            if (photo != null)
+            {
+                try
+                {
+                    string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(photo.FileName));
+                    photo.SaveAs(path);
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        photo.InputStream.CopyTo(ms);
+                        photos = ms.GetBuffer();
+                    }
+
+                    ViewBag.Message = "File uploaded successfully";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                }
+            }
+
+            try
+            {
+                S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile), AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email };
+                DataBaseFuncController db = new DataBaseFuncController();
+
+                if (db.AddActor(act) == "Done, Updated")
+                {
+
+                    return Json(new { result = 1 });
+                }
+                else
+                {
+                    return HttpNotFound();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return HttpNotFound();
+                Console.WriteLine(ex);
+            }
+
+        }
     }
 }

@@ -14,11 +14,12 @@ namespace IA_Project
     
     public partial class ACTOR_PROJECT
     {
+        public int ID { get; set; }
         public int ACTOR_ID { get; set; }
         public int PROJECT_ID { get; set; }
         public string AROLE { get; set; }
     
-        public virtual PROJECT PROJECT { get; set; }
         public virtual S_ACTORS S_ACTORS { get; set; }
+        public virtual PROJECT PROJECT { get; set; }
     }
 }

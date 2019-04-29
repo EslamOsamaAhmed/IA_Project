@@ -56,9 +56,11 @@
             $(".tab-content").removeClass("active-content").addClass("noactive");
             $(".prev-proj-content").addClass("active-content").removeClass("noactive")
         }
+
+        
     });
 
-    $(".req-t").click(function () {
+    $(".req-t ").click(function () {
         $(".res-t").removeClass("active-t");
         $(this).addClass("active-t");
         $(".reqs").removeClass("noactive");
@@ -70,6 +72,34 @@
         $(this).addClass("active-t");
         $(".ress").removeClass("noactive");
         $(".reqs").addClass("noactive")
+    });
+
+    $(".users-t ").click(function () {
+        $(".project-t").removeClass("active-t");
+        $(this).addClass("active-t");
+        $(".display_users").removeClass("noactive");
+        $(".display_projects").addClass("noactive")
+    });
+        
+    $(".project-t").click(function () {
+        $(".users-t").removeClass("active-t");
+        $(this).addClass("active-t");
+        $(".display_projects").removeClass("noactive");
+        $(".display_users").addClass("noactive")
+    });
+
+    $(".add-t ").click(function () {
+        $(".delete-t").removeClass("active-t");
+        $(this).addClass("active-t");
+        $(".add-user").removeClass("noactive");
+        $(".delet-user").addClass("noactive")
+    });
+
+    $(".delete-t").click(function () {
+        $(".add-t").removeClass("active-t");
+        $(this).addClass("active-t");
+        $(".delet-user").removeClass("noactive");
+        $(".add-user").addClass("noactive")
     });
     // login and register
     $(".register-switch").click(function () {
@@ -131,40 +161,7 @@
         }
     });
 
-    $("#Add_project_button").click(function () {
-
-        var my_data = $("#Add_Project_form").serialize();
-        $.ajax({
-            type: "POST",
-            url: "/Home/Index",
-            data: my_data,
-            success: function (response) {
-                $("#project_name").val("");
-                $("#des_project").val("");
-                $("#p_status").removeAttr('checked');
-                $("#start_time").val("");
-                $("#end_time").val("");
-                $("#price").val("");
-            }
-        })
-        if ($("#Add_Project_form").valid()) {
-            var my_data = $("#Add_Project_form").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/Home/Index",
-                data: my_data,
-                success: function (response) {
-                    $("#confirm_message").modal('show');
-                    $("#project_name").val("");
-                    $("#des_project").val("");
-                    $("#p_status").removeAttr('checked');
-                    $("#start_time").val("");
-                    $("#end_time").val("");
-                    $("#price").val("");
-                }
-            })
-        }
-    })
+    
 
     $("#emailValid").hide();
     $("#passValid").hide();

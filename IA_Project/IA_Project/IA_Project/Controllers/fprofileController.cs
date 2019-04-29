@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using IA_Project.Models;
 using System.Net.Http;
 using System.Net;
+using IA_Project.ViewModels;
 
 namespace IA_Project.Controllers
 {
@@ -14,9 +15,16 @@ namespace IA_Project.Controllers
     {
 
         private IA_ProjectEntities db = new IA_ProjectEntities();
+        
         public ActionResult fprofile()
         {
-            return View(db.PROJECTs.ToList());
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = db.S_ACTORS.ToList() ,
+                Projects = db.PROJECTs.ToList()
+            };
+
+            return View(pum);
         }
 
         [HttpPost]
@@ -38,5 +46,25 @@ namespace IA_Project.Controllers
             }
             
         }
+        [HttpGet]
+        public ActionResult Delete_User(int id)
+        {
+            DataBaseFuncController db = new DataBaseFuncController();
+            db.RemoveActor(id);
+            return Json(new { result = 1 } , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Display_All_Users()
+        {
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = db.S_ACTORS.ToList(),
+                Projects = db.PROJECTs.ToList()
+            };
+            return PartialView("../Shared/_Display_All_Users", pum);
+
+        }
+
     } 
 }

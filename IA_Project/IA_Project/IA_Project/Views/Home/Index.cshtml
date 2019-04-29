@@ -1,10 +1,4 @@
-﻿
-@section Scripts{
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-}
-@model IA_Project.PROJECT
+﻿@model IA_Project.PROJECT
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -216,6 +210,7 @@
         </div>
     </div>
 </div>
+@Html.Partial("_footer")
 <!-- Modal for Confirmation Message -->
 <div class="modal fade" id="confirm_message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -238,4 +233,29 @@
 </div>
 
 
-@Html.Partial("_footer")
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+    $(document).ready(function () {
+
+        $("#Add_project_button").click(function () {
+            if ($("#Add_Project_form").valid()) {
+                var my_data = $("#Add_Project_form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Index",
+                    data: my_data,
+                    success: function (response) {
+                        $("#Add_Project_form")[0].reset();
+
+                    }
+                })
+            }
+        })
+    });
+</script>>
+}
