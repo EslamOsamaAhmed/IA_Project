@@ -69,11 +69,14 @@ namespace IA_Project.Controllers
                 S_ACTORS act = new S_ACTORS() { FNAME = fname, LNAME = lname, JOB_DESC = jobdesc, MOBILE = Int32.Parse(mobile), AROLE = role, USERNAME = username, PASSWORD = password, EMAIL = email };
                 DataBaseFuncController db = new DataBaseFuncController();
 
+<<<<<<< HEAD
                 var allactors = db.GetAllActors();
 
 
                 foreach (var element in allactors)
+=======
                 if (db.AddActor(act) == "Done, Updated")
+>>>>>>> 6487dc10afe8cff3c435d316813f08fa0765637a
                 {
                     if (username == element.USERNAME)
                     {
