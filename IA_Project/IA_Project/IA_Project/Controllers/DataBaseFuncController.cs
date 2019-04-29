@@ -132,6 +132,24 @@ namespace IA_Project.Controllers
             }
         }
 
+        public String AddProjectActor(ACTOR_PROJECT act_proj)
+        {
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
+            {
+                try
+                {
+                    _entities.ACTOR_PROJECT.Add(act_proj);
+                    _entities.SaveChanges();
+
+                    return "Done, Updated";
+                }
+                catch (Exception ex)
+                {
+                    return ex.ToString();
+                }
+            }
+        }
+
         public String page(S_PAGE proj)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())

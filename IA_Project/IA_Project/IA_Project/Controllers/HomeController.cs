@@ -26,8 +26,11 @@ namespace IA_Project.Controllers
 
             }
             DataBaseFuncController db = new DataBaseFuncController();
+            project.PROJECT_OWNER = Session["UserName"].ToString();
+            IA_ProjectEntities x = new IA_ProjectEntities();
             db.AddProject(project);
-
+            
+            
             return Json(new { result = 1 });
         }
 
@@ -103,6 +106,7 @@ namespace IA_Project.Controllers
                     {
                         Session["ActorId"] = userDetail.ACTOR_ID.ToString();
                         Session["UserName"] = userDetail.USERNAME.ToString();
+                        Session["Role"] = userDetail.AROLE.ToString();
                         Session["status"] = "done";
                         result = "suc";
                         return Json(result, JsonRequestBehavior.AllowGet);

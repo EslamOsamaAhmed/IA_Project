@@ -273,7 +273,7 @@
                                 <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card border-primary mb-3 project_card">
                                         <div class="card-header bg-primary text-white ">
-                                            Owner Name
+                                            @Html.DisplayFor(modelItem => item.PROJECT_OWNER)
                                         </div>
                                         <div class="card-body ">
                                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
@@ -311,7 +311,7 @@
                                 <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card border-primary mb-3 project_card">
                                         <div class="card-header bg-primary text-white ">
-                                            Owner Name
+                                            @Html.DisplayFor(modelItem => item.PROJECT_OWNER)
                                         </div>
                                         <div class="card-body ">
                                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
@@ -343,7 +343,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @Html.Partial("_Project_modle")
+                        
                     </div>
 
                 </div>
@@ -394,7 +394,7 @@
             </div>
         </div>
 
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 prev-proj-content noactive tab-content">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 prev-proj-content noactive tab-content">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -404,7 +404,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            @Html.Partial("_Project_modle")
                         </div>
 
                     </div>
@@ -469,11 +468,9 @@
                     type: "GET",
                     url: "/fprofile/Display_All_Users",
                     success: function (response) {
-                        $("#curser").html(response)
-                            
+                        $("#curser").html(response)     
                     }
                 })
-                
             });
         });
 

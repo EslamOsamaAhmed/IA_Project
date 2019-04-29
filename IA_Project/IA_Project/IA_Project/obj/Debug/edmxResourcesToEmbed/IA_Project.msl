@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="IA_ProjectModelStoreContainer" CdmEntityContainer="IA_ProjectEntities">
+    <EntitySetMapping Name="ACTOR_PROJECT">
+      <EntityTypeMapping TypeName="IA_ProjectModel.ACTOR_PROJECT">
+        <MappingFragment StoreEntitySet="ACTOR_PROJECT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACTOR_ID" ColumnName="ACTOR_ID" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="AROLE" ColumnName="AROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PROJECTs">
       <EntityTypeMapping TypeName="IA_ProjectModel.PROJECT">
         <MappingFragment StoreEntitySet="PROJECT">
@@ -11,6 +21,7 @@
           <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
           <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="PROJECT_OWNER" ColumnName="PROJECT_OWNER" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -36,15 +47,6 @@
           <ScalarProperty Name="PAGE_ID" ColumnName="PAGE_ID" />
           <ScalarProperty Name="PAGE_URL" ColumnName="PAGE_URL" />
           <ScalarProperty Name="ACTOR_ID_P" ColumnName="ACTOR_ID_P" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ACTOR_PROJECT">
-      <EntityTypeMapping TypeName="IA_ProjectModel.ACTOR_PROJECT">
-        <MappingFragment StoreEntitySet="ACTOR_PROJECT">
-          <ScalarProperty Name="ACTOR_ID" ColumnName="ACTOR_ID" />
-          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
-          <ScalarProperty Name="AROLE" ColumnName="AROLE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

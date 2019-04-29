@@ -25,10 +25,10 @@ namespace IA_Project
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ACTOR_PROJECT> ACTOR_PROJECT { get; set; }
         public virtual DbSet<PROJECT> PROJECTs { get; set; }
         public virtual DbSet<S_ACTORS> S_ACTORS { get; set; }
         public virtual DbSet<S_PAGE> S_PAGE { get; set; }
-        public virtual DbSet<ACTOR_PROJECT> ACTOR_PROJECT { get; set; }
         public virtual DbSet<EVALUATE> EVALUATEs { get; set; }
         public virtual DbSet<NOTIF> NOTIFs { get; set; }
         public virtual DbSet<STAT_REPROT> STAT_REPROT { get; set; }

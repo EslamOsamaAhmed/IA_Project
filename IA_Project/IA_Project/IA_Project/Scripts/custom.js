@@ -119,40 +119,7 @@
         }
     });*/
 
-    $("#Add_project_button").click(function () {
-
-        var my_data = $("#Add_Project_form").serialize();
-        $.ajax({
-            type: "POST",
-            url: "/Home/Index",
-            data: my_data,
-            success: function (response) {
-                $("#project_name").val("");
-                $("#des_project").val("");
-                $("#p_status").removeAttr('checked');
-                $("#start_time").val("");
-                $("#end_time").val("");
-                $("#price").val("");
-            }
-        })
-        if ($("#Add_Project_form").valid()) {
-            var my_data = $("#Add_Project_form").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/Home/Index",
-                data: my_data,
-                success: function (response) {
-                    $("#confirm_message").modal('show');
-                    $("#project_name").val("");
-                    $("#des_project").val("");
-                    $("#p_status").removeAttr('checked');
-                    $("#start_time").val("");
-                    $("#end_time").val("");
-                    $("#price").val("");
-                }
-            })
-        }
-    })
+    
 
     $("#emailValid").hide();
     $("#passValid").hide();
