@@ -14,8 +14,8 @@
                 <a href="#" class="list-group-item list-group-item-action dash-page dashboard-tab">Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page edit-rprofile-tab">Edit Profile</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page curr-rpoject-tab">Current Projects</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page complete-project-tab">Completed Projects</a>
+                <a href="#" id="current-project-tab-list" class="list-group-item list-group-item-action dash-page curr-rpoject-tab">Current Projects</a>
+                <a href="#" id="completed-project-tab-list" class="list-group-item list-group-item-action dash-page complete-project-tab">Completed Projects</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page assign-project-tab">Assigned Projects</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page request-res-tab">Requests & Responses</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page prev-del-project-tab">Previous Delivered Projects</a>
@@ -168,16 +168,16 @@
                     <div class="row">
                         <div class="col-12  users-project-control-tab">
                             <div class="col-6 users-tab">
-                                <span class="users-t"><strong>Users</strong></span>
+                                <span class="users-t active-t"><strong>Users</strong></span>
                             </div>
                             <div class="col-6 project-tab">
-                                <span class="project-t active-t"><strong>Projects</strong></span>
+                                <span class="project-t" id="project-t"><strong>Projects</strong></span>
                             </div>
                         </div>
 
 
                         <div class="col-12">
-                            <div class="noactive display_users">
+                            <div class="display_users">
                                 <div class="col-12 users-content">
                                     <div class="card">
                                         <div class="card-body">
@@ -244,9 +244,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 display_projects">
-                                <div class="col-12 project-content row">
-                                    @Html.Partial("_Project_modle")
+                            <div class="col-12 noactive display_projects">
+                                <div class="col-12 project-content row" id="admin_projects_view">
+                                   <!--Display All Projects For Admin-->
                                 </div>
                             </div>
                         </div>
@@ -265,29 +265,9 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="row">
-                        @foreach (var item in Model.Projects)
-                        {
-                            if (item.P_STATUS == false)
-                            {
-                                <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="card border-primary mb-3 project_card">
-                                        <div class="card-header bg-primary text-white ">
-                                            @Html.DisplayFor(modelItem => item.PROJECT_OWNER)
-                                        </div>
-                                        <div class="card-body ">
-                                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
-                                            <p class="card-text"><strong>Project Description : </strong><br />&emsp;@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
-                                            <p class="card-text"><strong>Cost : </strong>  @Html.DisplayFor(modelItem => item.PRICE) $</p>
-                                            <p class="card-text"><strong>Deadline : </strong>@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
-                                            <a href="#" class="btn btn-primary float-right btn-proj">Invite MD</a>
-                                            <a href="#" class="btn btn-danger float-right btn-proj">Delete</a>
-                                            <a href="#" class="btn btn-warning float-right btn-proj">Edit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
+                    <div id="curser-current-project">
+                        <!--Display Current Project-->
+
                     </div>
 
                 </div>
@@ -303,29 +283,8 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="row">
-                        @foreach (var item in Model.Projects)
-                        {
-                            if (item.P_STATUS == true)
-                            {
-                                <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="card border-primary mb-3 project_card">
-                                        <div class="card-header bg-primary text-white ">
-                                            @Html.DisplayFor(modelItem => item.PROJECT_OWNER)
-                                        </div>
-                                        <div class="card-body ">
-                                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
-                                            <p class="card-text"><strong>Project Description : </strong><br />&emsp;@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
-                                            <p class="card-text"><strong>Cost : </strong>  @Html.DisplayFor(modelItem => item.PRICE) $</p>
-                                            <p class="card-text"><strong>Deadline : </strong>@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
-                                            <a href="#" class="btn btn-primary float-right btn-proj">Invite MD</a>
-                                            <a href="#" class="btn btn-danger float-right btn-proj">Delete</a>
-                                            <a href="#" class="btn btn-warning float-right btn-proj">Edit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
+                    <div id="curser-completed-project">
+                        <!--Display Completed Project-->
                     </div>
 
                 </div>
@@ -412,6 +371,22 @@
 </div>
 </div>
 
+<div class="modal fade" id="update-project-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modle_title">Update Project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div>
+              @Html.Partial("_Project_Update_Form") 
+            </div>
+        </div>
+    </div>
+</div>
+
 @Html.Partial("_Footer") 
 
 @section Scripts{
@@ -431,6 +406,24 @@
 
                         if (response.result == 1) {
                             $("#Record_" + id).remove();
+                        }
+                        else
+                            alert("Not Deleted")
+                    }
+                })
+            }
+        }
+
+        function DeleteProject(id) {
+            if (confirm("Are You Sure You want Deleted This Project ?")) {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Delete_Project/" + id,
+                    success: function (response) {
+
+                        if (response.result == 1) {
+                            $("#Project-Record_" + id).remove();
                         }
                         else
                             alert("Not Deleted")
@@ -460,6 +453,44 @@
                 
             });
 
+            $("#current-project-tab-list").click(function () {
+                var status = "current";
+                var my_data = 'Project_Status=' + status;
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_projects_By_Type",
+                    data: my_data,
+                    success: function (response) {
+                        $("#curser-current-project").html(response)
+                    }
+                })
+            });
+
+            $("#completed-project-tab-list").click(function () {
+                var status = "completed";
+                var my_data = 'Project_Status=' + status;
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_projects_By_Type",
+                    data: my_data,
+                    success: function (response) {
+                        $("#curser-completed-project").html(response)
+                    }
+                })
+            });
+
+            $("#project-t").click(function () {
+                var status = "all";
+                var my_data = 'Project_Status=' + status;
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_projects_By_Type",
+                    data: my_data,
+                    success: function (response) {
+                        $("#admin_projects_view").html(response)
+                    }
+                })
+            });
 
             $("#delete-section").click(function () {
                 
@@ -472,6 +503,7 @@
                     }
                 })
             });
+           
         });
 
 

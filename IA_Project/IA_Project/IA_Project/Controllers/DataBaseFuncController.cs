@@ -230,7 +230,7 @@ namespace IA_Project.Controllers
             }
         }
 
-        public IEnumerable<PROJECT> GetAllProjects(int ID)
+        public IEnumerable<PROJECT> GetAllProjects()
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {

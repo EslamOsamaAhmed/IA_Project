@@ -136,7 +136,6 @@ namespace IA_Project.Controllers
         /*[HttpPost]
         public ActionResult Index(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
         {
-
             PROJECT project = new PROJECT { NAME_PROJECT = project_name , DESC_PROJECT = des_project , P_STATUS = false , START_TIME = start_time , END_TIME = end_time , PRICE = price};
             DataBaseFuncController db = new DataBaseFuncController();
             db.AddProject(project);
