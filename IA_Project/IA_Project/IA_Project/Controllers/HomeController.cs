@@ -289,6 +289,7 @@ namespace IA_Project.Controllers
                 return View();
             else { return RedirectToAction("Login"); }
         }
+<<<<<<< HEAD
         /*[HttpPost]
         public ActionResult Index(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
         {
@@ -297,6 +298,9 @@ namespace IA_Project.Controllers
             db.AddProject(project);
             return RedirectToAction("Index");
         }*/
+=======
+       
+>>>>>>> 5f16c9f042c918d5f9c64f2a3272be63cdaf67dc
         [HttpPost]
         public ActionResult Add_User(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
