@@ -39,6 +39,8 @@
     <Property Name="AROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="USERNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="PASSWORD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RESETTIME" Type="DateTime" Precision="0" />
+    <Property Name="CODE" Type="Int32" />
     <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__ACTOR__173876EA" FromRole="S_ACTORS" ToRole="ACTOR_PROJECT" />
     <NavigationProperty Name="EVALUATEs" Relationship="Self.FK__EVALUATE__ACTOR___1ED998B2" FromRole="S_ACTORS" ToRole="EVALUATE" />
     <NavigationProperty Name="EVALUATEs1" Relationship="Self.FK__EVALUATE__ACTOR___1FCDBCEB" FromRole="S_ACTORS" ToRole="EVALUATE" />

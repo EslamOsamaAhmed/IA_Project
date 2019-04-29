@@ -1,7 +1,23 @@
 ﻿$(document).ready(function () {
     $("#eminvalid").fadeOut();
     $("#passinvalid").fadeOut();
+    $("#unameinvalid").fadeOut();
+    $("#emailinvalid").fadeOut();
+    $("#emailinvalidr").fadeOut();
+    $("#codeinvalid").fadeOut();
+    $("#timelate").fadeOut();
+    $("#resendcode").fadeOut();
+    $("#ResetPass").hide();
+    $("#codereset").hide();
+    $("#passreset").hide();
+
+
     var check = 0;
+
+    $("#login-forgot-pass").click(function () {
+        $("#loginForm").hide();
+        $("#ResetPass").show();
+    })
 
     $(".dash-page").click(function () {
         $(".dash-page").removeClass("active");
@@ -103,8 +119,8 @@
 
     });
 
-    /*
-    $("#submit").click(function () {
+    
+    $("#register").click(function () {
         if ($("#register-form").valid()) {
             myData = $("#register-form").serialize();
 
@@ -113,16 +129,156 @@
                 url: "/Home/Register",
                 data: myData,
                 success: function (response) {
-                    alert("Inserted Successfully . . ");
+                    if (response == 11) {
+                        $("#username").css({
+                            borderColor: "rgb(229, 145, 148)",
+                            boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                        })
+                        $("#unameinvalid").fadeIn();
+
+                    } else if (response == 12) {
+                        $("#email").css({
+                            borderColor: "rgb(229, 145, 148)",
+                            boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                        })
+                        $("#emailinvalidr").fadeIn();
+                    }
+                    else if (response == 0) {
+                        $("#username").css({
+                            borderColor: "#80bdff",
+                            boxShadow: "0 0 0 0.2rem #80bdff",
+                        })
+
+                        $("#email").css({
+                            borderColor: "#80bdff",
+                            boxShadow: "0 0 0 0.2rem #80bdff",
+                        })
+
+                        window.location.href = "/Home/index";
+
+                        $("#emailinvalidr").fadeOut();
+                        $("#unameinvalid").fadeOut();
+
+
+                        alert("Registered");
+                    } else {
+                        alert("Error");
+                    }
                 }
             })
         }
-    });*/
-
-    
+    });
 
     $("#emailValid").hide();
     $("#passValid").hide();
+
+    $("#signinfooter").click(function () {
+        $("#loginForm").show();
+        $("#ResetPass").hide();
+    })
+
+    $("#upassword").click(function () {
+        var data = $("#passreset").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/ResetNewPass",
+            data: data,
+            success: function (response) {
+                if(response == 60){
+                    window.location.href = "/Home/index";
+                }
+            }
+        })
+    })
+    
+    $("#resend").click(function () {
+        var data = $("#codereset").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/Resend",
+            data: data,
+            success: function (response) {
+                $("#codeinvalid").fadeOut();
+                $("#codeinvalid").fadeOut();
+                $("#resendcode").fadeIn();
+            }
+        })
+    })
+
+    $("#resetpass").click(function () {
+        var data = $("#codereset").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/ResetPassword",
+            data: data,
+            success: function (response) {
+               if (response == 25) {
+                    $("#coderes").css({
+                        borderColor: "rgb(229, 145, 148)",
+                        boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                    })
+
+                    $("#codeinvalid").fadeIn();
+                    $("#timelate").fadeOut();
+                    $("#resendcode").fadeOut();
+
+               } else if (response == 35) {
+                   $("#coderes").css({
+                       borderColor: "rgb(229, 145, 148)",
+                       boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                   })
+
+                   $("#codeinvalid").fadeOut();
+                   $("#timelate").fadeIn();
+                   $("#resendcode").fadeOut();
+
+               }
+               else if (response == 22) {
+                    $("#coderes").css({
+                        borderColor: "#80bdff",
+                        boxShadow: "0 0 0 0.2rem #80bdff",
+                    })
+
+                    $("#emailff").val($("#emailf").val());
+
+                    $("#passreset").show();
+                    $("#codeinvalid").fadeOut();
+                    $("#timelate").fadeOut();
+                    $("#resendcode").fadeOut();
+                    $("#codereset").hide();
+                }
+            }
+        })
+    })
+
+    $("#sendmail").click(function(){
+        var data = $("#ResetPass").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Home/Sendcode",
+            data: data,
+            success: function (response) {
+                if (response == 50) {
+                    $("#emailreset").css({
+                        borderColor: "rgb(229, 145, 148)",
+                        boxShadow: "0 0 0 0.2rem rgb(229, 145, 148)",
+                    })
+
+                    $("#emailinvalid").fadeIn();
+
+                } else if (response == 11) {
+                    $("#emailreset").css({
+                        borderColor: "#80bdff",
+                        boxShadow: "0 0 0 0.2rem #80bdff",
+                    })
+
+                    $("#codereset").show();
+                    $("#ResetPass").hide();
+                    $("#emailf").val($("#emailreset").val());
+                }
+             }
+        })
+    })
 
     $("#login").click(function () {
         var data = $("#loginForm").serialize();

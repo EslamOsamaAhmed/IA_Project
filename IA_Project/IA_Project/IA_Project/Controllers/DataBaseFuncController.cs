@@ -71,6 +71,59 @@ namespace IA_Project.Controllers
                     obj.MOBILE = act.MOBILE;
                     obj.FNAME = act.FNAME;
                     obj.EMAIL = act.EMAIL;
+                    obj.RESETTIME = act.RESETTIME;
+                    obj.CODE = act.CODE;
+                    obj.PASSWORD = act.PASSWORD;
+
+                    _entities.SaveChanges();
+
+                    return "Done, Updated";
+                }
+                catch (Exception ex)
+                {
+                    return ex.ToString();
+                }
+            }
+        }
+
+        public String UpdateActorReset(int id, S_ACTORS act)
+        {
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
+            {
+                try
+                {
+                    var obj = _entities.S_ACTORS.FirstOrDefault(c => c.ACTOR_ID == id);
+                    if (obj == null)
+                    {
+                        return "Null Object";
+                    }
+
+                    obj.RESETTIME = act.RESETTIME;
+                    obj.CODE = act.CODE;
+
+                    _entities.SaveChanges();
+
+                    return "Done, Updated";
+                }
+                catch (Exception ex)
+                {
+                    return ex.ToString();
+                }
+            }
+        }
+
+        public String UpdatePassReset(int id, S_ACTORS act)
+        {
+            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
+            {
+                try
+                {
+                    var obj = _entities.S_ACTORS.FirstOrDefault(c => c.ACTOR_ID == id);
+                    if (obj == null)
+                    {
+                        return "Null Object";
+                    }
+
                     obj.PASSWORD = act.PASSWORD;
 
                     _entities.SaveChanges();

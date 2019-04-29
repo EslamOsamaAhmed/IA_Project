@@ -38,6 +38,8 @@
           <ScalarProperty Name="AROLE" ColumnName="AROLE" />
           <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="RESETTIME" ColumnName="RESETTIME" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
