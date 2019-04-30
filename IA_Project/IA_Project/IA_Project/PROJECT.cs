@@ -32,6 +32,8 @@ namespace IA_Project
         [Required(ErrorMessage = "You Have To Enter Project Name")]
         public System.TimeSpan END_TIME { get; set; }
         [Required(ErrorMessage = "You Have To Enter Project Name")]
+        public System.DateTime START_TIME { get; set; }
+        public System.DateTime END_TIME { get; set; }
         public int PRICE { get; set; }
         public string PROJECT_OWNER { get; set; }
     
