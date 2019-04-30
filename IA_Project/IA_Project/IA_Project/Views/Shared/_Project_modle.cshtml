@@ -15,7 +15,7 @@
                     <p class="card-text">Deadline :@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
                     <button class="btn btn-primary float-right btn-proj">Invite MD</button>
                     <button class="btn btn-danger float-right btn-proj" type="submit" id="delete-project" onclick="DeleteProject(@item.PROJECT_ID)">Delete</button>
-                    <button class="btn btn-warning float-right btn-proj" id="update-project" type="button" data-toggle="modal" data-target="#update-project-model">Edit</button>
+                    <button class="btn btn-warning float-right btn-proj" id="update-project" type="button" data-toggle="modal" data-target="#update-project-model" onclick="openUpdate(@item.PROJECT_ID)">Edit</button>
                 </div>
             </div>
         </div>

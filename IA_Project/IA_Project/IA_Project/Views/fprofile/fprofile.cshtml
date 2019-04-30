@@ -12,8 +12,8 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
             <div class="list-group dashboard-links">
                 <a href="#" class="list-group-item list-group-item-action dash-page dashboard-tab">Dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
-                <a href="#" class="list-group-item list-group-item-action dash-page edit-rprofile-tab">Edit Profile</a>
+                <a href="#" id="show-profile-tab-list" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
+                <a href="#" id="update-profile-tab-list" class="list-group-item list-group-item-action dash-page edit-rprofile-tab">Edit Profile</a>
                 <a href="#" id="current-project-tab-list" class="list-group-item list-group-item-action dash-page curr-rpoject-tab">Current Projects</a>
                 <a href="#" id="completed-project-tab-list" class="list-group-item list-group-item-action dash-page complete-project-tab">Completed Projects</a>
                 <a href="#" class="list-group-item list-group-item-action dash-page assign-project-tab">Assigned Projects</a>
@@ -31,60 +31,8 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form>
-                                <div class="form-group row">
-                                    <label for="name" class="col-4 col-form-label">First Name</label>
-                                    <div class="col-8">
-                                        <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
-                                    <div class="col-8">
-                                        <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="lastname" class="col-4 col-form-label">Photo</label>
-                                    <div class="col-8">
-                                        <input id="photo" name="photo" class="form-control here" type="file">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email*</label>
-                                    <div class="col-8">
-                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="mobile" class="col-4 col-form-label">Mobile Number</label>
-                                    <div class="col-8">
-                                        <input id="mobile" name="mobile" placeholder="mobile" class="form-control here" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Job Description</label>
-                                    <div class="col-8">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="newpass" class="col-4 col-form-label">New Password</label>
-                                    <div class="col-8">
-                                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="row" id="update_profile_section">
+                       <!--Update Profile Form-->
                     </div>
 
                 </div>
@@ -99,58 +47,8 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 profile-section">
-                            <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12">
-                                <div class="profile-pic">
-                                    <img src="" class="p-img img-responsive" />
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-xl-7 col-sm-12">
-                                <div class="profile-username">
-                                    <strong>Username : </strong> <span>Lorem Ispum</span>
-                                </div>
-
-                                <div class="profile-name">
-                                    <strong>Name : </strong> <span>Lorem Ispum</span>
-                                </div>
-
-                                <br />
-
-                                <div class="email-show">
-                                    <strong>Email : </strong>  <span> Lorem_Ispum100@loremispum.com</span>
-                                </div>
-
-                                <br />
-
-                                <div class="mobile_number_show">
-                                    <span><strong>Number : </strong> (+20) 1098856314</span>
-                                </div>
-
-                                <br />
-
-                                <div class="job_desc_show">
-                                    <strong>Job Description : </strong><br />
-                                    <span>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    </span>
-                                </div>
-
-                                <br />
-
-                                <div class="role_show">
-                                    <span><strong>Role : </strong>Marketing Director</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 charts">
-                            <div class="col-sm-6 col-12" id="piechart"></div>
-
-                            <div class="col-md-6 col-sm-12" id="piechart-2"></div>
-                        </div>
+                    <div id="show-profile-section">
+                        <!--Display Profile Infromation-->
                     </div>
 
                 </div>
@@ -218,7 +116,12 @@
                                                                     <input type="email" class="form-control input-cust" id="email" name="email" placeholder="email" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control input-cust" id="role" name="role" placeholder="Role" required>
+                                                                    <select name="role" class="form-control input-cust">
+                                                                        <option value="Marketing Director" selected>Marketing Director</option>
+                                                                        <option value="Team Leader">Team Leader</option>
+                                                                        <option value="Team Trainee">Team Trainee</option>
+                                                                        <option value="Customer">Customer</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control input-cust" id="username" name="username" placeholder="username" required>
@@ -380,8 +283,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div>
-              @Html.Partial("_Project_Update_Form") 
+            <div id="update-tab-modal">
+               <!--Open Delete Modal-->
             </div>
         </div>
     </div>
@@ -395,10 +298,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-    
+
         function DeleteUser(id) {
             if (confirm("Are You Sure You want Deleted This User ?")) {
-
                 $.ajax({
                     type: "GET",
                     url: "/fprofile/Delete_User/" + id,
@@ -432,10 +334,45 @@
             }
         }
 
+        function openUpdate(id) {
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Edit_Project/" + id,
+                    success: function (response) {
+                        $("#update-tab-modal").html(response)
+                    }
+                })
+
+        }
+
+        function UpdateProject(id) {
+            var x = $("#Update_Project_form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/fprofile/Edit_Project/" + id,
+                    data: x ,
+                    success: function (response) {
+                        $("#admin_projects_view").html(response)
+                    }
+                })
+        }
+
+        function UpdateProfile() {
+            var x = $("#Form-Update-Profile").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/fprofile/Edit_Profile" ,
+                data: x,
+                success: function (response) {
+                    alert("Done")
+                }
+            })
+        }
+
         $(document).ready(function () {
 
             $("#add-user-btn").click(function () {
-                
+
                 var my_data = $("#add-user-form").serialize();
                 $.ajax({
                     type: "POST",
@@ -445,12 +382,11 @@
                         if (response.result == 1) {
                             $("#add-user-form")[0].reset();
                         }
-                        else 
+                        else
                             alert("Error")
-                            
                     }
                 })
-                
+
             });
 
             $("#current-project-tab-list").click(function () {
@@ -462,6 +398,18 @@
                     data: my_data,
                     success: function (response) {
                         $("#curser-current-project").html(response)
+                    }
+                })
+            });
+            
+
+            $(window).load(function () {
+                
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Show_Profile" ,
+                    success: function (response) {
+                        $("#show-profile-section").html(response)
                     }
                 })
             });
@@ -492,18 +440,32 @@
                 })
             });
 
-            $("#delete-section").click(function () {
-                
-                
+            
+
+            $("#update-profile-tab-list").click(function () {
+               
                 $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Edit_Profile" ,
+                    success: function (response) {
+                        $("#update_profile_section").html(response)
+                    }
+                })
+            
+            });
+            
+
+            $("#delete-section").click(function () {
+     $.ajax({
                     type: "GET",
                     url: "/fprofile/Display_All_Users",
                     success: function (response) {
-                        $("#curser").html(response)     
+                        $("#curser").html(response)
                     }
                 })
             });
-           
+
+
         });
 
 

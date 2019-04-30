@@ -11,7 +11,8 @@ namespace IA_Project
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PROJECT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +20,18 @@ namespace IA_Project
         {
             this.ACTOR_PROJECT = new HashSet<ACTOR_PROJECT>();
         }
-    
+        [Required(ErrorMessage ="You Have To Enter Project Name")]
         public int PROJECT_ID { get; set; }
+        [Required(ErrorMessage = "You Have To Enter Project Description")]
         public string NAME_PROJECT { get; set; }
+        [Required(ErrorMessage = "You Have To Enter Project Name")]
         public string DESC_PROJECT { get; set; }
         public bool P_STATUS { get; set; }
+        [Required(ErrorMessage = "You Have To Enter Project Name")]
         public System.TimeSpan START_TIME { get; set; }
+        [Required(ErrorMessage = "You Have To Enter Project Name")]
         public System.TimeSpan END_TIME { get; set; }
+        [Required(ErrorMessage = "You Have To Enter Project Name")]
         public int PRICE { get; set; }
         public string PROJECT_OWNER { get; set; }
     

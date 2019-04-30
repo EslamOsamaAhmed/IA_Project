@@ -310,6 +310,8 @@
     <Content Include="Views\Shared\_Profile_Modle.cshtml" />
     <Content Include="Views\Shared\_Display_All_Users.cshtml" />
     <Content Include="Views\Shared\_Project_Update_Form.cshtml" />
+    <Content Include="Views\Shared\_Update_Profile_Form.cshtml" />
+    <Content Include="Views\Shared\_FProfile_model.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="85d114b7648743bcb75ab76525b19e7e" Name="Diagram1">
+      <Diagram DiagramId="9567f80980b54d14a42a0dd3cb549ab3" Name="Diagram1">
         <EntityTypeShape EntityType="IA_ProjectModel.ACTOR_PROJECT" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IA_ProjectModel.PROJECT" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.S_ACTORS" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.S_ACTORS" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IA_ProjectModel.S_PAGE" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IA_ProjectModel.EVALUATE" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IA_ProjectModel.NOTIF" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />

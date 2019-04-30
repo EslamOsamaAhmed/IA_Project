@@ -1,6 +1,6 @@
 ﻿@model IA_Project.ViewModels.ProjectsUsersModel
 <div class="col-md-12">
-    <form id="Add_Project_form">
+    <form id="Update_Project_form">
         
         <div class="form-group row">
             
@@ -17,6 +17,14 @@
             <div class="col-8">
                 @Html.TextAreaFor(m => m.Project.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", type = "text" })
                 @Html.ValidationMessageFor(x => x.Project.DESC_PROJECT)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(x => x.Project.P_STATUS, new { @class = "col-4 col-form-label" })
+
+            <div class="col-8">
+                @Html.CheckBoxFor(m => m.Project.P_STATUS, new { @class = "form-control here", id = "p_status" })
+
             </div>
         </div>
         <div class="form-group row">
@@ -42,7 +50,7 @@
         </div>
         <div class="form-group row modal-footer">
             <div class="offset-4 col-8">
-                <button name="Add_project" type="button" id="update-t_@Model.Project.PROJECT_ID" class="btn btn-success" data-dismiss="modal">Updat</button>
+                <button name="Add_project" type="button" id="update-t_@Model.Project.PROJECT_ID" class="btn btn-success" data-dismiss="modal" onclick="UpdateProject(@Model.Project.PROJECT_ID)">Updat</button>
             </div>
         </div>
         
