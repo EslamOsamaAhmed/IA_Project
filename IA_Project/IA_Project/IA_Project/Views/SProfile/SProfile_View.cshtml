@@ -48,6 +48,24 @@
 
                     </div>
                 </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 current-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Current Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div id="curser-current-project-s">
+                        <!--Display Current Project-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
             </div>
 
         </div>
@@ -84,6 +102,18 @@
                 }
             })
 
+        });
+        $("#current-project-s").click(function () {
+            var status = "current";
+            var my_data = 'Project_Status=' + status;
+            $.ajax({
+                type: "GET",
+                url: "/fprofile/Display_projects_By_Type",
+                data: my_data,
+                success: function (response) {
+                    $("#curser-current-project-s").html(response)
+                }
+            })
         });
    </script>
 }
