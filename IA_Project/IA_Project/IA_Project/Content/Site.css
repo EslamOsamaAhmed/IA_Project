@@ -42,10 +42,6 @@ text-decoration:none;
 margin-right:10px;
 }
 
-.right > a:hover{
-color: rgba(0, 0, 0, 0.7);
-}
-
 i {
 font-family: fontawesome !important;
 }
@@ -80,4 +76,13 @@ margin-left:10px;
 .field-validation-error{     
       color: #b94a48; 
 } 
+
+.assing-btn-user{
+display:inline-flex;
+}
+
+.username{
+padding:10px;
+font-weight:bold;
+}
 

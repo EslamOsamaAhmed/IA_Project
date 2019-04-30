@@ -1,0 +1,15 @@
+﻿@model IA_Project.ViewModels.Notification
+<div class="container row">
+
+    @foreach (var user in Model.Users)
+    {
+        <div class="col-12 reqs-content">
+            <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+            <div class="col-3 reqs-content-name"><strong>@user.USERNAME</strong></div>
+            <div class="col-3 reqs-s">sent you a request</div>
+            <div class="col-2"><button type="button" class="btn btn-danger delete" onclick="del(@user.ACTOR_ID)">Delete</button></div>
+            <div class="col-2"><button type="button" class="btn btn-success accept" onclick="acce(@user.ACTOR_ID)">Accept</button></div>
+        </div>
+    }
+
+</div>

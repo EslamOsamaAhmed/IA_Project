@@ -6,19 +6,30 @@ using System.Web.Mvc;
 using System.IO;
 using System.Net.Mail;
 using IA_Project.Models;
+using IA_Project.ViewModels;
+
 
 namespace IA_Project.Controllers
 {
     public class HomeController : Controller
     {
+        private IA_ProjectEntities dbo = new IA_ProjectEntities();
+
         int randno;
         // GET: Home
         [HttpGet]
         public ActionResult Index()
         {
             PROJECT project = new PROJECT();
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = dbo.S_ACTORS.ToList(),
+                Projects = dbo.PROJECTs.ToList(),
+                project = { }
 
-            return View();
+            };
+
+            return View(pum);
         }
         [HttpPost]
         public ActionResult Index(PROJECT project)
@@ -127,6 +138,7 @@ namespace IA_Project.Controllers
                     {
                         Session["ActorId"] = userDetail.ACTOR_ID.ToString();
                         Session["UserName"] = userDetail.USERNAME.ToString();
+                        Session["Email"] = userDetail.EMAIL.ToString();
                         Session["Role"] = userDetail.AROLE.ToString();
                         Session["status"] = "done";
                         result = "suc";
@@ -156,7 +168,7 @@ namespace IA_Project.Controllers
             var actinfo = db.GetActorData(emailf);
 
             DateTime localDate = DateTime.Now;
-            int seconds = (int)(actinfo.RESETTIME - localDate).Value.TotalSeconds;
+            int seconds = (int)(localDate - actinfo.RESETTIME).Value.TotalSeconds;
 
 
             if (coderes == actinfo.CODE.ToString())
@@ -298,6 +310,10 @@ namespace IA_Project.Controllers
             return RedirectToAction("Index");
         }*/
        
+=======
+        }
+               
+>>>>>>> 7f42491d80d2f4c15a29523ff7f3e746bb76edcd
         [HttpPost]
         public ActionResult Add_User(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
@@ -344,6 +360,31 @@ namespace IA_Project.Controllers
             {
                 return Json(ex.ToString(), JsonRequestBehavior.AllowGet);
             }
+
+        }
+
+        public ActionResult Display_NotAssign()
+        {
+
+            var actProj = dbo.ACTOR_PROJECT.ToList();
+
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = dbo.S_ACTORS.ToList(),
+                Projects = dbo.PROJECTs.ToList()
+            };
+
+            foreach (var project in pum.Projects.ToList())
+            {
+                foreach (var item in actProj)
+                {
+                    if (project.PROJECT_ID == item.PROJECT_ID)
+                    {
+                        pum.Projects.Remove(project);
+                    }
+                }
+            }
+            return PartialView("../Shared/_Project_modle", pum);
 
         }
     }

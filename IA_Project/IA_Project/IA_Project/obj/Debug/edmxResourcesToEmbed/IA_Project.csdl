@@ -8,6 +8,7 @@
     <Property Name="ACTOR_ID" Type="Int32" Nullable="false" />
     <Property Name="PROJECT_ID" Type="Int32" Nullable="false" />
     <Property Name="AROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AssignStatus" Type="Boolean" />
     <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__ACTOR_PRO__ACTOR__173876EA" FromRole="ACTOR_PROJECT" ToRole="S_ACTORS" />
     <NavigationProperty Name="PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__182C9B23" FromRole="ACTOR_PROJECT" ToRole="PROJECT" />
   </EntityType>
@@ -19,8 +20,8 @@
     <Property Name="NAME_PROJECT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="DESC_PROJECT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="P_STATUS" Type="Boolean" Nullable="false" />
-    <Property Name="START_TIME" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="END_TIME" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="START_TIME" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="END_TIME" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="PRICE" Type="Int32" Nullable="false" />
     <Property Name="PROJECT_OWNER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__182C9B23" FromRole="PROJECT" ToRole="ACTOR_PROJECT" />

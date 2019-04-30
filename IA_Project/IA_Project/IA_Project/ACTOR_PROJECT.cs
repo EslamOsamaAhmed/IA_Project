@@ -18,6 +18,7 @@ namespace IA_Project
         public int ACTOR_ID { get; set; }
         public int PROJECT_ID { get; set; }
         public string AROLE { get; set; }
+        public Nullable<bool> AssignStatus { get; set; }
     
         public virtual S_ACTORS S_ACTORS { get; set; }
         public virtual PROJECT PROJECT { get; set; }

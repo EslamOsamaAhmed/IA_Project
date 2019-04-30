@@ -13,6 +13,7 @@
           <Property Name="ACTOR_ID" Type="int" Nullable="false" />
           <Property Name="PROJECT_ID" Type="int" Nullable="false" />
           <Property Name="AROLE" Type="varchar" MaxLength="100" />
+          <Property Name="AssignStatus" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IA_Project.dbo.EVALUATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -50,8 +51,8 @@ warning 6002: The table/view 'IA_Project.dbo.NOTIF' does not have a primary key 
           <Property Name="NAME_PROJECT" Type="varchar" MaxLength="200" />
           <Property Name="DESC_PROJECT" Type="varchar" MaxLength="200" />
           <Property Name="P_STATUS" Type="bit" Nullable="false" />
-          <Property Name="START_TIME" Type="time" Precision="7" Nullable="false" />
-          <Property Name="END_TIME" Type="time" Precision="7" Nullable="false" />
+          <Property Name="START_TIME" Type="date" Nullable="false" />
+          <Property Name="END_TIME" Type="date" Nullable="false" />
           <Property Name="PRICE" Type="int" Nullable="false" />
           <Property Name="PROJECT_OWNER" Type="varchar" MaxLength="200" />
         </EntityType>
@@ -277,6 +278,7 @@ warning 6035: The relationship 'FK__PROJECT__PROJECT__145C0A3F' has columns that
           <Property Name="ACTOR_ID" Type="Int32" Nullable="false" />
           <Property Name="PROJECT_ID" Type="Int32" Nullable="false" />
           <Property Name="AROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AssignStatus" Type="Boolean" />
           <NavigationProperty Name="S_ACTORS" Relationship="Self.FK__ACTOR_PRO__ACTOR__173876EA" FromRole="ACTOR_PROJECT" ToRole="S_ACTORS" />
           <NavigationProperty Name="PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__182C9B23" FromRole="ACTOR_PROJECT" ToRole="PROJECT" />
         </EntityType>
@@ -288,8 +290,8 @@ warning 6035: The relationship 'FK__PROJECT__PROJECT__145C0A3F' has columns that
           <Property Name="NAME_PROJECT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="DESC_PROJECT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="P_STATUS" Type="Boolean" Nullable="false" />
-          <Property Name="START_TIME" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="END_TIME" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="START_TIME" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="END_TIME" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PRICE" Type="Int32" Nullable="false" />
           <Property Name="PROJECT_OWNER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ACTOR_PROJECT" Relationship="Self.FK__ACTOR_PRO__PROJE__182C9B23" FromRole="PROJECT" ToRole="ACTOR_PROJECT" />
@@ -524,6 +526,7 @@ warning 6035: The relationship 'FK__PROJECT__PROJECT__145C0A3F' has columns that
                 <ScalarProperty Name="ACTOR_ID" ColumnName="ACTOR_ID" />
                 <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
                 <ScalarProperty Name="AROLE" ColumnName="AROLE" />
+                <ScalarProperty Name="AssignStatus" ColumnName="AssignStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

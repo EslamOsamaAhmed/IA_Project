@@ -11,5 +11,6 @@ namespace IA_Project.ViewModels
         public List<S_ACTORS> Users { get; set; }
         public PROJECT Project { get; set; }
         public S_ACTORS Actor { get; set; }
+        public PROJECT project { get; set; }
     }
 }

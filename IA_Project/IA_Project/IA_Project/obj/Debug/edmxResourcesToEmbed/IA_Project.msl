@@ -8,6 +8,7 @@
           <ScalarProperty Name="ACTOR_ID" ColumnName="ACTOR_ID" />
           <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
           <ScalarProperty Name="AROLE" ColumnName="AROLE" />
+          <ScalarProperty Name="AssignStatus" ColumnName="AssignStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
