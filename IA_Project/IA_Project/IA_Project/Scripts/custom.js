@@ -11,6 +11,42 @@
     $("#codereset").hide();
     $("#passreset").hide();
 
+    $("#Add_project_button").click(function () {
+        if ($("#Add_Project_form").valid()) {
+            var my_data = $("#Add_Project_form").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/Home/Index",
+                data: my_data,
+                success: function (response) {
+                    $("#Add_Project_form")[0].reset();
+
+                }
+            })
+        }
+    })
+
+    $(".res-t").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/fprofile/getNotif",
+            dataType: 'HTML', 
+            success: function (response) {
+                $(".ress").html(response);
+            }
+        })
+    })
+
+    $(".req").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/fprofile/getNotifreq",
+            dataType: 'HTML',
+            success: function (response) {
+                $(".reqs").html(response);
+            }
+        })
+    })
 
     var check = 0;
 
@@ -258,6 +294,7 @@
             url: "/Home/Sendcode",
             data: data,
             success: function (response) {
+                alert(response)
                 if (response == 50) {
                     $("#emailreset").css({
                         borderColor: "rgb(229, 145, 148)",
@@ -319,6 +356,77 @@
         })
     });
 });
+
+$(window).load(function () {
+    $.ajax({
+        type: "GET",
+        url: "/Home/Display_NotAssign",
+        success: function (response) {
+            $("#heree").html(response)
+            $(".btn-proj").hide();
+
+        }
+    })
+
+});
+
+function newval(id) {
+    alert(id)
+    $.ajax({
+        type: "GET",
+        url: "/fprofile/AllUserstoAssign/" + id,
+        success: function (response) {
+            $("#show-users-role").html(response)
+        }
+    })
+}
+
+function ass_data(id) {
+    //alert(id1 + " " + id2);
+    $.ajax({
+
+        type: "POST",
+        url: "/fprofile/AllUsersReqAssign/" + id,
+        success: function (response) {
+            if (response == 12) {
+                alert("done");
+            } else {
+                alert("error");
+            }
+        }
+    })
+}
+
+function del(id){
+    $.ajax({
+        type: "POST",
+        url: "/fprofile/DeleteReq/" + id,
+        success: function (response) {
+            if (response == 12) {
+                $(".delete").parent().parent().fadeOut();
+                alert("done");
+            } else {
+                alert("error");
+            }
+        }
+    })
+}
+
+function acce(id) {
+    $.ajax({
+        type: "POST",
+        url: "/fprofile/AcceptReq/" + id,
+        success: function (response) {
+            if (response == 12) {
+                $(".accept").parent().parent().fadeOut();
+                alert("done");
+            } else {
+                alert("error");
+            }
+        }
+    })
+}
+
 
 // Draw the chart and set the chart values
 function drawChart() {

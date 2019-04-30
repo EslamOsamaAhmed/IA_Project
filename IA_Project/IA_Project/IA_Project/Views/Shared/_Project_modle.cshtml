@@ -10,14 +10,19 @@
                 </div>
                 <div class="card-body ">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
+
                     <p class="card-text">@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
                     <p class="card-text"><b>Cost : </b> @Html.DisplayFor(modelItem => item.PRICE) $</p>
                     <p class="card-text">Deadline :@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
-                    <button class="btn btn-primary float-right btn-proj">Invite MD</button>
+
+                    <button class="btn btn-primary float-right btn-proj" data-toggle="modal" data-target="#assign-modal" onclick="newval(@item.PROJECT_ID)">Invite MD</button>
+                    
                     <button class="btn btn-danger float-right btn-proj" type="submit" id="delete-project" onclick="DeleteProject(@item.PROJECT_ID)">Delete</button>
                     <button class="btn btn-warning float-right btn-proj" id="update-project" type="button" data-toggle="modal" data-target="#update-project-model">Edit</button>
+               
                 </div>
             </div>
         </div>
+        
     }
 </div>

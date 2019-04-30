@@ -4,45 +4,45 @@
         
         <div class="form-group row">
             
-            @Html.LabelFor(x => x.Project.NAME_PROJECT, new { @class = "col-4 col-form-label" })
+            @Html.LabelFor(x => x.project.NAME_PROJECT, new { @class = "col-4 col-form-label" })
 
             <div class="col-8">
-                @Html.TextBoxFor(m => m.Project.NAME_PROJECT, new { @class = "form-control here", id = "project_name", name = "project_name", placeholder = "Name", type = "text" })
-                @Html.ValidationMessageFor(x => x.Project.NAME_PROJECT)
+                @Html.TextBoxFor(m => m.project.NAME_PROJECT, new { @class = "form-control here", id = "project_name", name = "project_name", placeholder = "Name", type = "text" })
+                @Html.ValidationMessageFor(x => x.project.NAME_PROJECT)
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(x => x.Project.DESC_PROJECT, new { @class = "col-4 col-form-label" })
+            @Html.LabelFor(x => x.project.DESC_PROJECT, new { @class = "col-4 col-form-label" })
             <div class="col-8">
-                @Html.TextAreaFor(m => m.Project.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", type = "text" })
-                @Html.ValidationMessageFor(x => x.Project.DESC_PROJECT)
+                @Html.TextAreaFor(m => m.project.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", type = "text" })
+                @Html.ValidationMessageFor(x => x.project.DESC_PROJECT)
             </div>
         </div>
         <div class="form-group row">
-            @Html.LabelFor(x => x.Project.START_TIME, new { @class = "col-4 col-form-label" })
+            @Html.LabelFor(x => x.project.START_TIME, new { @class = "col-4 col-form-label" })
             <div class="col-8">
-                @Html.TextBoxFor(m => m.Project.START_TIME, new { id = "start_time", name = "start_time", placeholder = "MM/DD/YY", @class = "form-control here", type = "text" })
-                @Html.ValidationMessageFor(x => x.Project.START_TIME)
+                @Html.TextBoxFor(m => m.project.START_TIME, new { id = "start_time", name = "start_time", placeholder = "MM/DD/YY", @class = "form-control here", type = "text" })
+                @Html.ValidationMessageFor(x => x.project.START_TIME)
             </div>
         </div>
         <div class="form-group row">
-            @Html.LabelFor(x => x.Project.END_TIME, new { @class = "col-4 col-form-label" })
+            @Html.LabelFor(x => x.project.END_TIME, new { @class = "col-4 col-form-label" })
             <div class="col-8">
-                @Html.TextBoxFor(m => m.Project.END_TIME, new { id = "end_time", name = "end_time", placeholder = "MM/DD/YY", @class = "form-control here", type = "text" })
-                @Html.ValidationMessageFor(x => x.Project.END_TIME)
+                @Html.TextBoxFor(m => m.project.END_TIME, new { id = "end_time", name = "end_time", placeholder = "MM/DD/YY", @class = "form-control here", type = "text" })
+                @Html.ValidationMessageFor(x => x.project.END_TIME)
             </div>
         </div>
         <div class="form-group row">
-            @Html.LabelFor(x => x.Project.PRICE, new { @class = "col-4 col-form-label" })
+            @Html.LabelFor(x => x.project.PRICE, new { @class = "col-4 col-form-label" })
             <div class="col-8">
-                @Html.TextBoxFor(m => m.Project.PRICE, new { id = "price", name = "price", placeholder = "Project Cost", @class = "form-control here", type = "text" })
-                @Html.ValidationMessageFor(x => x.Project.PRICE)
+                @Html.TextBoxFor(m => m.project.PRICE, new { id = "price", name = "price", placeholder = "Project Cost", @class = "form-control here", type = "text" })
+                @Html.ValidationMessageFor(x => x.project.PRICE)
             </div>
         </div>
         <div class="form-group row modal-footer">
             <div class="offset-4 col-8">
-                <button name="Add_project" type="button" id="update-t_@Model.Project.PROJECT_ID" class="btn btn-success" data-dismiss="modal">Updat</button>
+                <button name="Add_project" type="button" id="update-t_@Model.project.PROJECT_ID" class="btn btn-success" data-dismiss="modal">Updat</button>
             </div>
         </div>
         

@@ -331,21 +331,11 @@
 
                         <div class="col-12  req-res-sub-tab">
                             <div class="col-12 ress">
-                                <div class="col-12 ress-content">
-                                    <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
-                                    <div class="col-5 ress-content-name"><strong>Lorem Ispum</strong></div>
-                                    <div class="col-5 ress-s">accepted-refused your request</div>
-                                </div>
+                                
                             </div> <!-- end ress-->
 
                             <div class="col-12 noactive reqs">
-                                <div class="col-12 reqs-content">
-                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
-                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
-                                    <div class="col-3 reqs-s">sent you a request</div>
-                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
-                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
@@ -386,6 +376,22 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade " data-backdrop="static" data-keyboard="false" id="assign-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-login-header" Assign Projects to Roles</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="show-users-role">
+           </div><!--modal-body-->
+        </div><!--modal-content-->
+    </div><!--modal-dialog-->
+</div><!--modal-->
 
 @Html.Partial("_Footer") 
 
@@ -435,7 +441,7 @@
         $(document).ready(function () {
 
             $("#add-user-btn").click(function () {
-                
+
                 var my_data = $("#add-user-form").serialize();
                 $.ajax({
                     type: "POST",
@@ -445,12 +451,12 @@
                         if (response.result == 1) {
                             $("#add-user-form")[0].reset();
                         }
-                        else 
+                        else
                             alert("Error")
-                            
+
                     }
                 })
-                
+
             });
 
             $("#current-project-tab-list").click(function () {
@@ -493,19 +499,16 @@
             });
 
             $("#delete-section").click(function () {
-                
-                
                 $.ajax({
                     type: "GET",
                     url: "/fprofile/Display_All_Users",
                     success: function (response) {
-                        $("#curser").html(response)     
+                        $("#curser").html(response)
                     }
                 })
             });
-           
+
         });
 
-
-    </script>>
+    </script>
 }   

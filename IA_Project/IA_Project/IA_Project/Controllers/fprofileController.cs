@@ -22,9 +22,9 @@ namespace IA_Project.Controllers
             PROJECT project = new PROJECT();
             ProjectsUsersModel pum = new ProjectsUsersModel
             {
-                Users = db.S_ACTORS.ToList() ,
+                Users = db.S_ACTORS.ToList(),
                 Projects = db.PROJECTs.ToList(),
-                Project = project
+                project = project 
             };
 
             return View(pum);
@@ -35,9 +35,6 @@ namespace IA_Project.Controllers
         {
             try
             {
-                /*DataBaseFuncController x = new DataBaseFuncController();
-            x.page(obj);
-            return View();*/
                 S_PAGE s = new S_PAGE() { PAGE_URL = pageurl, ACTOR_ID_P = Int32.Parse(actorid), PAGE_ID = Int32.Parse(pageid) };
                 DataBaseFuncController x = new DataBaseFuncController();
 
@@ -128,5 +125,138 @@ namespace IA_Project.Controllers
 
         }
 
-    } 
+        [HttpGet]
+        public ActionResult AllUserstoAssign(int id)
+        {
+            
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            S_ACTORS act = new S_ACTORS();
+            PROJECT project = new PROJECT();
+
+            ProjectsUsersModel pum = new ProjectsUsersModel()
+            {
+                Users = db.GetAllActors().ToList(),
+                project = db.GetProjectID(id)
+            };
+
+            return PartialView("../Shared/_ModalAssign", pum);
+        }
+
+        [HttpPost]
+        public ActionResult AllUsersReqAssign(int id1)
+        {
+            DataBaseFuncController db = new DataBaseFuncController();
+
+
+            ACTOR_PROJECT act_proj = new ACTOR_PROJECT() { ACTOR_ID = id1, PROJECT_ID = 10};
+            db.AddProjectActor(act_proj);
+            return Json(12, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public ActionResult getNotif()
+        {
+
+            DataBaseFuncController db = new DataBaseFuncController();
+            List<S_ACTORS> users = new List<S_ACTORS>();
+
+            NOTIF act = new NOTIF();
+
+            S_ACTORS actors = new S_ACTORS();
+
+            var notifs = db.GetAllNotif().ToList();
+
+            foreach(var x in notifs)
+            {
+                if(x.ACTOR_ID_TO.ToString() == Session["ActorId"].ToString())
+                {
+                    users.Add(db.GetActorDataByID(x.ACTOR_ID_FROM));
+                }
+            }
+
+            Notification pum = new Notification()
+            {
+                Users = users,
+            };
+
+            return PartialView("../Shared/_Res", pum);
+        }
+
+        [HttpGet]
+        public ActionResult getNotifreq()
+        {
+
+            DataBaseFuncController db = new DataBaseFuncController();
+            List<S_ACTORS> users = new List<S_ACTORS>();
+
+            NOTIF act = new NOTIF();
+
+            S_ACTORS actors = new S_ACTORS();
+
+            var notifs = db.GetAllNotif().ToList();
+
+            foreach (var x in notifs)
+            {
+                if (x.ACTOR_ID_TO.ToString() == Session["ActorId"].ToString())
+                {
+                    users.Add(db.GetActorDataByID(x.ACTOR_ID_FROM));
+                }
+            }
+
+            Notification pum = new Notification()
+            {
+                Users = users,
+            };
+
+            return PartialView("../Shared/_Req", pum);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteReq(int id)
+        {
+
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            ACTOR_PROJECT x = new ACTOR_PROJECT() { AssignStatus = false };
+
+            
+
+            if(db.UpdateActorProject(id, x) == 1)
+            {
+                return Json(12, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(13, JsonRequestBehavior.AllowGet);
+            }
+
+
+        }
+
+        [HttpPost]
+        public ActionResult AcceptReq(int id)
+        {
+
+            DataBaseFuncController db = new DataBaseFuncController();
+
+            ACTOR_PROJECT x = new ACTOR_PROJECT() { AssignStatus = true };
+
+
+
+            if (db.UpdateActorProject(id, x) == 1)
+            {
+                return Json(12, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(13, JsonRequestBehavior.AllowGet);
+            }
+
+
+        }
+
+
+    }
 }

@@ -1,0 +1,49 @@
+﻿@model IA_Project.ViewModels.ProjectsUsersModel
+<div class="tab-content" id="nav-tabContent">
+    @foreach (var item in Model.Users)
+    {
+        if (Session["Role"].ToString() == "Customer")
+        {
+            if (item.AROLE == "Marketing Director")
+            {
+            <from id="ass-data">
+                <div id="assign-user" class="col-12 assing-btn-user">
+                    <div class="col-6 username">@Html.DisplayFor(modelItem => item.USERNAME) </div>
+                    <button type="button" class="btn btn-success" id="assign" onclick="ass_data(@item.ACTOR_ID)">Assign</button>
+                    <br />
+                </div>
+            </from>
+            }
+        }
+        else if (Session["Role"].ToString() == "Team Leader" || Session["Role"].ToString() == "Marketing Director")
+        {
+            if (item.AROLE == "Team Trainee") {
+            <from id="ass-data">
+                <div id="assign-user" class="col-12 assing-btn-user">
+                    <div class="col-6 username">@Html.DisplayFor(modelItem => item.USERNAME) </div>
+                    <button type="button" class="btn btn-success" id="assign" onclick="ass_data(@item.ACTOR_ID)">Assign</button>
+                    <br />
+                </div>
+            </from>
+            }
+        }
+        else if (Session["Role"].ToString() == "Marketing Director")
+        {
+            if (item.AROLE == "Team Trainee" || item.AROLE == "Team Leaders")
+            {
+                <from id="ass-data">
+                    <div id="assign-user" class="col-12 assing-btn-user">
+                        <div class="col-6 username">@Html.DisplayFor(modelItem => item.USERNAME) </div>
+                        <button type="button" class="btn btn-success" id="assign" onclick="ass_data(@item.ACTOR_ID)">Assign</button>
+                        <br />
+                    </div>
+                </from>
+            }
+        }
+
+    }
+
+</div><!--tab-content-->
+
+
+

@@ -1,0 +1,10 @@
+﻿@model IA_Project.ViewModels.Notification
+
+@foreach (var user in Model.Users)
+{
+    <div class="col-12 ress-content">
+        <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+        <div class="col-5 ress-content-name"><strong>@user.USERNAME</strong></div>
+        <div class="col-5 ress-s">accepted-refused your request</div>
+    </div>
+}

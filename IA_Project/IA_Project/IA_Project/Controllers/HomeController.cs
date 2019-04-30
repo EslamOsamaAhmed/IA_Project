@@ -6,19 +6,30 @@ using System.Web.Mvc;
 using System.IO;
 using System.Net.Mail;
 using IA_Project.Models;
+using IA_Project.ViewModels;
+
 
 namespace IA_Project.Controllers
 {
     public class HomeController : Controller
     {
+        private IA_ProjectEntities dbo = new IA_ProjectEntities();
+
         int randno;
         // GET: Home
         [HttpGet]
         public ActionResult Index()
         {
             PROJECT project = new PROJECT();
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = dbo.S_ACTORS.ToList(),
+                Projects = dbo.PROJECTs.ToList(),
+                project = { }
 
-            return View();
+            };
+
+            return View(pum);
         }
         [HttpPost]
         public ActionResult Index(PROJECT project)
@@ -127,6 +138,7 @@ namespace IA_Project.Controllers
                     {
                         Session["ActorId"] = userDetail.ACTOR_ID.ToString();
                         Session["UserName"] = userDetail.USERNAME.ToString();
+                        Session["Email"] = userDetail.EMAIL.ToString();
                         Session["Role"] = userDetail.AROLE.ToString();
                         Session["status"] = "done";
                         result = "suc";
@@ -156,7 +168,7 @@ namespace IA_Project.Controllers
             var actinfo = db.GetActorData(emailf);
 
             DateTime localDate = DateTime.Now;
-            int seconds = (int)(actinfo.RESETTIME - localDate).Value.TotalSeconds;
+            int seconds = (int)(localDate - actinfo.RESETTIME).Value.TotalSeconds;
 
 
             if (coderes == actinfo.CODE.ToString())
@@ -289,18 +301,7 @@ namespace IA_Project.Controllers
                 return View();
             else { return RedirectToAction("Login"); }
         }
-<<<<<<< HEAD
-        /*[HttpPost]
-        public ActionResult Index(String project_name , String des_project , System.DateTime start_time , System.DateTime end_time , int price)
-        {
-            PROJECT project = new PROJECT { NAME_PROJECT = project_name , DESC_PROJECT = des_project , P_STATUS = false , START_TIME = start_time , END_TIME = end_time , PRICE = price};
-            DataBaseFuncController db = new DataBaseFuncController();
-            db.AddProject(project);
-            return RedirectToAction("Index");
-        }*/
-=======
-       
->>>>>>> 5f16c9f042c918d5f9c64f2a3272be63cdaf67dc
+               
         [HttpPost]
         public ActionResult Add_User(string fname, string lname, string jobdesc, HttpPostedFileBase photo, string mobile, string role, string username, string password, string email)
         {
@@ -347,6 +348,31 @@ namespace IA_Project.Controllers
             {
                 return Json(ex.ToString(), JsonRequestBehavior.AllowGet);
             }
+
+        }
+
+        public ActionResult Display_NotAssign()
+        {
+
+            var actProj = dbo.ACTOR_PROJECT.ToList();
+
+            ProjectsUsersModel pum = new ProjectsUsersModel
+            {
+                Users = dbo.S_ACTORS.ToList(),
+                Projects = dbo.PROJECTs.ToList()
+            };
+
+            foreach (var project in pum.Projects.ToList())
+            {
+                foreach (var item in actProj)
+                {
+                    if (project.PROJECT_ID == item.PROJECT_ID)
+                    {
+                        pum.Projects.Remove(project);
+                    }
+                }
+            }
+            return PartialView("../Shared/_Project_modle", pum);
 
         }
     }

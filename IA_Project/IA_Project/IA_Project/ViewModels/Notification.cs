@@ -5,10 +5,8 @@ using System.Web;
 
 namespace IA_Project.ViewModels
 {
-    public class ProjectsUsersModel
+    public class Notification
     {
-        public List<PROJECT> Projects { get; set; }
         public List<S_ACTORS> Users { get; set; }
-        public PROJECT project { get; set; }
     }
 }

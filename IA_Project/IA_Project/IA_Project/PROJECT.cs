@@ -24,8 +24,8 @@ namespace IA_Project
         public string NAME_PROJECT { get; set; }
         public string DESC_PROJECT { get; set; }
         public bool P_STATUS { get; set; }
-        public System.TimeSpan START_TIME { get; set; }
-        public System.TimeSpan END_TIME { get; set; }
+        public System.DateTime START_TIME { get; set; }
+        public System.DateTime END_TIME { get; set; }
         public int PRICE { get; set; }
         public string PROJECT_OWNER { get; set; }
     

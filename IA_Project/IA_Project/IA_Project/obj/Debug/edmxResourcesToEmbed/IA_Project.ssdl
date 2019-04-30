@@ -8,6 +8,7 @@
     <Property Name="ACTOR_ID" Type="int" Nullable="false" />
     <Property Name="PROJECT_ID" Type="int" Nullable="false" />
     <Property Name="AROLE" Type="varchar" MaxLength="100" />
+    <Property Name="AssignStatus" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'IA_Project.dbo.EVALUATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -45,8 +46,8 @@ warning 6002: The table/view 'IA_Project.dbo.NOTIF' does not have a primary key 
     <Property Name="NAME_PROJECT" Type="varchar" MaxLength="200" />
     <Property Name="DESC_PROJECT" Type="varchar" MaxLength="200" />
     <Property Name="P_STATUS" Type="bit" Nullable="false" />
-    <Property Name="START_TIME" Type="time" Precision="7" Nullable="false" />
-    <Property Name="END_TIME" Type="time" Precision="7" Nullable="false" />
+    <Property Name="START_TIME" Type="date" Nullable="false" />
+    <Property Name="END_TIME" Type="date" Nullable="false" />
     <Property Name="PRICE" Type="int" Nullable="false" />
     <Property Name="PROJECT_OWNER" Type="varchar" MaxLength="200" />
   </EntityType>
