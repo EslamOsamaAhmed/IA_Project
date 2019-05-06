@@ -34,26 +34,6 @@ namespace IA_Project.Controllers
             }
         }
 
-        public int RemoveActorProject(int id)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                try
-                {
-                    var obj = _entities.ACTOR_PROJECT.FirstOrDefault(c => c.ACTOR_ID == id);
-
-                    _entities.ACTOR_PROJECT.Remove(obj);
-                    _entities.SaveChanges();
-
-                    return 1;
-                }
-                catch
-                {
-                    return 0;
-                }
-            }
-        }
-
         public int RemoveProject(int id)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
@@ -90,86 +70,8 @@ namespace IA_Project.Controllers
                     obj.LNAME = act.LNAME;
                     obj.MOBILE = act.MOBILE;
                     obj.FNAME = act.FNAME;
+                    obj.PHOTO = act.PHOTO;
                     obj.EMAIL = act.EMAIL;
-                    obj.RESETTIME = act.RESETTIME;
-                    obj.CODE = act.CODE;
-                    obj.PASSWORD = act.PASSWORD;
-
-                    _entities.SaveChanges();
-
-                    return "Done, Updated";
-                }
-                catch (Exception ex)
-                {
-                    return ex.ToString();
-                }
-            }
-        }
-
-        public int UpdateActorProject(int id, ACTOR_PROJECT act)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                try
-                {
-                    var obj = _entities.ACTOR_PROJECT.FirstOrDefault(c => c.ACTOR_ID == id);
-                    if (obj == null)
-                    {
-                        return 0;
-                    }
-
-                    obj.AssignStatus = act.AssignStatus;
-
-                    _entities.SaveChanges();
-
-                    return 1;
-                }
-                catch (Exception ex)
-                {
-                    return 0;
-                }
-            }
-        }
-
-
-        public String UpdateActorReset(int id, S_ACTORS act)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                try
-                {
-                    var obj = _entities.S_ACTORS.FirstOrDefault(c => c.ACTOR_ID == id);
-                    if (obj == null)
-                    {
-                        return "Null Object";
-                    }
-
-                    obj.RESETTIME = act.RESETTIME;
-                    obj.CODE = act.CODE;
-
-                    _entities.SaveChanges();
-
-                    return "Done, Updated";
-                }
-                catch (Exception ex)
-                {
-                    return ex.ToString();
-                }
-            }
-        }
-
-        public String UpdatePassReset(int id, S_ACTORS act)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                try
-                {
-                    var obj = _entities.S_ACTORS.FirstOrDefault(c => c.ACTOR_ID == id);
-                    if (obj == null)
-                    {
-                        return "Null Object";
-                    }
-
                     obj.PASSWORD = act.PASSWORD;
 
                     _entities.SaveChanges();
@@ -231,24 +133,6 @@ namespace IA_Project.Controllers
             }
         }
 
-        public String AddProjectActor(ACTOR_PROJECT act_proj)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                try
-                {
-                    _entities.ACTOR_PROJECT.Add(act_proj);
-                    _entities.SaveChanges();
-
-                    return "Done, Updated";
-                }
-                catch (Exception ex)
-                {
-                    return ex.ToString();
-                }
-            }
-        }
-
         public String page(S_PAGE proj)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
@@ -294,30 +178,11 @@ namespace IA_Project.Controllers
             }
         }
 
-        public ACTOR_PROJECT GetActorProject(int ID)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                var returnedVal = _entities.ACTOR_PROJECT.FirstOrDefault(aa => aa.ACTOR_ID == ID);
-                return returnedVal;
-            }
-        }
-
-
         public PROJECT GetProjectID(int ID)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 var returnedVal = _entities.PROJECTs.FirstOrDefault(aa => aa.PROJECT_ID == ID);
-                return returnedVal;
-            }
-        }
-
-        public PROJECT GetProjectName(string name)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                var returnedVal = _entities.PROJECTs.FirstOrDefault(aa => aa.NAME_PROJECT == name);
                 return returnedVal;
             }
         }
@@ -340,25 +205,6 @@ namespace IA_Project.Controllers
             }
         }
 
-        public S_ACTORS GetActorDataRole(String role)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                var returnedVal = _entities.S_ACTORS.FirstOrDefault(aa => aa.AROLE == role);
-                return returnedVal;
-            }
-        }
-
-        public S_ACTORS GetActorDataUsername(String username)
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                var returnedVal = _entities.S_ACTORS.FirstOrDefault(aa => aa.USERNAME == username);
-                return returnedVal;
-            }
-        }
-
-
         public IEnumerable<S_ACTORS> GetAllActors()
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
@@ -367,27 +213,11 @@ namespace IA_Project.Controllers
             }
         }
 
-        public IEnumerable<PROJECT> GetAllProjects()
+        public IEnumerable<PROJECT> GetAllProjects(int ID)
         {
             using (IA_ProjectEntities _entities = new IA_ProjectEntities())
             {
                 return _entities.PROJECTs.ToList();
-            }
-        }
-
-        public IEnumerable<NOTIF> GetAllNotif()
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                return _entities.NOTIFs.ToList();
-            }
-        }
-
-        public IEnumerable<ACTOR_PROJECT> GetAllAC_Proj()
-        {
-            using (IA_ProjectEntities _entities = new IA_ProjectEntities())
-            {
-                return _entities.ACTOR_PROJECT.ToList();
             }
         }
     }

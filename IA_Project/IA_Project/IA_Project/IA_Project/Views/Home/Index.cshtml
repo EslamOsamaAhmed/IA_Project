@@ -1,0 +1,217 @@
+﻿
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@model IA_Project.PROJECT
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="home-section">
+    <div class="home-wrap">
+    <header>
+        <div class="header-wrap">
+          <div class="header-background">
+             
+          </div><!--header-background-->
+        </div><!--header-wrap-->
+        <div class="project-forms"></div><!--project-forms-->
+    </header>
+        
+    </div><!--home-wrap-->
+</section><!--homw-section-->
+
+<div class="container">
+    <div class="modal fade " data-backdrop="static" data-keyboard="false" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-maodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered login-maodal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-login-header">Sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="login-wrap tab-pane show active" role="tabpanel" id="login-controll">
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <!----<label for="login-name" class="col-form-label">Name:</label>-->
+                                    <input type="text" class="form-control login-input input-cust emvalid" placeholder="Email" id="login-name"
+                                            name="loginEmail" required>
+                                    <label id="eminvalid">Email is Incorret</label>
+                                </div>
+                                <div class="form-group">
+                                    <!----<label for="login-pass" class="col-form-label">Password:</label>-->
+                                    <input type="password" class="form-control login-input input-cust pasvalid" placeholder="Password" id="login-pass"
+                                            name="loginPass" required>
+                                    <label id="passinvalid">Password is Incorret</label>
+                                </div>
+                                <div class="forgot-pass">
+                                    <button id="login-forgot-pass" class="login-forgot-pass" type="button" name="forgot-btn">Forgot Password</button>
+                                </div><!--forgot-pass-->
+                                <div class="sign-btn form-group">
+                                    <button class="sign-in btn" type="button" name="sign-in" id="login">SIGN IN</button>
+                                </div>
+                                </form>
+                        </div><!--login-wrap-->
+
+                        <div class="register-wrap tab-pane" role="tabpanel" id="register-controll">
+                  <!-- <form id = "register-form"> -->
+                        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data",@class= "needs-validation" }))
+                        {
+                            <div class="form-group">
+                                <input type="text" class="form-control input-cust" id="fname" name = "fname" placeholder="First Name" required>
+                                <div class="invalid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-cust" id="lname" name = "lname" placeholder="Last Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-cust" id="mobile" name = "mobile" placeholder="Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control input-cust" id="email" name = "email" placeholder="email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-cust" id="role" name = "role" placeholder="Role" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-cust" id="username" name = "username" placeholder="username" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control input-cust" id="password" name = "password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" class="form-control input-cust" id="photo" name = "photo" placeholder="Photo" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control input-cust" id="jobdesc" rows="4" name = "jobdesc" placeholder="Job Descrption" required></textarea>
+                            </div>
+                            <div class="register-btn form-group">
+                                <button class="register btn" type="submit" name="register" id = "submit">register</button>
+                            </div><!--register--->
+                        <!--</form>-->
+                        }
+                        </div><!--register-->
+                    </div><!--tab-content-->
+                </div><!--modal-body-->
+
+                <div class="modal-footer">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="login-switch" data-toggle="list" href="#register-controll" role="tab" aria-controls="register">
+                            <span id="login-footer-span" class="modal-Fspan">Don't have an account?</span>
+                            Create Account
+                        </a>
+
+
+                        <a class="register-switch active text-hide" data-toggle="list" href="#login-controll" role="tab" aria-controls="login">
+                            <span id="login-footer-span" class="modal-Fspan"> Already have an account?</span>
+                            Sign in
+                        </a>
+
+                    </div><!--list-group-->
+                </div><!--modal-footer-->
+            </div><!--modal-content-->
+        </div><!--modal-dialog-->
+    </div><!--modal-->
+</div><!--container-->
+
+<div class="col-md-9">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Project Form</h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="Add_Project_form">
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.NAME_PROJECT, new { @class = "col-4 col-form-label" })
+                            
+                            <div class="col-8">
+                                @Html.TextBoxFor(m => m.NAME_PROJECT, new { @class = "form-control here", id = "project_name", name = "project_name", placeholder = "Name",  type = "text" })
+                                @Html.ValidationMessageFor(x => x.NAME_PROJECT )
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.DESC_PROJECT, new { @class = "col-4 col-form-label" })
+                            <div class="col-8">
+                                @Html.TextAreaFor(m => m.DESC_PROJECT, new { id = "des_project", name = "des_project", rows = "10", cols = "30", placeholder = "Desc", @class = "form-control here", type = "text" })
+                                @Html.ValidationMessageFor(x => x.DESC_PROJECT)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.P_STATUS, new { @class = "col-4 col-form-label" })
+
+                            <div class="col-8">
+                            @Html.CheckBoxFor(m => m.P_STATUS, new { @class = "form-control here" , id= "p_status" })
+                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.START_TIME, new { @class = "col-4 col-form-label" })
+                            <div class="col-8">
+                            @Html.TextBoxFor(m => m.START_TIME, new { id = "start_time", name = "start_time", placeholder = "MM/DD/YY", @class = "form-control here", type = "text" })
+                            @Html.ValidationMessageFor(x => x.START_TIME)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.END_TIME, new { @class = "col-4 col-form-label" })
+                            <div class="col-8">
+                                @Html.TextBoxFor(m => m.END_TIME, new { id = "end_time", name = "end_time", placeholder = "MM/DD/YY", @class = "form-control here",  type = "text" })
+                                @Html.ValidationMessageFor(x => x.END_TIME)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(x => x.PRICE, new { @class = "col-4 col-form-label" })
+                            <div class="col-8">
+                                @Html.TextBoxFor(m => m.PRICE, new { id = "price", name = "price", placeholder = "Project Cost", @class = "form-control here", type = "text" })
+                                @Html.ValidationMessageFor(x => x.PRICE)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <button name="Add_project" type="button" id="Add_project_button" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal for Confirmation Message -->
+<div class="modal fade" id="confirm_message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modle_title">Confirmation Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-success" >
+                Your Project Added Successful
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("_footer")

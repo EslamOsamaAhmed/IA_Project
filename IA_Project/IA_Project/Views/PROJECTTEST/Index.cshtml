@@ -1,0 +1,64 @@
+﻿@model IEnumerable<IA_Project.PROJECT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME_PROJECT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_PROJECT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.START_TIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.END_TIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_PROJECT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_PROJECT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.START_TIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.END_TIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRICE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PROJECT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PROJECT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PROJECT_ID })
+        </td>
+    </tr>
+}
+
+</table>

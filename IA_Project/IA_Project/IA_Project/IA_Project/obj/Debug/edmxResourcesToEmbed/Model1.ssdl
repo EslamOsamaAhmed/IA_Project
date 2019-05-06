@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IA_ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IA_Project.dbo.ACTOR_PROJECT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ACTOR_PROJECT">
+    <Key>
+      <PropertyRef Name="ACTOR_ID" />
+      <PropertyRef Name="PROJECT_ID" />
+    </Key>
+    <Property Name="ACTOR_ID" Type="int" Nullable="false" />
+    <Property Name="PROJECT_ID" Type="int" Nullable="false" />
+    <Property Name="AROLE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IA_Project.dbo.EVALUATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EVALUATE">
+    <Key>
+      <PropertyRef Name="ACTOR_ID_FROM" />
+      <PropertyRef Name="ACTOR_ID_TO" />
+      <PropertyRef Name="FEED_CONTENT" />
+      <PropertyRef Name="RATE" />
+    </Key>
+    <Property Name="ACTOR_ID_FROM" Type="int" Nullable="false" />
+    <Property Name="ACTOR_ID_TO" Type="int" Nullable="false" />
+    <Property Name="FEED_CONTENT" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RATE" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IA_Project.dbo.NOTIF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NOTIF">
+    <Key>
+      <PropertyRef Name="ACTOR_ID_FROM" />
+      <PropertyRef Name="ACTOR_ID_TO" />
+      <PropertyRef Name="CONTENT" />
+      <PropertyRef Name="TYPE" />
+    </Key>
+    <Property Name="ACTOR_ID_FROM" Type="int" Nullable="false" />
+    <Property Name="ACTOR_ID_TO" Type="int" Nullable="false" />
+    <Property Name="CONTENT" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TYPE" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROJECT">
+    <Key>
+      <PropertyRef Name="PROJECT_ID" />
+    </Key>
+    <Property Name="PROJECT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME_PROJECT" Type="varchar" MaxLength="500" />
+    <Property Name="DESC_PROJECT" Type="varchar" MaxLength="500" />
+    <Property Name="P_STATUS" Type="bit" Nullable="false" />
+    <Property Name="START_TIME" Type="time" Precision="7" Nullable="false" />
+    <Property Name="END_TIME" Type="time" Precision="7" Nullable="false" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="S_ACTORS">
+    <Key>
+      <PropertyRef Name="ACTOR_ID" />
+    </Key>
+    <Property Name="ACTOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FNAME" Type="varchar" MaxLength="100" />
+    <Property Name="LNAME" Type="varchar" MaxLength="100" />
+    <Property Name="JOB_DESC" Type="varchar" MaxLength="50" />
+    <Property Name="PHOTO" Type="image" />
+    <Property Name="MOBILE" Type="numeric" Precision="13" Scale="0" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="150" />
+    <Property Name="AROLE" Type="varchar" MaxLength="100" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="200" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="S_PAGE">
+    <Key>
+      <PropertyRef Name="PAGE_ID" />
+    </Key>
+    <Property Name="PAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PAGE_URL" Type="varchar" MaxLength="50" />
+    <Property Name="ACTOR_ID_P" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IA_Project.dbo.STAT_REPROT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="STAT_REPROT">
+    <Key>
+      <PropertyRef Name="ACTOR_ID_R" />
+      <PropertyRef Name="NO_PROJECTS" />
+      <PropertyRef Name="NO_COMPLETE" />
+      <PropertyRef Name="NO_DELV" />
+      <PropertyRef Name="NO_CURRENT" />
+      <PropertyRef Name="NO_PASSED" />
+      <PropertyRef Name="NO_FAILURE" />
+    </Key>
+    <Property Name="ACTOR_ID_R" Type="int" Nullable="false" />
+    <Property Name="NO_PROJECTS" Type="int" Nullable="false" />
+    <Property Name="NO_COMPLETE" Type="int" Nullable="false" />
+    <Property Name="NO_DELV" Type="int" Nullable="false" />
+    <Property Name="NO_CURRENT" Type="int" Nullable="false" />
+    <Property Name="NO_PASSED" Type="int" Nullable="false" />
+    <Property Name="NO_FAILURE" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ACTOR_PRO__ACTOR__145C0A3F">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="ACTOR_PROJECT">
+        <PropertyRef Name="ACTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ACTOR_PRO__PROJE__15502E78">
+    <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+    <End Role="ACTOR_PROJECT" Type="Self.ACTOR_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="ACTOR_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EVALUATE__ACTOR___1BFD2C07">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="EVALUATE">
+        <PropertyRef Name="ACTOR_ID_FROM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EVALUATE__ACTOR___1CF15040">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="EVALUATE" Type="Self.EVALUATE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="EVALUATE">
+        <PropertyRef Name="ACTOR_ID_TO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NOTIF__ACTOR_ID___1ED998B2">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="NOTIF">
+        <PropertyRef Name="ACTOR_ID_FROM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NOTIF__ACTOR_ID___1FCDBCEB">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="NOTIF" Type="Self.NOTIF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="NOTIF">
+        <PropertyRef Name="ACTOR_ID_TO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__S_PAGE__ACTOR_ID__182C9B23">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="S_PAGE" Type="Self.S_PAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="S_PAGE">
+        <PropertyRef Name="ACTOR_ID_P" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__STAT_REPR__ACTOR__1A14E395">
+    <End Role="S_ACTORS" Type="Self.S_ACTORS" Multiplicity="1" />
+    <End Role="STAT_REPROT" Type="Self.STAT_REPROT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="S_ACTORS">
+        <PropertyRef Name="ACTOR_ID" />
+      </Principal>
+      <Dependent Role="STAT_REPROT">
+        <PropertyRef Name="ACTOR_ID_R" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IA_ProjectModelStoreContainer">
+    <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_ACTORS" EntityType="Self.S_ACTORS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_PAGE" EntityType="Self.S_PAGE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACTOR_PROJECT" EntityType="Self.ACTOR_PROJECT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ACTOR_PROJECT].[ACTOR_ID] AS [ACTOR_ID], 
+    [ACTOR_PROJECT].[PROJECT_ID] AS [PROJECT_ID], 
+    [ACTOR_PROJECT].[AROLE] AS [AROLE]
+    FROM [dbo].[ACTOR_PROJECT] AS [ACTOR_PROJECT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EVALUATE" EntityType="Self.EVALUATE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EVALUATE].[ACTOR_ID_FROM] AS [ACTOR_ID_FROM], 
+    [EVALUATE].[ACTOR_ID_TO] AS [ACTOR_ID_TO], 
+    [EVALUATE].[FEED_CONTENT] AS [FEED_CONTENT], 
+    [EVALUATE].[RATE] AS [RATE]
+    FROM [dbo].[EVALUATE] AS [EVALUATE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NOTIF" EntityType="Self.NOTIF" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NOTIF].[ACTOR_ID_FROM] AS [ACTOR_ID_FROM], 
+    [NOTIF].[ACTOR_ID_TO] AS [ACTOR_ID_TO], 
+    [NOTIF].[CONTENT] AS [CONTENT], 
+    [NOTIF].[TYPE] AS [TYPE]
+    FROM [dbo].[NOTIF] AS [NOTIF]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="STAT_REPROT" EntityType="Self.STAT_REPROT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [STAT_REPROT].[ACTOR_ID_R] AS [ACTOR_ID_R], 
+    [STAT_REPROT].[NO_PROJECTS] AS [NO_PROJECTS], 
+    [STAT_REPROT].[NO_COMPLETE] AS [NO_COMPLETE], 
+    [STAT_REPROT].[NO_DELV] AS [NO_DELV], 
+    [STAT_REPROT].[NO_CURRENT] AS [NO_CURRENT], 
+    [STAT_REPROT].[NO_PASSED] AS [NO_PASSED], 
+    [STAT_REPROT].[NO_FAILURE] AS [NO_FAILURE]
+    FROM [dbo].[STAT_REPROT] AS [STAT_REPROT]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__ACTOR_PRO__ACTOR__145C0A3F" Association="Self.FK__ACTOR_PRO__ACTOR__145C0A3F">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ACTOR_PRO__PROJE__15502E78" Association="Self.FK__ACTOR_PRO__PROJE__15502E78">
+      <End Role="PROJECT" EntitySet="PROJECT" />
+      <End Role="ACTOR_PROJECT" EntitySet="ACTOR_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EVALUATE__ACTOR___1BFD2C07" Association="Self.FK__EVALUATE__ACTOR___1BFD2C07">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="EVALUATE" EntitySet="EVALUATE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EVALUATE__ACTOR___1CF15040" Association="Self.FK__EVALUATE__ACTOR___1CF15040">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="EVALUATE" EntitySet="EVALUATE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NOTIF__ACTOR_ID___1ED998B2" Association="Self.FK__NOTIF__ACTOR_ID___1ED998B2">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="NOTIF" EntitySet="NOTIF" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NOTIF__ACTOR_ID___1FCDBCEB" Association="Self.FK__NOTIF__ACTOR_ID___1FCDBCEB">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="NOTIF" EntitySet="NOTIF" />
+    </AssociationSet>
+    <AssociationSet Name="FK__S_PAGE__ACTOR_ID__182C9B23" Association="Self.FK__S_PAGE__ACTOR_ID__182C9B23">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="S_PAGE" EntitySet="S_PAGE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__STAT_REPR__ACTOR__1A14E395" Association="Self.FK__STAT_REPR__ACTOR__1A14E395">
+      <End Role="S_ACTORS" EntitySet="S_ACTORS" />
+      <End Role="STAT_REPROT" EntitySet="STAT_REPROT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

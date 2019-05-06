@@ -1,0 +1,494 @@
+﻿@using IA_Project.Models
+@using IA_Project.Controllers
+@model IA_Project.ViewModels.ProjectsUsersModel
+@{
+    ViewBag.Title = "fprofile";
+}
+
+
+
+<div class="container dashboard">
+    <div class="row">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="list-group dashboard-links">
+                @if(Session["Role"]!=null){
+                 if (Session["Role"].ToString() == "Admin")
+                {
+                <a href="#" class="list-group-item list-group-item-action dash-page dashboard-tab">Dashboard</a>
+                }}
+                <a href="#" id="show-profile-tab-list" class="list-group-item list-group-item-action dash-page active profile-tab">Profile</a>
+                <a href="#" id="update-profile-tab-list" class="list-group-item list-group-item-action dash-page edit-rprofile-tab">Edit Profile</a>
+                <a href="#" id="current-project-tab-list" class="list-group-item list-group-item-action dash-page curr-rpoject-tab">Current Projects</a>
+                <a href="#" id="completed-project-tab-list" class="list-group-item list-group-item-action dash-page complete-project-tab">Completed Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page assign-project-tab">Assigned Projects</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page request-res-tab">Requests & Responses</a>
+                <a href="#" class="list-group-item list-group-item-action dash-page prev-del-project-tab">Previous Delivered Projects</a>
+
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 edit-profile noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Your Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row" id="update_profile_section">
+                        <!--Update Profile Form-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 show-profile active-content tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div id="show-profile-section">
+                        <!--Display Profile Infromation-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 dahsboard-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Dashboard</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12  users-project-control-tab">
+                            <div class="col-6 users-tab">
+                                <span class="users-t active-t"><strong>Users</strong></span>
+                            </div>
+                            <div class="col-6 project-tab">
+                                <span class="project-t" id="project-t"><strong>Projects</strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div class="display_users">
+                                <div class="col-12 users-content">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4>Control Users</h4>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12  add-del-user-tab">
+                                                    <div class="col-6 req">
+                                                        <span class="add-t  active-t"><strong>Add</strong></span>
+                                                    </div>
+                                                    <div class="col-6 res">
+                                                        <span class="delete-t" id="delete-section"><strong>Delete</strong></span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12  add-del-user-tab">
+                                                    <div id="curser">
+                                                        <!--Display All Users For Delete-->
+                                                    </div>
+                                                    <div class="col-12 add-user">
+                                                        <div class="add-user-content">
+                                                            <form id="add-user-form">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="fname" name="fname" placeholder="First Name" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="lname" name="lname" placeholder="Last Name" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="mobile" name="mobile" placeholder="Phone Number" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="email" class="form-control input-cust" id="email" name="email" placeholder="email" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select name="role" class="form-control input-cust">
+                                                                        <option value="Marketing Director" selected>Marketing Director</option>
+                                                                        <option value="Team Leader">Team Leader</option>
+                                                                        <option value="Team Trainee">Team Trainee</option>
+                                                                        <option value="Customer">Customer</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control input-cust" id="username" name="username" placeholder="username" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control input-cust" id="password" name="password" placeholder="Password" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="file" class="form-control input-cust" id="photo" name="photo" placeholder="Photo" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control input-cust" id="jobdesc" rows="4" name="jobdesc" placeholder="Job Descrption" required></textarea>
+                                                                </div>
+                                                                <div class="register-btn form-group">
+                                                                    <button class="register btn" type="button" name="register" id="add-user-btn">Add User</button>
+                                                                </div><!--register--->
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 noactive display_projects">
+                                <div class="col-12 project-content row" id="admin_projects_view">
+                                    <!--Display All Projects For Admin-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 current-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Current Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div id="curser-current-project">
+                        <!--Display Current Project-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 complete-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Completed Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div id="curser-completed-project">
+                        <!--Display Completed Project-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 assign-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Assigned Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 request-response-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Requests & Responses</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12  req-res-sub-tab">
+                            <div class="col-6 req">
+                                <span class="req-t"><strong>Requests</strong></span>
+                            </div>
+                            <div class="col-6 res">
+                                <span class="res-t active-t"><strong>Resposnes</strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12  req-res-sub-tab">
+                            <div class="col-12 ress">
+                                <div class="col-12 ress-content">
+                                    <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-5 ress-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-5 ress-s">accepted-refused your request</div>
+                                </div>
+                            </div> <!-- end ress-->
+
+                            <div class="col-12 noactive reqs">
+                                <div class="col-12 reqs-content">
+                                    <div class="col-2 reqs-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+                                    <div class="col-3 reqs-content-name"><strong>Lorem Ispum</strong></div>
+                                    <div class="col-3 reqs-s">sent you a request</div>
+                                    <div class="col-2"><button type="button" class="btn btn-danger">Delete</button></div>
+                                    <div class="col-2"><button type="button" class="btn btn-success">Accept</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 prev-proj-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Previous Delivered Projects</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update-project-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modle_title">Update Project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="update-tab-modal">
+                <!--Open Delete Modal-->
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_Footer")
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        function DeleteUser(id) {
+            if (confirm("Are You Sure You want Deleted This User ?")) {
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Delete_User/" + id,
+                    success: function (response) {
+
+                        if (response.result == 1) {
+                            $("#Record_" + id).remove();
+                        }
+                        else
+                            alert("Not Deleted")
+                    }
+                })
+            }
+        }
+
+        function DeleteProject(id) {
+            if (confirm("Are You Sure You want Deleted This Project ?")) {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Delete_Project/" + id,
+                    success: function (response) {
+
+                        if (response.result == 1) {
+                            $("#Project-Record_" + id).remove();
+                        }
+                        else
+                            alert("Not Deleted")
+                    }
+                })
+            }
+        }
+
+        function openUpdate(id) {
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Edit_Project/" + id,
+                    success: function (response) {
+                        $("#update-tab-modal").html(response)
+                    }
+                })
+
+        }
+
+        function UpdateProject(id) {
+            var x = $("#Update_Project_form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/fprofile/Edit_Project/" + id,
+                    data: x ,
+                    success: function (response) {
+                        $("#admin_projects_view").html(response)
+                    }
+                })
+        }
+
+        function UpdateProfile() {
+            var x = $("#Form-Update-Profile").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/fprofile/Edit_Profile" ,
+                data: x,
+                success: function (response) {
+                    alert("Done")
+                }
+            })
+        }
+
+        $(document).ready(function () {
+
+            $("#add-user-btn").click(function () {
+
+                var my_data = $("#add-user-form").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Add_User",
+                    data: my_data,
+                    success: function (response) {
+                        if (response.result == 1) {
+                            $("#add-user-form")[0].reset();
+                        }
+                        else
+                            alert("Error")
+                    }
+                })
+
+            });
+
+            $("#current-project-tab-list").click(function () {
+                var status = "current";
+                var my_data = 'Project_Status=' + status;
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_projects_By_Type",
+                    data: my_data,
+                    success: function (response) {
+                        $("#curser-current-project").html(response)
+                    }
+                })
+            });
+
+
+            $(window).load(function () {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Show_Profile" ,
+                    success: function (response) {
+                        $("#show-profile-section").html(response)
+                    }
+                })
+            });
+
+            $("#completed-project-tab-list").click(function () {
+                var status = "completed";
+                var my_data = 'Project_Status=' + status;
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_projects_By_Type",
+                    data: my_data,
+                    success: function (response) {
+                        $("#curser-completed-project").html(response)
+                    }
+                })
+            });
+
+            $("#project-t").click(function () {
+                var status = "all";
+                var my_data = 'Project_Status=' + status;
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_projects_By_Type",
+                    data: my_data,
+                    success: function (response) {
+                        $("#admin_projects_view").html(response)
+                    }
+                })
+            });
+
+
+
+            $("#update-profile-tab-list").click(function () {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Edit_Profile" ,
+                    success: function (response) {
+                        $("#update_profile_section").html(response)
+                    }
+                })
+
+            });
+
+
+            $("#delete-section").click(function () {
+     $.ajax({
+                    type: "GET",
+                    url: "/fprofile/Display_All_Users",
+                    success: function (response) {
+                        $("#curser").html(response)
+                    }
+                })
+            });
+
+
+        });
+
+        function ass_data(id1, id2) {
+            //alert(id1 + " " + id2);
+           // var my_data = id1;
+            alert(id1);
+
+            $.ajax({
+
+                type: "POST",
+                url: "/fprofile/AllUsersReqAssign",
+                data: {ACTOR_ID : id1 , PROJECT_ID : id2},
+                success: function (response) {
+                    if (response.result == 12) {
+                        alert("done");
+                    } else {
+                        alert("error");
+                    }
+                }
+            })
+        }
+</script>}

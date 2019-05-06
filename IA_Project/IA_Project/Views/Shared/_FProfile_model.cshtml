@@ -1,0 +1,52 @@
+﻿@model IA_Project.ViewModels.ProjectsUsersModel
+<div class="row">
+    <div class="col-md-12 profile-section">
+        <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12">
+            <div class="profile-pic">
+                <img src="" class="p-img img-responsive" />
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-xl-7 col-sm-12">
+            <div class="profile-username">
+                <strong>Username : </strong> <span>@Html.DisplayFor(x => x.Actor.USERNAME)</span>
+            </div>
+
+            <div class="profile-name">
+                <strong>Name : </strong> <span>@Html.DisplayFor(x => x.Actor.FNAME)&nbsp;@Html.DisplayFor(x => x.Actor.LNAME)</span>
+            </div>
+
+            <br />
+
+            <div class="email-show">
+                <strong>Email : </strong>  <span>@Html.DisplayFor(x => x.Actor.EMAIL )</span>
+            </div>
+
+            <br />
+
+            <div class="mobile_number_show">
+                <span><strong>Number : </strong> @Html.DisplayFor(x => x.Actor.MOBILE)</span>
+            </div>
+
+            <br />
+
+            <div class="job_desc_show">
+                <strong>Job Description : </strong><br />
+                <span>
+                    @Html.DisplayFor(x => x.Actor.JOB_DESC)
+                </span>
+            </div>
+
+            <br />
+
+            <div class="role_show">
+                <span><strong>Role : </strong>@Html.DisplayFor(x => x.Actor.AROLE)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 charts">
+        <div class="col-sm-6 col-12" id="piechart"></div>
+
+        <div class="col-md-6 col-sm-12" id="piechart-2"></div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model IA_Project.ViewModels.ProjectsUsersModel
+<div class="col-12 delet-user">
+    @foreach (var item in Model.Users)
+    {
+        <div class="col-12 delete-content" id="Record_@item.ACTOR_ID">
+            <div class="col-2 ress-content-img"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+            <div class="col-5 ress-content-name"><strong>@Html.DisplayFor(modelItem => item.USERNAME)</strong></div>
+            <div class="col-3 ress-s">@Html.DisplayFor(modelItem => item.AROLE)</div>
+            <div class="col-2"><button type="submit" class="btn btn-danger" onclick="DeleteUser(@item.ACTOR_ID)">Delete</button></div>
+        </div>
+    }
+</div>
+ 

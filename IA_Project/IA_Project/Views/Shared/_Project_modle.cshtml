@@ -1,0 +1,57 @@
+﻿@model IA_Project.ViewModels.ProjectsUsersModel
+<div class="container row">
+    @foreach (var item in Model.Projects)
+    {
+
+        <div class="project col-lg-6 col-md-12 col-sm-12 col-xs-12" id="Project-Record_@item.PROJECT_ID">
+            <div class="card border-primary mb-3 project_card">
+                <div class="card-header bg-primary text-white ">
+                    @Html.DisplayFor(modelItem => item.PROJECT_OWNER)
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.NAME_PROJECT)</h5><br />
+
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.DESC_PROJECT)</p>
+                    <p class="card-text"><b>Cost : </b> @Html.DisplayFor(modelItem => item.PRICE) $</p>
+                    <p class="card-text">Deadline :@Html.DisplayFor(modelItem => item.START_TIME) To @Html.DisplayFor(modelItem => item.END_TIME)</p>
+                    @if (Session["Role"] != null)
+                    {
+                        if (Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Customer")
+                        {
+                        <button class="btn btn-primary float-right btn-proj" data-toggle="modal" data-target="#assign-modal" onclick="newval(@item.PROJECT_ID)">Invite </button>
+                        <button class="btn btn-danger float-right btn-proj" type="submit" id="delete-project" onclick="DeleteProject(@item.PROJECT_ID)">Delete</button>
+                        <button class="btn btn-warning float-right btn-proj" id="update-project" type="button" data-toggle="modal" data-target="#update-project-model">Edit</button>
+                        <div class="op-group-btn">
+                            <button id=@item.PROJECT_ID type="button" onclick="Group_M(@item.PROJECT_ID)" class="btn btn-primary joinus-btn project-f-btn open-g-modal"
+                                    data-toggle="modal" data-target="#Group-modal">
+                                Open Group
+                            </button>
+                        </div><!--op-group-btn-->
+                        }
+                        else if (Session["Role"].ToString() == "Team Leader" || Session["Role"].ToString() == "Marketing Director")
+                        {
+                        <div class="op-group-btn">
+                            <button id=@item.PROJECT_ID type="button" onclick="Group_M(@item.PROJECT_ID)" class="btn btn-primary joinus-btn project-f-btn open-g-modal"
+                                    data-toggle="modal" data-target="#Group-modal">
+                                Open Group
+                            </button>
+                        </div><!--op-group-btn-->
+                        <button class="btn btn-primary float-right btn-proj" data-toggle="modal" data-target="#assign-modal" onclick="newval(@item.PROJECT_ID)">Invite </button>
+                        }
+                        else
+                        {
+                        <div class="op-group-btn">
+                            <button id=@item.PROJECT_ID type="button" onclick="Group_M(@item.PROJECT_ID)" class="btn btn-primary joinus-btn project-f-btn open-g-modal btn-proj"
+                                    data-toggle="modal" data-target="#Group-modal">
+                                Open Group
+                            </button>
+                        </div><!--op-group-btn-->
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+        
+    }
+</div>

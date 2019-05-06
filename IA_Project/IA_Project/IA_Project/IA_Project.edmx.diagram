@@ -4,31 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9567f80980b54d14a42a0dd3cb549ab3" Name="Diagram1">
-        <EntityTypeShape EntityType="IA_ProjectModel.ACTOR_PROJECT" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.PROJECT" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.S_ACTORS" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.S_PAGE" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.EVALUATE" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.NOTIF" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.STAT_REPROT" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
-      <Diagram DiagramId="b3191097a5c04e6db570eaa2af5f5273" Name="Diagram1">
-        <EntityTypeShape EntityType="IA_ProjectModel.ACTOR_PROJECT" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.PROJECT" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.S_ACTORS" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.S_PAGE" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.EVALUATE" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.NOTIF" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IA_ProjectModel.STAT_REPROT" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
->>>>>>> 7f42491d80d2f4c15a29523ff7f3e746bb76edcd
-        <AssociationConnector Association="IA_ProjectModel.FK__ACTOR_PRO__ACTOR__173876EA" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__ACTOR_PRO__PROJE__182C9B23" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__EVALUATE__ACTOR___1ED998B2" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__EVALUATE__ACTOR___1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__NOTIF__ACTOR_ID___21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__NOTIF__ACTOR_ID___22AA2996" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__S_PAGE__ACTOR_ID__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="IA_ProjectModel.FK__STAT_REPR__ACTOR__1CF15040" ManuallyRouted="false" />
+      <Diagram DiagramId="c6e3d3d899bd4cf8bfc5b64acc419f83" Name="Diagram1">
+        <EntityTypeShape EntityType="IA_ProjectModel.PROJECT" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.S_ACTORS" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.S_PAGE" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.ACTOR_PROJECT" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.EVALUATE" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.NOTIF" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IA_ProjectModel.STAT_REPROT" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <AssociationConnector Association="IA_ProjectModel.FK__ACTOR_PRO__PROJE__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__ACTOR_PRO__ACTOR__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__EVALUATE__ACTOR___1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__EVALUATE__ACTOR___1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__NOTIF__ACTOR_ID___1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__NOTIF__ACTOR_ID___1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__S_PAGE__ACTOR_ID__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="IA_ProjectModel.FK__STAT_REPR__ACTOR__1A14E395" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

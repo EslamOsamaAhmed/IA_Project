@@ -1,0 +1,89 @@
+﻿﻿@using IA_Project.Models
+@using IA_Project.Controllers
+@model IA_Project.ViewModels.ProjectsUsersModel
+@{
+    ViewBag.Title = "SProfile_View";
+}
+
+@Html.Partial("_navbar_for_sprofile")
+<div class="container SProfile_view">
+    <div class="row">
+        @Html.Partial("_Profile_Modle")
+
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 edit-profile tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Your Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row" id="update_profile_s">
+                        <!--Update Profile Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 dahsboard-content noactive tab-content">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Dashboard</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+
+                            <div class="col-12 project-content row" id="customer_projects_view">
+                                <!--Display All Projects customer-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@Html.Partial("_Footer")
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+
+        $("#get-project").click(function () {
+            var status = "all";
+            var my_data = 'Project_Status=' + status;
+            $.ajax({
+                type: "GET",
+                url: "/fprofile/Display_projects_By_Type",
+                data: my_data,
+                success: function (response) {
+                    $("#customer_projects_view").html(response)
+                }
+            })
+        });
+
+        $("#edit_profile-s").click(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/SProfile/Edit_Profile",
+                success: function (response) {
+                    $("#update_profile_s").html(response)
+                }
+            })
+
+        });
+    </script>
+}

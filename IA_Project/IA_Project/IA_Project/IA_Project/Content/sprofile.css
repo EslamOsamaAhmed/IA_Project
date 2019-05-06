@@ -1,0 +1,16 @@
+﻿body {
+}
+.Custom_Size{
+    font-size:70%;
+    font-weight:bold;
+}
+.project_card {
+    max-width: 30rem;
+}
+.SProfile_view{
+    margin-top:2%;
+    margin-bottom:2%;
+}
+.pic2{
+    margin-bottom:3%;
+    margin-left:10%;

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand col-10" href="@Url.Action("home", "Index")">IA Project</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="right login-username"><a href="#">@Session["UserName"] </a></li>
+                    @if (Session["UserName"] == null)
+                    {
+                        <li class="right" data-toggle="modal" data-target="#login-modal" id="login-btn"><a href="#">Login</a></li>
+                    }
+                    else
+                    {
+                        <li class="right d-none" data-toggle="modal" data-target="#login-modal" id="login-btn"><a href="#">Login</a></li>
+                    }
+                    <li class="right" id="signout"><a href="@Url.Action("logout", "home")">Sign Out</a></li>
+                </ul>
+            </div>
+        </div><!-- end container -->
+</nav>
+    <div class="body-content">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

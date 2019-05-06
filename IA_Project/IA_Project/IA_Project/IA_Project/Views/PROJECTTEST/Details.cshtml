@@ -1,0 +1,67 @@
+﻿@model IA_Project.PROJECT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PROJECT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME_PROJECT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME_PROJECT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_PROJECT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_PROJECT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.START_TIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.START_TIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.END_TIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.END_TIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PROJECT_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
